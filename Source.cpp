@@ -6,6 +6,30 @@
 
 using namespace std;
 
+void funktypename(string cryptotype)
+{
+	if (cryptotype == "1")
+	{
+		cout << "1)Caesar's Cipher" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "2)" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "3)" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "4)" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "5)" << endl;
+	}
+}
+
 char* memorylock(int n)                                           //memory lock function for dynamic array
 {
 	char* B;
@@ -13,7 +37,7 @@ char* memorylock(int n)                                           //memory lock 
 	return B;
 }
 
-void CODE(int smehenie)
+void CaesarCODE(int smehenie)
 {
 	string inputstring;                                        //input string
 	bool end;                                                  //cheсk-flag for continue
@@ -154,7 +178,7 @@ void CODE(int smehenie)
 	cout << endl;
 }
 
-void DECODE(int smehenie)
+void CaesarDECODE(int smehenie)
 {
 	string inputstring;                                        //input string
 	bool end;                                                  //cheсk-flag for continue
@@ -302,33 +326,72 @@ void main()
 
 	setlocale(LC_ALL, "Rus");									//Russian localization
 
+
+
+	string cryptotype;
+	cout << "Encoding types:" << endl << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << endl << "What type you want: ";
+	cin >> cryptotype;
+
+	if (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
+	{
+		while (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
+		{
+			system("CLS");
+			cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
+			cout << "Encoding types:" << endl << "1)Caesar 's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << endl << "What type you want: ";
+			cin >> cryptotype;
+		}
+	}
+	system("CLS");
+
+	funktypename(cryptotype);
+
+
+
 	string funk;												//string to understand what to do with your string
 	cout << "Code or Decode: ";									//
 	cin >> funk;												//
 
-	int smehenie = 3;											//setting the offset for encoding (default = 3)
-
-	if (funk != "Code" || funk != "Decode")						//if you didn't write "Decode" or "Code"
+	if (funk != "Code" && funk != "Decode")						//if you didn't write "Decode" or "Code"
 	{
 		while (funk != "Code" && funk != "Decode")
 		{
 			system("CLS");
+			funktypename(cryptotype);
 			cout << "Error. Write \"Code\" or \"Decode\" only." << endl;
 			cout << "Code or Decode: ";
 			cin >> funk;
 		}
 	}
-
 	system("CLS");												//clear console
 
-
-	if (funk == "Code")											//start CODE or DECODE funk
+	if (cryptotype == "1")
 	{
-		CODE(smehenie);
+		int smehenie = 3;											//setting the offset for encoding (default = 3)
+		if (funk == "Code")
+		{
+			CaesarCODE(smehenie);
+		}
+
+		else if (funk == "Decode")
+		{
+			CaesarDECODE(smehenie);
+		}
 	}
-
-	else if (funk == "Decode")
+	else if (cryptotype == "2")
 	{
-		DECODE(smehenie);
+		cout << "2)" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "3)" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "4)" << endl;
+	}
+	else if (cryptotype == "2")
+	{
+		cout << "5)" << endl;
 	}
 }
