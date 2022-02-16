@@ -30,13 +30,6 @@ void funktypename(string cryptotype)
 	}
 }
 
-char* memorylock(int n)                                           //memory lock function for dynamic array
-{
-	char* B;
-	B = static_cast <char*> (calloc(n, sizeof(char)));
-	return B;
-}
-
 void CaesarCODE(int smehenie)
 {
 	string inputstring;                                        //input string
@@ -106,7 +99,6 @@ void CaesarCODE(int smehenie)
 	}															
 	cout << endl;
 }
-
 void CaesarDECODE(int smehenie)
 {
 	string inputstring;                                        //input string
