@@ -40,59 +40,29 @@ char* memorylock(int n)                                           //memory lock 
 void CaesarCODE(int smehenie)
 {
 	string inputstring;                                        //input string
+	string outputstring;
 	bool end;                                                  //cheсk-flag for continue
-	int n = 2;                                                 //start memory lock (1 free  and 1 for end-string symbol)
-	char* outputstring = memorylock(n);
-	char* outputstring_cop = memorylock(n);
-
-
 	cout << "Enter coding string: ";                           //enter input string module
-	cin.ignore();                                              //
-	getline(cin, inputstring);                                 //
-
-
-
+	cin.ignore();                                              
+	getline(cin, inputstring);                                 
 	for (int i = 0; inputstring[i] != '\0'; i++)               //input string check
 	{
 		end = false;												//set check-flag to false
 		for (int j = 33; j < 127; j++)								//ASKII 33 -> 126 check in input string
 		{
-			char ASCIICod = j;											//int-dek to ASKII-symbol
-
-			if (inputstring[i] == ' ')									//ignore the space module
-			{															//
-				break;													//
-			}															//
-
-			else if (inputstring[i] == ASCIICod)						//comparison of the symbol of the input string and the ASKII character
+			char ASCIICod = j;											//int-dek to ASKII-symbol															
+			if (inputstring[i] == ASCIICod)						//comparison of the symbol of the input string and the ASKII character
 			{
 				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 3))
-
 				for (int h = 127; h < (127 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
-				{                                                           //
-					if (smena == h)                                         //
-					{                                                       //
-						smena = smena + 65;                                 //
-					}                                                       //
-				}                                                           //
-
+				{                                                       
+					if (smena == h)                                         
+					{                                                       
+						smena = smena + 65;                                 
+					}                                                       
+				}                                                           
 				char ASCIICod_smena = smena;                                //changing a character and saving it to the output array
-				outputstring[i] = ASCIICod_smena;							//
-
-				for (int g = 0; g < n; g++)                                 //updating (lengthening) the array in memory module
-				{															//
-					outputstring_cop[g] = outputstring[g];					//
-				}															//
-				n++;														//
-				free(outputstring);											//
-				outputstring = memorylock(n);								//
-				for (int g = 0; g < n - 1; g++)								//
-				{															//
-					outputstring[g] = outputstring_cop[g];					//
-				}															//
-				free(outputstring_cop);										//
-				outputstring_cop = memorylock(n);							//
-
+				outputstring += ASCIICod_smena;     						
 				end = true;													//set check-flag to true
 				break;														//break the cycle
 			}
@@ -101,221 +71,111 @@ void CaesarCODE(int smehenie)
 		{
 			continue;
 		}
-
-
 
 		for (int j = 192; j < 256; j++)								//ASKII 192 -> 255 check in input string
 		{
 			char ASCIICod = j;											//int-dek to ASKII-symbol
-
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
 				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 3))
-
 				for (int h = 256; h < (256 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
-				{															//
-					if (smena == h)											//
-					{														//
-						smena = smena - 256 + 33;							//
-					}														//
-				}															//
-
+				{															
+					if (smena == h)											
+					{														
+						smena = smena - 256 + 33;							
+					}														
+				}															
 				char ASCIICod_smena = smena;								//changing a character and saving it to the output array
-				outputstring[i] = ASCIICod_smena;							//
-
-				for (int g = 0; g < n; g++)									//updating (lengthening) the array in memory module
-				{															//
-					outputstring_cop[g] = outputstring[g];					//
-				}															//
-				n++;														//
-				free(outputstring);											//
-				outputstring = memorylock(n);								//
-				for (int g = 0; g < n - 1; g++)								//
-				{															//
-					outputstring[g] = outputstring_cop[g];					//
-				}															//
-				free(outputstring_cop);										//
-				outputstring_cop = memorylock(n);							//
-
+				outputstring += ASCIICod_smena;								
 				end = true;													//set check-flag to true
 				break;														//break the cycle
 			}
 		}
-
 		if (end == true)											//check check-flag (if true -> do not check symbols further)
 		{
 			continue;
 		}
-
-		outputstring[i] = inputstring[i];                           //if there is no ASKII in the range -> copy them to the output array without modification
-
-		for (int g = 0; g < n; g++)                                 //also updating (lengthening) the array in memory module
-		{
-			outputstring_cop[g] = outputstring[g];
-		}
-		n++;
-		free(outputstring);
-		outputstring = memorylock(n);
-		for (int g = 0; g < n - 1; g++)
-		{
-			outputstring[g] = outputstring_cop[g];
-		}
-		free(outputstring_cop);
-		outputstring_cop = memorylock(n);
-		continue;
+		outputstring += inputstring[i];                           //if there is no ASKII in the range -> copy them to the output array without modification
 	}
-
+	int n = outputstring.length();
 	system("CLS");												//clear console
-
 	cout << "Coding string: ";									//output of encrypted text module
-	for (int g = 0; g < n - 1; g++)								//
-	{															//
-		cout << outputstring[g];								//
-	}															//
-
-	free(outputstring);											//cleaning memory
-	free(outputstring_cop);										//
+	for (int g = 0; g < n; g++)									
+	{															
+		cout << outputstring[g];								
+	}															
 	cout << endl;
 }
 
 void CaesarDECODE(int smehenie)
 {
 	string inputstring;                                        //input string
+	string outputstring;
 	bool end;                                                  //cheсk-flag for continue
-	int n = 2;                                                 //start memory lock (1 free  and 1 for end-string symbol)
-	char* outputstring = memorylock(n);
-	char* outputstring_cop = memorylock(n);
-
-
 	cout << "Enter decoding string: ";                         //enter input string module
-	cin.ignore();                                              //
-	getline(cin, inputstring);                                 //
-
-
-
+	cin.ignore();                                              
+	getline(cin, inputstring);                                 
 	for (int i = 0; inputstring[i] != '\0'; i++)               //input string check
 	{
 		end = false;												//set check-flag to false
 		for (int j = 33; j < 127; j++)								//ASKII 33 -> 126 check in input string
 		{
-			char ASCIICod = j;											//int-dek to ASKII-symbol
-
-			if (inputstring[i] == ' ')									//ignore the space module
-			{															//
-				break;													//
-			}															//
-
-			else if (inputstring[i] == ASCIICod)						//comparison of the symbol of the input string and the ASKII character
-			{
-				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
-
-				for (int h = 30; h < (30 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
-				{                                                           //
-					if (smena == h)                                         //
-					{                                                       //
-						smena = smena + 256 - 33;                           //
-					}                                                       //
-				}                                                           //
-
-				char ASCIICod_smena = smena;                                //changing a character and saving it to the output array
-				outputstring[i] = ASCIICod_smena;							//
-
-				for (int g = 0; g < n; g++)                                 //updating (lengthening) the array in memory module
-				{															//
-					outputstring_cop[g] = outputstring[g];					//
-				}															//
-				n++;														//
-				free(outputstring);											//
-				outputstring = memorylock(n);								//
-				for (int g = 0; g < n - 1; g++)								//
-				{															//
-					outputstring[g] = outputstring_cop[g];					//
-				}															//
-				free(outputstring_cop);										//
-				outputstring_cop = memorylock(n);							//
-
-				end = true;													//set check-flag to true
-				break;														//break the cycle
-			}
-		}
-		if (end == true)											//check check-flag (if true -> do not check symbols further)
-		{
-			continue;
-		}
-
-
-
-		for (int j = 192; j < 256; j++)								//ASKII 192 -> 255 check in input string
-		{
-			char ASCIICod = j;											//int-dek to ASKII-symbol
-
+			char ASCIICod = j;											//int-dek to ASKII-symbol														
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
 				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
 
-				for (int h = 189; h < (189 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
-				{															//
-					if (smena == h)											//
-					{														//
-						smena = smena - 65;									//
-					}														//
-				}															//
+				for (int h = 30; h < (30 + smehenie); h++)					//exclusion of unreadable characters from the ASKII table module
+				{
+					if (smena == h)
+					{
+						smena = smena + 256 - 33;
+					}
+				}
 
-				char ASCIICod_smena = smena;								//changing a character and saving it to the output array
-				outputstring[i] = ASCIICod_smena;							//
-
-				for (int g = 0; g < n; g++)									//updating (lengthening) the array in memory module
-				{															//
-					outputstring_cop[g] = outputstring[g];					//
-				}															//
-				n++;														//
-				free(outputstring);											//
-				outputstring = memorylock(n);								//
-				for (int g = 0; g < n - 1; g++)								//
-				{															//
-					outputstring[g] = outputstring_cop[g];					//
-				}															//
-				free(outputstring_cop);										//
-				outputstring_cop = memorylock(n);							//
-
+				char ASCIICod_smena = smena;                                //changing a character and saving it to the output array
+				outputstring += ASCIICod_smena;
 				end = true;													//set check-flag to true
 				break;														//break the cycle
 			}
 		}
-
 		if (end == true)											//check check-flag (if true -> do not check symbols further)
 		{
 			continue;
 		}
 
-		outputstring[i] = inputstring[i];                           //if there is no ASKII in the range -> copy them to the output array without modification
-
-		for (int g = 0; g < n; g++)                                 //also updating (lengthening) the array in memory module
+		for (int j = 192; j < 256; j++)								//ASKII 192 -> 255 check in input string
 		{
-			outputstring_cop[g] = outputstring[g];
+			char ASCIICod = j;											//int-dek to ASKII-symbol
+			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
+			{
+				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
+				for (int h = 189; h < (189 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
+				{
+					if (smena == h)
+					{
+						smena = smena - 65;
+					}
+				}
+				char ASCIICod_smena = smena;								//changing a character and saving it to the output array
+				outputstring += ASCIICod_smena;
+				end = true;													//set check-flag to true
+				break;														//break the cycle
+			}
 		}
-		n++;
-		free(outputstring);
-		outputstring = memorylock(n);
-		for (int g = 0; g < n - 1; g++)
+		if (end == true)											//check check-flag (if true -> do not check symbols further)
 		{
-			outputstring[g] = outputstring_cop[g];
+			continue;
 		}
-		free(outputstring_cop);
-		outputstring_cop = memorylock(n);
-		continue;
+		outputstring += inputstring[i];                           //if there is no ASKII in the range -> copy them to the output array without modification
 	}
-
+	int n = outputstring.length();
 	system("CLS");												//clear console
-
 	cout << "Decoding string: ";									//output of encrypted text module
-	for (int g = 0; g < n - 1; g++)								//
-	{															//
-		cout << outputstring[g];								//
-	}															//
-
-	free(outputstring);											//cleaning memory
-	free(outputstring_cop);										//
+	for (int g = 0; g < n; g++)								
+	{															
+		cout << outputstring[g];								
+	}															
 	cout << endl;
 }
 
