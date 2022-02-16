@@ -234,15 +234,15 @@ void main()
 	{
 		cout << "2)" << endl;
 	}
-	else if (cryptotype == "2")
+	else if (cryptotype == "3")
 	{
 		cout << "3)" << endl;
 	}
-	else if (cryptotype == "2")
+	else if (cryptotype == "4")
 	{
 		cout << "4)" << endl;
 	}
-	else if (cryptotype == "2")
+	else if (cryptotype == "5")
 	{
 		cout << "5)" << endl;
 	}
