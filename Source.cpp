@@ -3,6 +3,7 @@
 #include <string>
 #include <locale>
 #include <windows.h>
+#include <ctime>
 
 using namespace std;
 
@@ -30,7 +31,63 @@ void funktypename(string cryptotype)				//the function of writing the encryption
 	}
 }
 
-void Caesar_CODE(int smehenie)
+void PASSWORD_request(int* password_array, int* flag_password)
+{
+	string password;
+	flag_password[0] = 1;
+	cout << "Enter password (if you don't have password -> write \"0\"): ";
+	cin >> password;
+	if (password == "0")
+	{
+		for (int i = 0; i < 30; i++)
+		{
+			int random_number = 1 + rand() % 9;
+			password_array[i] = random_number;
+		}
+	}
+	else
+	{
+		int i;
+		for (i = 0; password[i] != '\0'; i++)
+		{
+			if (flag_password[0] == 0)
+			{
+				break;
+			}
+			if (i == 30)
+			{
+				system("CLS");
+				cout << "Wrong password!" << endl;
+				flag_password[0] = 0;
+				break;
+			}
+			for (int j = 49; j < 58; j++)
+			{
+				char ASKII = j;
+				if (password[i] == ASKII)
+				{
+					password_array[i] = j - 48;
+					break;
+				}
+				else if (password[i] != ASKII && j == 57)
+				{
+					system("CLS");
+					cout << "Wrong password!" << endl;
+					flag_password[0] = 0;
+					break;
+				}
+			}
+		}
+		if (i != 30 && flag_password[0] != 0)
+		{
+			system("CLS");
+			cout << "Wrong password!" << endl;
+			flag_password[0] = 0;
+		}
+	}
+}
+
+void Caesar_CODE(int* password_array)
 {
 	string inputstring;                                         //input string
 	string outputstring;										//output string
@@ -38,10 +95,21 @@ void Caesar_CODE(int smehenie)
 
 	cout << "Enter coding string: ";                            //enter input string
 	cin.ignore();                                              
-	getline(cin, inputstring);                                 
+	getline(cin, inputstring); 
+
+	int p = -1;
+	int smehenie = 0;
 
 	for (int i = 0; inputstring[i] != '\0'; i++)                //input string check
 	{
+
+		p++;
+		if (p == 29)
+		{
+			p = 0;
+		}
+		smehenie = password_array[p];
+
 		end = false;												//set check-flag to false
 		for (int j = 33; j < 127; j++)								//ASKII 33 -> 126 check in input string
 		{
@@ -105,7 +173,7 @@ void Caesar_CODE(int smehenie)
 	}															
 	cout << endl;
 }
-void Caesar_DECODE(int smehenie)
+void Caesar_DECODE(int* password_array)
 {
 	string inputstring;                                         //input string
 	string outputstring;										//output string
@@ -113,10 +181,19 @@ void Caesar_DECODE(int smehenie)
 
 	cout << "Enter decoding string: ";                          //enter input string
 	cin.ignore();                                              
-	getline(cin, inputstring);                                 
+	getline(cin, inputstring); 
+
+	int p = -1;
+	int smehenie = 0;
 
 	for (int i = 0; inputstring[i] != '\0'; i++)                //input string check
 	{
+		p++;
+		if (p == 29)
+		{
+			p = 0;
+		}
+		smehenie = password_array[p];
 		end = false;												//set check-flag to false
 		for (int j = 33; j < 127; j++)								//ASKII 33 -> 126 check in input string
 		{
@@ -125,7 +202,7 @@ void Caesar_DECODE(int smehenie)
 			{
 				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
 
-				for (int h = 30; h < (30 + smehenie); h++)					//exclusion of unreadable characters from the ASKII table module
+				for (int h = 33 - smehenie; h < 33; h++)					//exclusion of unreadable characters from the ASKII table module
 				{
 					if (smena == h)
 					{
@@ -150,7 +227,7 @@ void Caesar_DECODE(int smehenie)
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
 				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
-				for (int h = 189; h < (189 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
+				for (int h = 192 - smehenie; h < 192; h++)					//exclusion of unreadable characters from the ASKII table module
 				{
 					if (smena == h)
 					{
@@ -184,6 +261,7 @@ void Caesar_DECODE(int smehenie)
 
 int main()
 {
+	srand(time(NULL));
 	SetConsoleCP(1251);								//set ASKII by Windows console-in == console-out (for Кussian language)
 	SetConsoleOutputCP(1251);						
 	setlocale(LC_ALL, "Rus");						//Russian localization
@@ -227,15 +305,33 @@ int main()
 
 	if (cryptotype == "1")							//conditions for performing encryption for the selected type and principle of operation
 	{
-		int smehenie = 3;							//setting the offset for encoding (default = 3)
+		int password_array[30];
+		int* pass = password_array;
+		int flag_password[1] = { 1 };
+		int* flag_pas = flag_password;
+		PASSWORD_request(pass, flag_pas);
+		if (flag_password[0] == 0)
+		{
+			while (flag_password[0] == 0)
+			{
+				PASSWORD_request(pass, flag_pas);
+			}
+		}
+		system("CLS");
+		cout << "Your password is: ";
+		for (int i = 0; i < 30; i++)
+		{
+			cout << password_array[i];
+		}
+		cout << endl;
 		if (funk == "Code")
 		{
-			Caesar_CODE(smehenie);
+			Caesar_CODE(pass);
 		}
 
 		else if (funk == "Decode")
 		{
-			Caesar_DECODE(smehenie);
+			Caesar_DECODE(pass);
 		}
 	}
 	else if (cryptotype == "2")
