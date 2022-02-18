@@ -8,7 +8,7 @@
 using namespace std;
 
 //System funk
-bool PASSWORD_CHEK(bool chek_password)
+bool PASSWORD_CHEK(bool chek_password)		//the function for password chek
 {
 	string password;
 	cout << "Enter password: ";
@@ -23,7 +23,7 @@ bool PASSWORD_CHEK(bool chek_password)
 	}
 	return chek_password;
 }
-void funktypename(string cryptotype)				//the function of writing the encryption type
+void funktypename(string cryptotype)		//the function of writing the encryption type
 {
 	if (cryptotype == "1")
 	{
@@ -46,7 +46,7 @@ void funktypename(string cryptotype)				//the function of writing the encryption
 		cout << "" << endl;
 	}
 }
-void funkprinciple(string funk)
+void funkprinciple(string funk)				//the function of writing the principle of operation
 {
 	if (funk == "1")
 	{
@@ -56,7 +56,7 @@ void funkprinciple(string funk)
 	{
 		cout << "Decryption" << endl;
 	}
-}
+}	   
 
 //Code and Decode funk
 void Caesar_CODE(int smehenie)
