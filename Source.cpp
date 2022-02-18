@@ -1,42 +1,71 @@
 #include <iostream>
 #include <cstdlib>
+
 #include <string>
 #include <locale>
 #include <windows.h>
 
 using namespace std;
 
+//System funk
+bool PASSWORD_CHEK(bool chek_password)
+{
+	string password;
+	cout << "Enter password: ";
+	cin >> password;
+	if (password == "1337")
+	{
+		chek_password = true;
+	}
+	else
+	{
+		chek_password = false;
+	}
+	return chek_password;
+}
 void funktypename(string cryptotype)				//the function of writing the encryption type
 {
 	if (cryptotype == "1")
 	{
-		cout << "1)Caesar's Cipher" << endl;
+		cout << "Caesar's Cipher" << endl;
 	}
 	else if (cryptotype == "2")
 	{
-		cout << "2)" << endl;
+		cout << "" << endl;
 	}
 	else if (cryptotype == "3")
 	{
-		cout << "3)" << endl;
+		cout << "" << endl;
 	}
 	else if (cryptotype == "4")
 	{
-		cout << "4)" << endl;
+		cout << "" << endl;
 	}
 	else if (cryptotype == "5")
 	{
-		cout << "5)" << endl;
+		cout << "" << endl;
+	}
+}
+void funkprinciple(string funk)
+{
+	if (funk == "1")
+	{
+		cout << "Encryption" << endl;
+	}
+	else if (funk == "2")
+	{
+		cout << "Decryption" << endl;
 	}
 }
 
+//Code and Decode funk
 void Caesar_CODE(int smehenie)
 {
 	string inputstring;                                         //input string
 	string outputstring;										//output string
 	bool end;                                                   //cheсk-flag for continue
 
-	cout << "Enter coding string: ";                            //enter input string
+	cout << "Enter a line for encryption: ";                            //enter input string
 	cin.ignore();
 	getline(cin, inputstring);
 
@@ -98,7 +127,7 @@ void Caesar_CODE(int smehenie)
 	system("CLS");
 	funktypename("1");
 
-	cout << "Coding string: ";									//output of encrypted string
+	cout << "Encrypted string: ";									//output of encrypted string
 	for (int g = 0; g < n; g++)
 	{
 		cout << outputstring[g];
@@ -111,7 +140,7 @@ void Caesar_DECODE(int smehenie)
 	string outputstring;										//output string
 	bool end;                                                   //cheсk-flag for continue
 
-	cout << "Enter decoding string: ";                          //enter input string
+	cout << "Enter a line for decryption: ";                          //enter input string
 	cin.ignore();
 	getline(cin, inputstring);
 
@@ -174,7 +203,7 @@ void Caesar_DECODE(int smehenie)
 	system("CLS");
 	funktypename("1");
 
-	cout << "Decoding string: ";								//output of the decrypted string
+	cout << "Decryption string: ";								//output of the decrypted string
 	for (int g = 0; g < n; g++)
 	{
 		cout << outputstring[g];
@@ -182,77 +211,105 @@ void Caesar_DECODE(int smehenie)
 	cout << endl;
 }
 
+//Main funk
 int main()
 {
-	SetConsoleCP(1251);								//set ASKII by Windows console-in == console-out (for Кussian language)
+	SetConsoleCP(1251);			//set ASKII by Windows console-in == console-out (for Кussian language)
 	SetConsoleOutputCP(1251);
-	setlocale(LC_ALL, "Rus");						//Russian localization
+	setlocale(LC_ALL, "Rus");	//Russian localization
 
-	string cryptotype;								//encryption selection
-	cout << "Encoding types:" << endl << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << endl << "What type you want: ";
-	cin >> cryptotype;
 
-	if (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")	//protection against an incorrectly entered encryption type
+	//Greeting
+	cout << "Hello Anonymous!" << endl << "Welcome to the encryption program!" << endl << "First you need to log in." << "\n\n";
+
+	while (true)
 	{
-		while (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
+		//Entering the password and checking it for correctness
+		bool chek_password = true;
+		chek_password = PASSWORD_CHEK(chek_password);
+		while (chek_password == false)
 		{
 			system("CLS");
-			cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
-			cout << "Encoding types:" << endl << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << endl << "What type you want: ";
-			cin >> cryptotype;
+			cout << "Wrong password!" << "\n\n";
+			chek_password = PASSWORD_CHEK(chek_password);
 		}
-	}
+		system("CLS");
+		cout << "Authorization success!";
+		Sleep(1500);
+		system("CLS");
 
-	system("CLS");
-	funktypename(cryptotype);
-
-	string funk;									//сhoosing the principle of operation
-	cout << "Code or Decode: ";
-	cin >> funk;
-
-	if (funk != "Code" && funk != "Decode")																		//Protection against an incorrectly entered principle of operation
-	{
-		while (funk != "Code" && funk != "Decode")
+		for (int q = 0; q < 10; q++)
 		{
-			system("CLS");
-			funktypename(cryptotype);
-			cout << "Error. Write \"Code\" or \"Decode\" only." << endl;
-			cout << "Code or Decode: ";
+			//Choosing the principle of operation
+			string funk;
+			cout << "Choose the principle of operation: " << "\n\n" << "1)Encryption" << endl << "2)Decryption" << "\n\n" << "What we do: ";
 			cin >> funk;
-		}
-	}
+			//Protection against incorrectly entered operating principle
+			while (funk != "1" && funk != "2")
+			{
+				system("CLS");
+				cout << "Error. Write \"1\" or \"2\" only." << endl;
+				cout << "Choose the principle of operation: " << "\n\n" << "1)Encryption" << endl << "2)Decryption" << "\n\n" << "What we do: ";
+				cin >> funk;
+			}
 
-	system("CLS");
-	funktypename(cryptotype);
+			system("CLS");
+			funkprinciple(funk);
 
-	if (cryptotype == "1")							//conditions for performing encryption for the selected type and principle of operation
-	{
-		int smehenie = 3;							//setting the offset for encoding (default = 3)
-		if (funk == "Code")
-		{
-			Caesar_CODE(smehenie);
-		}
 
-		else if (funk == "Decode")
-		{
-			Caesar_DECODE(smehenie);
+			//Encryption selection
+			string cryptotype;
+			cout << "Select the encryption/decryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
+			cin >> cryptotype;
+			//Protection against an incorrectly entered encryption type
+			while (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
+			{
+				system("CLS");
+				funkprinciple(funk);
+				cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
+				cout << "Select the encryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
+				cin >> cryptotype;
+			}
+
+			system("CLS");
+			funkprinciple(funk);
+			funktypename(cryptotype);
+
+
+			//Conditions for performing encryption for the selected type and principle of operation
+			if (cryptotype == "1")
+			{
+				int smehenie = 5;	//Setting the offset for encoding (default = 3)
+				if (funk == "1")
+				{
+					Caesar_CODE(smehenie);
+				}
+
+				else if (funk == "2")
+				{
+					Caesar_DECODE(smehenie);
+				}
+			}
+			else if (cryptotype == "2")
+			{
+				cout << "2)" << endl;
+			}
+			else if (cryptotype == "3")
+			{
+				cout << "3)" << endl;
+			}
+			else if (cryptotype == "4")
+			{
+				cout << "4)" << endl;
+			}
+			else if (cryptotype == "5")
+			{
+				cout << "5)" << endl;
+			}
+			system("PAUSE");
+			system("CLS");
 		}
-	}
-	else if (cryptotype == "2")
-	{
-		cout << "2)" << endl;
-	}
-	else if (cryptotype == "3")
-	{
-		cout << "3)" << endl;
-	}
-	else if (cryptotype == "4")
-	{
-		cout << "4)" << endl;
-	}
-	else if (cryptotype == "5")
-	{
-		cout << "5)" << endl;
+		cout << "Login time-out!" << endl;
 	}
 	return 0;
 }
