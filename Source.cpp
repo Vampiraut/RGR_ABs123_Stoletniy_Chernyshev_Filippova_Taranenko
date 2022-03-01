@@ -24,6 +24,9 @@ bool PASSWORD_CHEK(bool chek_password)		//the function for password chek
 	return chek_password;
 }
 
+
+
+
 void PASSWORD_request(int* password_array, int* flag_password)
 {
 	string password;
@@ -79,6 +82,9 @@ void PASSWORD_request(int* password_array, int* flag_password)
 		}
 	}
 }
+
+
+
 
 void funktypename(string cryptotype)		//the function of writing the encryption type
 {
@@ -268,6 +274,10 @@ void Caesar_DECODE(int smehenie)
 	cout << endl;
 }
 
+
+
+
+
 void Gronsfeld_CODE(int* password_array)
 {
 	string inputstring;                                         //input string
@@ -440,6 +450,11 @@ void Gronsfeld_DECODE(int* password_array)
 	cout << endl;
 }
 
+
+
+
+
+
 //Main funk
 int main()
 {
@@ -519,6 +534,11 @@ int main()
 					Caesar_DECODE(smehenie);
 				}
 			}
+
+
+
+
+
 			else if (cryptotype == "2")
 			{
 				int smehenie = 5;	//Setting the offset for encoding (default = 3)
@@ -532,6 +552,11 @@ int main()
 					Caesar_DECODE(smehenie);
 				}
 			}
+
+
+
+
+
 			else if (cryptotype == "3")
 			{
 				cout << "3)" << endl;
