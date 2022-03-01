@@ -23,6 +23,63 @@ bool PASSWORD_CHEK(bool chek_password)		//the function for password chek
 	}
 	return chek_password;
 }
+
+void PASSWORD_request(int* password_array, int* flag_password)
+{
+	string password;
+	flag_password[0] = 1;
+	cout << "Enter password (if you don't have password -> write \"0\"): ";
+	cin >> password;
+	if (password == "0")
+	{
+		for (int i = 0; i < 30; i++)
+		{
+			int random_number = 1 + rand() % 9;
+			password_array[i] = random_number;
+		}
+	}
+	else
+	{
+		int i;
+		for (i = 0; password[i] != '\0'; i++)
+		{
+			if (flag_password[0] == 0)
+			{
+				break;
+			}
+			if (i == 30)
+			{
+				system("CLS");
+				cout << "Wrong password!" << endl;
+				flag_password[0] = 0;
+				break;
+			}
+			for (int j = 49; j < 58; j++)
+			{
+				char ASKII = j;
+				if (password[i] == ASKII)
+				{
+					password_array[i] = j - 48;
+					break;
+				}
+				else if (password[i] != ASKII && j == 57)
+				{
+					system("CLS");
+					cout << "Wrong password!" << endl;
+					flag_password[0] = 0;
+					break;
+				}
+			}
+		}
+		if (i != 30 && flag_password[0] != 0)
+		{
+			system("CLS");
+			cout << "Wrong password!" << endl;
+			flag_password[0] = 0;
+		}
+	}
+}
+
 void funktypename(string cryptotype)		//the function of writing the encryption type
 {
 	if (cryptotype == "1")
