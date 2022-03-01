@@ -31,7 +31,7 @@ void funktypename(string cryptotype)		//the function of writing the encryption t
 	}
 	else if (cryptotype == "2")
 	{
-		cout << "" << endl;
+		cout << "The Gronsfeld Cipher" << endl;
 	}
 	else if (cryptotype == "3")
 	{
@@ -235,7 +235,7 @@ int main()
 		}
 		system("CLS");
 		cout << "Authorization success!";
-		Sleep(1500);
+		Sleep(1000);
 		system("CLS");
 
 		for (int q = 0; q < 10; q++)
@@ -259,7 +259,7 @@ int main()
 
 			//Encryption selection
 			string cryptotype;
-			cout << "Select the encryption/decryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
+			cout << "Select the encryption/decryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)The Gronsfeld Cipher" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
 			cin >> cryptotype;
 			//Protection against an incorrectly entered encryption type
 			while (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
@@ -267,7 +267,7 @@ int main()
 				system("CLS");
 				funkprinciple(funk);
 				cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
-				cout << "Select the encryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
+				cout << "Select the encryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)The Gronsfeld Cipher" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
 				cin >> cryptotype;
 			}
 
@@ -292,7 +292,16 @@ int main()
 			}
 			else if (cryptotype == "2")
 			{
-				cout << "2)" << endl;
+				int smehenie = 5;	//Setting the offset for encoding (default = 3)
+				if (funk == "1")
+				{
+					Caesar_CODE(smehenie);
+				}
+
+				else if (funk == "2")
+				{
+					Caesar_DECODE(smehenie);
+				}
 			}
 			else if (cryptotype == "3")
 			{
