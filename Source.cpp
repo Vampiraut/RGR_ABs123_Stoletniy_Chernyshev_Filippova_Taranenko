@@ -80,7 +80,7 @@ void Caesar_CODE(int smehenie)
 			char ASCIICod = j;											//int-dek to ASKII-symbol															
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
-				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 3))
+				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
 				for (int h = 127; h < (127 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
 				{
 					if (smena == h)
@@ -104,7 +104,7 @@ void Caesar_CODE(int smehenie)
 			char ASCIICod = j;											//int-dek to ASKII-symbol
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
-				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 3))
+				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
 				for (int h = 256; h < (256 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
 				{
 					if (smena == h)
@@ -155,7 +155,7 @@ void Caesar_DECODE(int smehenie)
 			char ASCIICod = j;											//int-dek to ASKII-symbol														
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
-				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
+				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 5))
 
 				for (int h = 33 - smehenie; h < 33; h++)					//exclusion of unreadable characters from the ASKII table module
 				{
@@ -181,7 +181,7 @@ void Caesar_DECODE(int smehenie)
 			char ASCIICod = j;											//int-dek to ASKII-symbol
 			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
-				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 3))
+				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 5))
 				for (int h = 192 - smehenie; h < 192; h++)					//exclusion of unreadable characters from the ASKII table module
 				{
 					if (smena == h)
@@ -223,9 +223,6 @@ int main()
 	setlocale(LC_ALL, "Rus");	//Russian localization
 
 
-	//Greeting
-	cout << "Hello Anonymous!" << endl << "Welcome to the encryption program!" << endl << "First you need to log in." << "\n\n";
-
 	while (true)
 	{
 		//Entering the password and checking it for correctness
@@ -234,95 +231,95 @@ int main()
 		while (chek_password == false)
 		{
 			system("CLS");
-			cout << "Wrong password!" << "\n\n";
+			cout << "Wrong password!" << endl;
 			chek_password = PASSWORD_CHEK(chek_password);
 		}
+
+
 		system("CLS");
 		cout << "Authorization success!";
 		Sleep(1000);
 		system("CLS");
 
-		for (int q = 0; q < 10; q++)
+
+		//Choosing the principle of operation
+		string funk;
+		cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
+		cin >> funk;
+		//Protection against incorrectly entered operating principle
+		while (funk != "1" && funk != "2")
 		{
-			//Choosing the principle of operation
-			string funk;
-			cout << "Choose the principle of operation: " << "\n\n" << "1)Encryption" << endl << "2)Decryption" << "\n\n" << "What we do: ";
+			system("CLS");
+			cout << "Error. Write \"1\" or \"2\" only." << endl;
+			cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
 			cin >> funk;
-			//Protection against incorrectly entered operating principle
-			while (funk != "1" && funk != "2")
-			{
-				system("CLS");
-				cout << "Error. Write \"1\" or \"2\" only." << endl;
-				cout << "Choose the principle of operation: " << "\n\n" << "1)Encryption" << endl << "2)Decryption" << "\n\n" << "What we do: ";
-				cin >> funk;
-			}
-
-			system("CLS");
-			funkprinciple(funk);
-
-
-			//Encryption selection
-			string cryptotype;
-			cout << "Select the encryption/decryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)The Gronsfeld Cipher" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
-			cin >> cryptotype;
-			//Protection against an incorrectly entered encryption type
-			while (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
-			{
-				system("CLS");
-				funkprinciple(funk);
-				cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
-				cout << "Select the encryption type: " << "\n\n" << "1)Caesar's Cipher" << endl << "2)The Gronsfeld Cipher" << endl << "3)" << endl << "4)" << endl << "5)" << "\n\n" << "What type you want: ";
-				cin >> cryptotype;
-			}
-
-			system("CLS");
-			funkprinciple(funk);
-			funktypename(cryptotype);
-
-
-			//Conditions for performing encryption for the selected type and principle of operation
-			if (cryptotype == "1")
-			{
-				int smehenie = 5;	//Setting the offset for encoding (default = 3)
-				if (funk == "1")
-				{
-					Caesar_CODE(smehenie);
-				}
-
-				else if (funk == "2")
-				{
-					Caesar_DECODE(smehenie);
-				}
-			}
-			else if (cryptotype == "2")
-			{
-				int smehenie = 5;	//Setting the offset for encoding (default = 3)
-				if (funk == "1")
-				{
-					Caesar_CODE(smehenie);
-				}
-
-				else if (funk == "2")
-				{
-					Caesar_DECODE(smehenie);
-				}
-			}
-			else if (cryptotype == "3")
-			{
-				cout << "3)" << endl;
-			}
-			else if (cryptotype == "4")
-			{
-				cout << "4)" << endl;
-			}
-			else if (cryptotype == "5")
-			{
-				cout << "5)" << endl;
-			}
-			system("PAUSE");
-			system("CLS");
 		}
-		cout << "Login time-out!" << endl;
+
+
+		system("CLS");
+		funkprinciple(funk);
+
+
+		//Encryption selection
+		string cryptotype;
+		cout << "Select the encryption/decryption type : " << endl << "<1>Caesar's Cipher" << endl << "<2>The Gronsfeld Cipher" << endl << "<3>" << endl << "<4>" << endl << "<5>" << endl << ": ";
+		cin >> cryptotype;
+		//Protection against an incorrectly entered encryption type
+		while (cryptotype != "1" && cryptotype != "2" && cryptotype != "3" && cryptotype != "4" && cryptotype != "5")
+		{
+			system("CLS");
+			funkprinciple(funk);
+			cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
+			cout << "Select the encryption/decryption type : " << endl << "<1>Caesar's Cipher" << endl << "<2>The Gronsfeld Cipher" << endl << "<3>" << endl << "<4>" << endl << "<5>" << endl << ": ";
+			cin >> cryptotype;
+		}
+
+
+		system("CLS");
+		funkprinciple(funk);
+		funktypename(cryptotype);
+
+
+		//Conditions for performing encryption for the selected type and principle of operation
+		if (cryptotype == "1")
+		{
+			int smehenie = 5;	//Setting the offset for encoding (default = 5)
+			if (funk == "1")
+			{
+				Caesar_CODE(smehenie);
+			}
+
+			else if (funk == "2")
+			{
+				Caesar_DECODE(smehenie);
+			}
+		}
+		else if (cryptotype == "2")
+		{
+			int smehenie = 5;	//Setting the offset for encoding (default = 5)
+			if (funk == "1")
+			{
+				Caesar_CODE(smehenie);
+			}
+			else if (funk == "2")
+			{
+				Caesar_DECODE(smehenie);
+			}
+		}
+		else if (cryptotype == "3")
+		{
+			cout << "3)" << endl;
+		}
+		else if (cryptotype == "4")
+		{
+			cout << "4)" << endl;
+		}
+		else if (cryptotype == "5")
+		{
+			cout << "5)" << endl;
+		}
+		system("PAUSE");
+		system("CLS");
 	}
 	return 0;
 }
