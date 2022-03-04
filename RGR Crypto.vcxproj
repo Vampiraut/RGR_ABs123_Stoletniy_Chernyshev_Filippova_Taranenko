@@ -139,7 +139,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Caesar_CODE.cpp" />
+    <ClCompile Include="Caesar_DECODE.cpp" />
+    <ClCompile Include="funkprinciple.cpp" />
+    <ClCompile Include="funktypename.cpp" />
+    <ClCompile Include="Gronsfeld_CODE.cpp" />
+    <ClCompile Include="Gronsfeld_DECODE.cpp" />
+    <ClCompile Include="PASSWORD_CHEK.cpp" />
     <ClCompile Include="Source.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
