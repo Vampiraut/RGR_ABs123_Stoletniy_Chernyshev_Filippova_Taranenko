@@ -5,6 +5,8 @@
 #include <locale>
 #include <windows.h>
 
+#include <fstream>
+
 using namespace std;
 
 //System funk
@@ -62,90 +64,15 @@ void funkprinciple(string funk)				//the function of writing the principle of op
 
 
 //Code and Decode funk
-void Caesar_CODE(int smehenie)
-{
-	string inputstring;                                         //input string
-	string outputstring;										//output string
-	bool end;                                                   //cheсk-flag for continue
-
-	cout << "Enter a line for encryption: ";                            //enter input string
-	cin.ignore();
-	getline(cin, inputstring);
-
-	for (int i = 0; inputstring[i] != '\0'; i++)                //input string check
-	{
-		end = false;												//set check-flag to false
-		for (int j = 33; j < 127; j++)								//ASKII 33 -> 126 check in input string
-		{
-			char ASCIICod = j;											//int-dek to ASKII-symbol															
-			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
-			{
-				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
-				for (int h = 127; h < (127 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
-				{
-					if (smena == h)
-					{
-						smena = smena + 65;
-					}
-				}
-				char ASCIICod_smena = smena;                                //changing a character and saving it to the output array
-				outputstring += ASCIICod_smena;
-				end = true;													//set check-flag to true
-				break;														//break the cycle
-			}
-		}
-		if (end == true)											//check check-flag (if true -> do not check symbols further)
-		{
-			continue;
-		}
-
-		for (int j = 192; j < 256; j++)								//ASKII 192 -> 255 check in input string
-		{
-			char ASCIICod = j;											//int-dek to ASKII-symbol
-			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
-			{
-				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
-				for (int h = 256; h < (256 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
-				{
-					if (smena == h)
-					{
-						smena = smena - 256 + 33;
-					}
-				}
-				char ASCIICod_smena = smena;								//changing a character and saving it to the output array
-				outputstring += ASCIICod_smena;
-				end = true;													//set check-flag to true
-				break;														//break the cycle
-			}
-		}
-		if (end == true)											//check check-flag (if true -> do not check symbols further)
-		{
-			continue;
-		}
-		outputstring += inputstring[i];								//if there is no ASKII in the range -> copy them to the output array without modification
-	}
-
-	int n = outputstring.length();								//output string lenght
-
-	system("CLS");
-	funktypename("1");
-
-	cout << "Encrypted string: ";									//output of encrypted string
-	for (int g = 0; g < n; g++)
-	{
-		cout << outputstring[g];
-	}
-	cout << endl;
-}
 void Caesar_DECODE(int smehenie)
 {
 	string inputstring;                                         //input string
 	string outputstring;										//output string
 	bool end;                                                   //cheсk-flag for continue
 
-	cout << "Enter a line for decryption: ";                          //enter input string
-	cin.ignore();
-	getline(cin, inputstring);
+	ifstream fout("Inputstring.txt");
+	getline(fout, inputstring);
+	fout.close();
 
 	for (int i = 0; inputstring[i] != '\0'; i++)                //input string check
 	{
@@ -201,19 +128,94 @@ void Caesar_DECODE(int smehenie)
 		}
 		outputstring += inputstring[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 	}
-	int n = outputstring.length();								//output string lenght
 
 	system("CLS");
 	funktypename("1");
 
-	cout << "Decryption string: ";								//output of the decrypted string
-	for (int g = 0; g < n; g++)
-	{
-		cout << outputstring[g];
-	}
-	cout << endl;
-}
+	cout << "Decryption string: " << outputstring << endl;		//output of the decrypted string
 
+	ofstream fin("Inputstring.txt");
+	fin << outputstring;
+	fin.close();
+
+	system("PAUSE");
+	system("CLS");
+}
+void Caesar_CODE(int smehenie)
+{
+	string inputstring;                                         //input string
+	string outputstring;										//output string
+	bool end;                                                   //cheсk-flag for continue
+
+	ifstream fout("Inputstring.txt");
+	getline(fout, inputstring);
+	fout.close();
+
+	for (int i = 0; inputstring[i] != '\0'; i++)                //input string check
+	{
+		end = false;												//set check-flag to false
+		for (int j = 33; j < 127; j++)								//ASKII 33 -> 126 check in input string
+		{
+			char ASCIICod = j;											//int-dek to ASKII-symbol															
+			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
+			{
+				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
+				for (int h = 127; h < (127 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
+				{
+					if (smena == h)
+					{
+						smena = smena + 65;
+					}
+				}
+				char ASCIICod_smena = smena;                                //changing a character and saving it to the output array
+				outputstring += ASCIICod_smena;
+				end = true;													//set check-flag to true
+				break;														//break the cycle
+			}
+		}
+		if (end == true)											//check check-flag (if true -> do not check symbols further)
+		{
+			continue;
+		}
+
+		for (int j = 192; j < 256; j++)								//ASKII 192 -> 255 check in input string
+		{
+			char ASCIICod = j;											//int-dek to ASKII-symbol
+			if (inputstring[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
+			{
+				int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
+				for (int h = 256; h < (256 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
+				{
+					if (smena == h)
+					{
+						smena = smena - 256 + 33;
+					}
+				}
+				char ASCIICod_smena = smena;								//changing a character and saving it to the output array
+				outputstring += ASCIICod_smena;
+				end = true;													//set check-flag to true
+				break;														//break the cycle
+			}
+		}
+		if (end == true)											//check check-flag (if true -> do not check symbols further)
+		{
+			continue;
+		}
+		outputstring += inputstring[i];								//if there is no ASKII in the range -> copy them to the output array without modification
+	}
+
+	system("CLS");
+	funktypename("1");
+
+	cout << "Encrypted string: " << outputstring << endl;			//output of encrypted string
+
+	ofstream file("Inputstring.txt");
+	file << outputstring;
+	file.close();
+
+	system("PAUSE");
+	system("CLS");
+}
 
 //Main funk
 int main()
@@ -238,9 +240,19 @@ int main()
 
 		system("CLS");
 		cout << "Authorization success!";
-		Sleep(1000);
+		Sleep(500);
 		system("CLS");
 
+		string inputing;											//input string
+		cout << "Enter a line for encryption" << endl << ": ";      //enter input string
+		cin.ignore();
+		getline(cin, inputing);
+
+		//Saving a string to a file
+		ofstream fin("Inputstring.txt");
+		fin << inputing;
+		fin.close();
+		system("CLS");
 
 		//Choosing the principle of operation
 		string funk;
@@ -318,8 +330,63 @@ int main()
 		{
 			cout << "5)" << endl;
 		}
-		system("PAUSE");
-		system("CLS");
+
+		string code_chek;
+		cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";
+		cin >> code_chek;
+		while (code_chek != "1" && code_chek != "2")
+		{
+			system("CLS");
+			cout << "Error. Write \"1\" or \"2\" only." << endl;
+			cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";
+			cin >> code_chek;
+		}
+		if (code_chek == "1")
+		{
+			//Conditions for performing encryption for the selected type and principle of operation
+			if (cryptotype == "1")
+			{
+				int smehenie = 5;	//Setting the offset for encoding (default = 5)
+				if (funk == "2")
+				{
+					Caesar_CODE(smehenie);
+				}
+
+				else if (funk == "1")
+				{
+					Caesar_DECODE(smehenie);
+				}
+			}
+			else if (cryptotype == "2")
+			{
+				int smehenie = 5;	//Setting the offset for encoding (default = 5)
+				if (funk == "2")
+				{
+					Caesar_CODE(smehenie);
+				}
+				else if (funk == "1")
+				{
+					Caesar_DECODE(smehenie);
+				}
+			}
+			else if (cryptotype == "3")
+			{
+				cout << "3)" << endl;
+			}
+			else if (cryptotype == "4")
+			{
+				cout << "4)" << endl;
+			}
+			else if (cryptotype == "5")
+			{
+				cout << "5)" << endl;
+			}
+		}
+		else
+		{
+			system("PAUSE");
+			system("CLS");
+		}
 	}
 	return 0;
 }
