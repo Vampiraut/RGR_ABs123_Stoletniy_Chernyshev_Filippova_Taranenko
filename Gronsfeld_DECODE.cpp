@@ -92,13 +92,11 @@ void Gronsfeld_DECODE()
 		outputstring += inputstring[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 	}
 
-#ifndef clear
+#ifndef Clear
 	system("CLS");
 #endif
-#ifdef clear
-	cout << endl;
-#endif
-	funktypename("2");
+	funkprinciple(2);
+	funktypename(2);
 
 	cout << "Decryption string: " << outputstring << endl;		//output of the decrypted string
 
@@ -107,10 +105,10 @@ void Gronsfeld_DECODE()
 	fin.close();
 
 	system("PAUSE");
-#ifndef clear
+#ifndef Clear
 	system("CLS");
 #endif
-#ifdef clear
+#ifdef Clear
 	cout << endl;
 #endif
 }

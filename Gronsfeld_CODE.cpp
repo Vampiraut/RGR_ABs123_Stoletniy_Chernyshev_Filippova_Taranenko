@@ -90,13 +90,11 @@ void Gronsfeld_CODE()
 		outputstring += inputstring[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 	}
 
-#ifndef clear
+#ifndef Clear
 	system("CLS");
 #endif
-#ifdef clear
-	cout << endl;
-#endif
-	funktypename("2");
+	funkprinciple(1);
+	funktypename(2);
 
 	cout << "Encrypted string: " << outputstring << endl;			//output of encrypted string
 
@@ -105,10 +103,10 @@ void Gronsfeld_CODE()
 	file.close();
 
 	system("PAUSE");
-#ifndef clear
+#ifndef Clear
 	system("CLS");
 #endif
-#ifdef clear
+#ifdef Clear
 	cout << endl;
 #endif
 }

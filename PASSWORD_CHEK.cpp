@@ -1,18 +1,49 @@
 #include "Header.h"
 
 //Password verification function
-bool PASSWORD_CHEK(bool chek_password)
+void PASSWORD_CHEK()
 {
-	string password;
-	cout << "Enter password" << endl << ": ";
-	cin >> password;
-	if (password == "1337")
+	bool chek_password = false;
+	while (chek_password == false)
 	{
-		chek_password = true;
+		string password;
+		cout << "Enter password" << endl << ": ";
+		getline(cin, password);
+		if (password == "1337")
+		{
+			chek_password = true;
+		}
+		else
+		{
+			chek_password = false;
+
+#ifndef Clear
+			system("CLS");
+#endif
+#ifdef Clear
+			cout << endl;
+#endif
+			cout << "Wrong password!" << endl;
+		}
 	}
-	else
-	{
-		chek_password = false;
-	}
-	return chek_password;
+
+
+#ifndef Clear
+	system("CLS");
+#endif
+#ifdef Clear
+	cout << endl;
+#endif
+
+
+	cout << "Authorization success!" << endl;;
+	Sleep(500);
+
+
+#ifndef Clear
+	system("CLS");
+#endif
+#ifdef Clear
+	cout << endl;
+#endif
 }

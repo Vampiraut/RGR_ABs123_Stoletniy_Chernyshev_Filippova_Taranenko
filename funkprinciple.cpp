@@ -1,13 +1,13 @@
 #include "Header.h"
 
 //The function of writing the principle of action
-void funkprinciple(string funk)
+void funkprinciple(int funk)
 {
-	if (funk == "1")
+	if (funk == 1)
 	{
 		cout << "Encryption" << endl;
 	}
-	else if (funk == "2")
+	else if (funk == 2)
 	{
 		cout << "Decryption" << endl;
 	}

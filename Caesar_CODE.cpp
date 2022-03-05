@@ -69,13 +69,11 @@ void Caesar_CODE(int smehenie)
 		outputstring += inputstring[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 	}
 
-#ifndef clear
+#ifndef Clear
 	system("CLS");
 #endif
-#ifdef clear
-	cout << endl;
-#endif
-	funktypename("1");
+	funkprinciple(1);
+	funktypename(1);
 
 	cout << "Encrypted string: " << outputstring << endl;			//output of encrypted string
 
@@ -84,10 +82,10 @@ void Caesar_CODE(int smehenie)
 	file.close();
 
 	system("PAUSE");
-#ifndef clear
+#ifndef Clear
 	system("CLS");
 #endif
-#ifdef clear
+#ifdef Clear
 	cout << endl;
 #endif
 }
