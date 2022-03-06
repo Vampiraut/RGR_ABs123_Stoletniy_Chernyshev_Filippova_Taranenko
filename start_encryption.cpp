@@ -19,20 +19,17 @@ void start_encryption(int cryptotype, int funk)
 	else if (cryptotype == 2)
 	{
 		string someKey;
-
 		cout << "Enter the KEY" << endl << ":";
 		getline(cin, someKey);
 		ofstream fin("SecretKEY.txt");
 		fin << someKey;
 		fin.close();
-
 #ifndef Clear
 		system("CLS");
 #endif
 #ifdef Clear
 		cout << endl;
 #endif
-
 		if (funk == 1)
 		{
 			Gronsfeld_CODE();
@@ -42,7 +39,6 @@ void start_encryption(int cryptotype, int funk)
 			Gronsfeld_DECODE();
 		}
 	}
-
 	else if (cryptotype == 3)
 	{
 		cout << "3)" << endl;

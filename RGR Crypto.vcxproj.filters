@@ -48,7 +48,10 @@
     <ClCompile Include="start_encryption.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="chek_encryption.cpp">
+    <ClCompile Include="input_str_to_txt.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="encyption_chek.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

@@ -15,8 +15,6 @@ void PASSWORD_CHEK()
 		}
 		else
 		{
-			chek_password = false;
-
 #ifndef Clear
 			system("CLS");
 #endif
@@ -26,20 +24,14 @@ void PASSWORD_CHEK()
 			cout << "Wrong password!" << endl;
 		}
 	}
-
-
 #ifndef Clear
 	system("CLS");
 #endif
 #ifdef Clear
 	cout << endl;
 #endif
-
-
 	cout << "Authorization success!" << endl;;
 	Sleep(500);
-
-
 #ifndef Clear
 	system("CLS");
 #endif

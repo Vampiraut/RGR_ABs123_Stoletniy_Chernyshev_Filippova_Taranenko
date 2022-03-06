@@ -7,7 +7,6 @@ int principle_of_operation()
 	cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
 	getline(cin, str_num_principle);
 
-
 	//Protection against incorrectly entered operating principle
 	while (str_num_principle != "1" && str_num_principle != "2")
 	{
@@ -22,7 +21,6 @@ int principle_of_operation()
 		getline(cin, str_num_principle);
 	}
 
-
 	int int_num_principle = 0;									//’рень дл€ преобразовани€ чара в инт (тип чтобы если в строку пришла 1, то она была в инте) Ќјƒќ ѕ≈–≈ѕ»—ј“№
 	for (int i = 49; i < 51; i++)
 	{
@@ -33,14 +31,11 @@ int principle_of_operation()
 		}
 	}
 
-
 #ifndef Clear
 	system("CLS");
 #endif
 #ifdef Clear
 	cout << endl;
 #endif
-
-
 	return int_num_principle;
 }
