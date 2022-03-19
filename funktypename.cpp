@@ -1,26 +1,24 @@
 #include "Header.h"
 
 //The function of writing the encryption type
-void funktypename(int cryptotype)
+void funkTypeName(int cryptoType)
 {
-	if (cryptotype == 1)
+	switch (cryptoType)
 	{
+	case 1:
 		cout << "Caesar's Cipher" << endl;
-	}
-	else if (cryptotype == 2)
-	{
+		break;
+	case 2:
 		cout << "The Gronsfeld Cipher" << endl;
-	}
-	else if (cryptotype == 3)
-	{
+		break;
+	case 3:
 		cout << "" << endl;
-	}
-	else if (cryptotype == 4)
-	{
+		break;
+	case 4:
 		cout << "" << endl;
-	}
-	else if (cryptotype == 5)
-	{
-		cout << "Hard Gronsfeld" << endl;
+		break;
+	case 5:
+		cout << "RSA Cipher" << endl;
+		break;
 	}
 }

@@ -1,14 +1,15 @@
 #include "Header.h"
 
 //The function of writing the principle of action
-void funkprinciple(int funk)
+void funkPrinciple(int funkType)
 {
-	if (funk == 1)
+	switch (funkType)
 	{
+	case 1:
 		cout << "Encryption" << endl;
-	}
-	else if (funk == 2)
-	{
+		break;
+	case 2:
 		cout << "Decryption" << endl;
+		break;
 	}
 }

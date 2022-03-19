@@ -3,25 +3,25 @@
 //Main funk
 int main()
 {
-	SetConsoleCP(1251);			//set ASKII by Windows console-in == console-out (for Ðšussian language)
+	srand(time(0));
+	SetConsoleCP(1251);			//set ASKII by Windows console-in == console-out (for Russian language)
 	SetConsoleOutputCP(1251);
 	setlocale(LC_ALL, "Rus");	//Russian localization
 
-	int funk = 0;
-	int cryptotype = 0;
+	passwordCheñk();
 
-	PASSWORD_CHEK();
-
+	int funkType = 0;
+	int cryptoType = 0;
 	while (true)
 	{
-		input_str_to_txt();
+		inputStrToTxt();
 
-		funk = principle_of_operation();
-		cryptotype = crypto_type_select(funk);
+		funkType = principleOfOperation();
+		cryptoType = cryptoTypeSelect(funkType);
 
-		start_encryption(cryptotype, funk);
+		encryptionStart(cryptoType, funkType);
 
-		encryption_chek(cryptotype, funk);
+		encryptionCheck(cryptoType, funkType);
 	}
 	return 0;
 }

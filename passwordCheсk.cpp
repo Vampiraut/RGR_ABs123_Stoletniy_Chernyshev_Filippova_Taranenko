@@ -1,17 +1,17 @@
 #include "Header.h"
 
 //Password verification function
-void PASSWORD_CHEK()
+void passwordCheÒk()
 {
-	bool chek_password = false;
-	while (chek_password == false)
+	bool is—orrect = false;
+	while (is—orrect == false)
 	{
 		string password;
 		cout << "Enter password" << endl << ": ";
 		getline(cin, password);
 		if (password == "1337")
 		{
-			chek_password = true;
+			is—orrect = true;
 		}
 		else
 		{

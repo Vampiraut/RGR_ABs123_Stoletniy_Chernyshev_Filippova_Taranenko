@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//Greatest common divisor search function
 uint64_t greatestCommonDivisor(uint64_t expon, uint64_t eiler)
 {
 	while (expon > 0)

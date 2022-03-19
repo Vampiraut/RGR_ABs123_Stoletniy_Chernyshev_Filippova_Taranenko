@@ -18,40 +18,40 @@
     <ClCompile Include="Source.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="PASSWORD_CHEK.cpp">
+    <ClCompile Include="passwordCheсk.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="funktypename.cpp">
+    <ClCompile Include="funkTypeName.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="funkprinciple.cpp">
+    <ClCompile Include="funkPrinciple.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Caesar_DECODE.cpp">
+    <ClCompile Include="CaesarDecode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Caesar_CODE.cpp">
+    <ClCompile Include="CaesarCode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Gronsfeld_DECODE.cpp">
+    <ClCompile Include="GronsfeldDecode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Gronsfeld_CODE.cpp">
+    <ClCompile Include="GronsfeldCode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="principle_of_operation.cpp">
+    <ClCompile Include="principleOfOperation.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="crypto_type_select.cpp">
+    <ClCompile Include="cryptoTypeSelect.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="start_encryption.cpp">
+    <ClCompile Include="encryptionStart.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="input_str_to_txt.cpp">
+    <ClCompile Include="inputStrToTxt.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="encyption_chek.cpp">
+    <ClCompile Include="encryptionCheck.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="randPrimeSearch.cpp">
@@ -67,6 +67,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="privateExponSearch.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RSACode.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RSAKeyGeneration.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

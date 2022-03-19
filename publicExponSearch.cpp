@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//Public exponentiation calculation function
 uint64_t publicExponSearch(uint64_t eiler)
 {
 	uint64_t expon = 0;;

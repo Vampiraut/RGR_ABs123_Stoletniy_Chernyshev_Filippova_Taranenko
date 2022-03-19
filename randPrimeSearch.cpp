@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//Prime number generator
 #ifdef FORTWOENTERS
 uint64_t randPrimeSearch(int num)
 #endif
@@ -33,7 +34,14 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 #endif
 
 		getline(cin, memoryBitStr);
+
+#ifndef Clear
 		system("CLS");
+#endif
+#ifdef Clear
+		cout << endl;
+#endif
+
 		if (memoryBitStr == "")   //chek for empety string
 		{
 			cout << "Wrong bit memory!" << endl;
@@ -70,16 +78,19 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 		}
 	}
 
+#ifndef Clear
 	system("CLS");
-	cout << "Wait, there are complex calculations going on...";
+#endif
 
-	uint64_t mayPrimeMin = stepen(2, memoryBit - 1) + 1;
+	cout << "Wait, there are complex calculations going on..." << endl;
+
+	uint64_t mayPrimeMin = stepen(2, memoryBit - 1) + 1;  //Calculating the maximum and minimum numbers in a given size value
 	uint64_t mayPrimeMax = stepen(2, memoryBit);
 
 	bool isPrime = true;
 	vector <uint64_t> prime;
 
-	for (uint64_t i = mayPrimeMin; i < mayPrimeMax; i = i + 2)
+	for (uint64_t i = mayPrimeMin; i < mayPrimeMax; i = i + 2)  //Checking numbers from a range for simplicity
 	{
 		isPrime = true;
 		for (uint64_t j = 2; j <= ((uint64_t)sqrt((uint64_t)i)); j++)
@@ -95,8 +106,14 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 			prime.push_back(i);
 		}
 	}
+#ifndef Clear
 	system("CLS");
+#endif
+#ifdef Clear
+	cout << endl;
+#endif
 
+	//Returning a random prime number from a range
 #ifdef FORTWOENTERS
 	if (num == 1)
 	{

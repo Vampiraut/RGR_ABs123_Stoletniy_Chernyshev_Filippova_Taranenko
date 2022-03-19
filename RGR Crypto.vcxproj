@@ -139,23 +139,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Caesar_CODE.cpp" />
-    <ClCompile Include="Caesar_DECODE.cpp" />
-    <ClCompile Include="crypto_type_select.cpp" />
-    <ClCompile Include="encyption_chek.cpp" />
-    <ClCompile Include="funkprinciple.cpp" />
-    <ClCompile Include="funktypename.cpp" />
+    <ClCompile Include="CaesarCode.cpp" />
+    <ClCompile Include="CaesarDecode.cpp" />
+    <ClCompile Include="cryptoTypeSelect.cpp" />
+    <ClCompile Include="encryptionCheck.cpp" />
+    <ClCompile Include="funkPrinciple.cpp" />
+    <ClCompile Include="funkTypeName.cpp" />
     <ClCompile Include="greatestCommonDivisor.cpp" />
-    <ClCompile Include="Gronsfeld_CODE.cpp" />
-    <ClCompile Include="Gronsfeld_DECODE.cpp" />
-    <ClCompile Include="input_str_to_txt.cpp" />
-    <ClCompile Include="PASSWORD_CHEK.cpp" />
-    <ClCompile Include="principle_of_operation.cpp" />
+    <ClCompile Include="GronsfeldCode.cpp" />
+    <ClCompile Include="GronsfeldDecode.cpp" />
+    <ClCompile Include="inputStrToTxt.cpp" />
+    <ClCompile Include="passwordCheсk.cpp" />
+    <ClCompile Include="principleOfOperation.cpp" />
     <ClCompile Include="privateExponSearch.cpp" />
     <ClCompile Include="publicExponSearch.cpp" />
     <ClCompile Include="randPrimeSearch.cpp" />
+    <ClCompile Include="RSACode.cpp" />
+    <ClCompile Include="RSAKeyGeneration.cpp" />
     <ClCompile Include="Source.cpp" />
-    <ClCompile Include="start_encryption.cpp" />
+    <ClCompile Include="encryptionStart.cpp" />
     <ClCompile Include="uint64_stepen.cpp" />
   </ItemGroup>
   <ItemGroup>
