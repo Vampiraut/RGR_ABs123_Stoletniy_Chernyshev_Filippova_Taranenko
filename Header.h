@@ -8,9 +8,28 @@
 
 #include <fstream>
 
+#include <cstdint>
+#include <time.h>
+#include <vector>
+
 
 #define Clear1
+#define FORTWOENTERS
+
 using namespace std;
+
+//RSA components
+#ifdef FORTWOENTERS
+uint64_t randPrimeSearch(int);
+#endif
+#ifndef FORTWOENTERS
+void randPrimeSearch(uint64_t&, uint64_t&);
+#endif
+uint64_t stepen(uint64_t, int);
+uint64_t greatestCommonDivisor(uint64_t, uint64_t);
+uint64_t publicExponSearch(uint64_t);
+uint64_t privateExponSearch(uint64_t, uint64_t);
+
 
 void PASSWORD_CHEK();
 int principle_of_operation();
