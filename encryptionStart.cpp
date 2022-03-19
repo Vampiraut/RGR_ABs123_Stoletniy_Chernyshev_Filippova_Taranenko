@@ -3,55 +3,62 @@
 //Conditions for performing encryption for the selected type and principle of operation
 void encryptionStart(int cryptoType, int funkType)
 {
-	if (cryptoType == 1)
-	{
-		if (funkType == 1)
-		{
-			CaesarCode();
-		}
-
-		else if (funkType == 2)
-		{
-			CaesarDecode();
-		}
-	}
-	else if (cryptoType == 2)
-	{
-		if (funkType == 1)
-		{
-			GronsfeldCode();
-		}
-		else if (funkType == 2)
-		{
-			GronsfeldDecode();
-		}
-	}
-	else if (cryptoType == 3)
-	{
-		cout << "3)" << endl;
-	}
-	else if (cryptoType == 4)
-	{
-		cout << "4)" << endl;
-	}
-
-	else if (cryptoType == 5)
-	{
-		cout << "5)" << endl;
-	}
-
-	/*
 	switch (cryptoType)
 	{
 	case 1:
 		switch (funkType)
 		{
 		case 1:
-			Caesar_CODE();
-		default:
+			CaesarCode();
+			break;
+		case 2:
+			CaesarDecode();
 			break;
 		}
-	default:
-		break;
-	}*/
+
+	case 2:
+		switch (funkType)
+		{
+		case 1:
+			GronsfeldCode();
+			break;
+		case 2:
+			GronsfeldDecode();
+			break;
+		}
+
+	case 3:
+		switch (funkType)
+		{
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		}
+
+	case 4:
+		switch (funkType)
+		{
+		case 1:
+			
+			break;
+		case 2:
+			
+			break;
+		}
+
+	case 5:
+		switch (funkType)
+		{
+		case 1:
+			RSAKeyGeneration();
+			RSACode();
+			break;
+		case 2:
+			
+			break;
+		}
+	}
 }

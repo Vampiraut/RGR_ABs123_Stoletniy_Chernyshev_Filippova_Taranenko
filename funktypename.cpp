@@ -3,24 +3,22 @@
 //The function of writing the encryption type
 void funkTypeName(int cryptoType)
 {
-	if (cryptoType == 1)
+	switch (cryptoType)
 	{
+	case 1:
 		cout << "Caesar's Cipher" << endl;
-	}
-	else if (cryptoType == 2)
-	{
+		break;
+	case 2:
 		cout << "The Gronsfeld Cipher" << endl;
-	}
-	else if (cryptoType == 3)
-	{
+		break;
+	case 3:
 		cout << "" << endl;
-	}
-	else if (cryptoType == 4)
-	{
+		break;
+	case 4:
 		cout << "" << endl;
-	}
-	else if (cryptoType == 5)
-	{
+		break;
+	case 5:
 		cout << "RSA Cipher" << endl;
+		break;
 	}
 }

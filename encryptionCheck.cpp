@@ -27,43 +27,64 @@ void encryptionCheck(int cryptoType, int funkType)
 	{
 		passwordCheñk();
 		//Conditions for performing encryption for the selected type and principle of operation
-		if (cryptoType == 1)
+		switch (cryptoType)
 		{
-			if (funkType == 2)
+		case 1:
+			switch (funkType)
 			{
+			case 1:
+				CaesarDecode();
+				break;
+			case 2:
 				CaesarCode();
+				break;
 			}
 
-			else if (funkType == 1)
+		case 2:
+			switch (funkType)
 			{
-				CaesarDecode();
-			}
-		}
-		else if (cryptoType == 2)
-		{
-			if (funkType == 2)
-			{
-				GronsfeldCode();
-			}
-			else if (funkType == 1)
-			{
+			case 1:
 				GronsfeldDecode();
+				break;
+			case 2:
+				GronsfeldCode();
+				break;
 			}
-		}
-		else if (cryptoType == 3)
-		{
-			cout << "3)" << endl;
-		}
-		else if (cryptoType == 4)
-		{
-			cout << "4)" << endl;
-		}
-		else if (cryptoType == 5)
-		{
-			cout << "5)" << endl;
+
+		case 3:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+
+		case 4:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+
+		case 5:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
 		}
 	}
-
 	else
 	{
 		system("PAUSE");

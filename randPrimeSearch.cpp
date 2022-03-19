@@ -34,7 +34,13 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 #endif
 
 		getline(cin, memoryBitStr);
+
+#ifndef Clear
 		system("CLS");
+#endif
+#ifdef Clear
+		cout << endl;
+#endif
 
 		if (memoryBitStr == "")   //chek for empety string
 		{
@@ -72,8 +78,11 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 		}
 	}
 
+#ifndef Clear
 	system("CLS");
-	cout << "Wait, there are complex calculations going on...";
+#endif
+
+	cout << "Wait, there are complex calculations going on..." << endl;
 
 	uint64_t mayPrimeMin = stepen(2, memoryBit - 1) + 1;  //Calculating the maximum and minimum numbers in a given size value
 	uint64_t mayPrimeMax = stepen(2, memoryBit);
@@ -97,7 +106,12 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 			prime.push_back(i);
 		}
 	}
+#ifndef Clear
 	system("CLS");
+#endif
+#ifdef Clear
+	cout << endl;
+#endif
 
 	//Returning a random prime number from a range
 #ifdef FORTWOENTERS
