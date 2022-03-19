@@ -12,13 +12,16 @@
 #include <time.h>
 #include <vector>
 
+#define Clear
 
-#define Clear1
+/* The macro is necessary to change the type of bit value input
+(if FORTWOENTERS exists, then the bit size for each prime number will be asked,
+if not, a one - time request and two primes will be generated of the same bit size) */
 #define FORTWOENTERS
 
 using namespace std;
 
-//RSA components
+//RSA encryption components
 #ifdef FORTWOENTERS
 uint64_t randPrimeSearch(int);
 #endif

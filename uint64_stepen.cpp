@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//8 byte int exponentiation function
 uint64_t stepen(uint64_t x, int y)
 {
 	uint64_t result = x;
