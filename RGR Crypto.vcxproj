@@ -145,13 +145,18 @@
     <ClCompile Include="encyption_chek.cpp" />
     <ClCompile Include="funkprinciple.cpp" />
     <ClCompile Include="funktypename.cpp" />
+    <ClCompile Include="greatestCommonDivisor.cpp" />
     <ClCompile Include="Gronsfeld_CODE.cpp" />
     <ClCompile Include="Gronsfeld_DECODE.cpp" />
     <ClCompile Include="input_str_to_txt.cpp" />
     <ClCompile Include="PASSWORD_CHEK.cpp" />
     <ClCompile Include="principle_of_operation.cpp" />
+    <ClCompile Include="privateExponSearch.cpp" />
+    <ClCompile Include="publicExponSearch.cpp" />
+    <ClCompile Include="randPrimeSearch.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="start_encryption.cpp" />
+    <ClCompile Include="uint64_stepen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header.h" />
