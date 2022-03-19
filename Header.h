@@ -34,19 +34,19 @@ uint64_t publicExponSearch(uint64_t);
 uint64_t privateExponSearch(uint64_t, uint64_t);
 
 
-void PASSWORD_CHEK();
-int principle_of_operation();
-int crypto_type_select(int);
+void passwordCheñk();
+int principleOfOperation();
+int cryptoTypeSelect(int);
 
-void input_str_to_txt();
+void inputStrToTxt();
 
-void funktypename(int);
-void funkprinciple(int);
+void funkTypeName(int);
+void funkPrinciple(int);
 
-void start_encryption(int, int);
-void encryption_chek(int, int);
+void encryptionStart(int, int);
+void encryptionCheck(int, int);
 
-void Caesar_DECODE(int);
-void Caesar_CODE(int);
-void Gronsfeld_DECODE();
-void Gronsfeld_CODE();
+void CaesarDecode();
+void CaesarCode();
+void GronsfeldDecode();
+void GronsfeldCode();

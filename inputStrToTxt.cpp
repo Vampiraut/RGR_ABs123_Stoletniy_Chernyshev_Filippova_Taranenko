@@ -1,12 +1,13 @@
 #include "Header.h"
 
-void input_str_to_txt()
+//Entering a string and saving it to a file
+void inputStrToTxt()
 {
-	string inputing;
+	string inputStr;
 	cout << "Enter a line for encryption" << endl << ": ";
-	getline(cin, inputing);
+	getline(cin, inputStr);
 	ofstream fin("Inputstring.txt");
-	fin << inputing;
+	fin << inputStr;
 	fin.close();
 #ifndef Clear
 	system("CLS");
