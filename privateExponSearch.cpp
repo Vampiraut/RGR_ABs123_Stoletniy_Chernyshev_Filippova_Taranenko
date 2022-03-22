@@ -3,11 +3,15 @@
 //Private exponentiation calculation function
 uint64_t privateExponSearch(uint64_t publicExpon, uint64_t eiler)
 {
-	for (uint64_t i = eiler; i > publicExpon; i--)
+	for (uint64_t privateExpon = eiler - 1; privateExpon > 2; privateExpon--)
 	{
-		if ((i * publicExpon) % eiler == 1)
+		if (privateExpon == publicExpon)
 		{
-			return i;
+			continue;
+		}
+		else if (((privateExpon * publicExpon) % eiler) == 1)
+		{
+			return privateExpon;
 		}
 	}
 	return -1;
