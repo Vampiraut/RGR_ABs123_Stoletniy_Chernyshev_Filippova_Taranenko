@@ -15,7 +15,7 @@ void encryptionStart(int cryptoType, int funkType)
 			CaesarDecode();
 			break;
 		}
-
+		break;
 	case 2:
 		switch (funkType)
 		{
@@ -26,7 +26,7 @@ void encryptionStart(int cryptoType, int funkType)
 			GronsfeldDecode();
 			break;
 		}
-
+		break;
 	case 3:
 		switch (funkType)
 		{
@@ -37,7 +37,7 @@ void encryptionStart(int cryptoType, int funkType)
 			
 			break;
 		}
-
+		break;
 	case 4:
 		switch (funkType)
 		{
@@ -48,17 +48,18 @@ void encryptionStart(int cryptoType, int funkType)
 			
 			break;
 		}
-
+		break;
 	case 5:
 		switch (funkType)
 		{
 		case 1:
-			//RSAKeyGeneration();
-			//RSACode();
+			RSAKeyGeneration();
+			RSACode();
 			break;
 		case 2:
 			
 			break;
 		}
+		break;
 	}
 }

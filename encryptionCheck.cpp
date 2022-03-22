@@ -39,7 +39,7 @@ void encryptionCheck(int cryptoType, int funkType)
 				CaesarCode();
 				break;
 			}
-
+			break;
 		case 2:
 			switch (funkType)
 			{
@@ -50,7 +50,7 @@ void encryptionCheck(int cryptoType, int funkType)
 				GronsfeldCode();
 				break;
 			}
-
+			break;
 		case 3:
 			switch (funkType)
 			{
@@ -61,7 +61,7 @@ void encryptionCheck(int cryptoType, int funkType)
 
 				break;
 			}
-
+			break;
 		case 4:
 			switch (funkType)
 			{
@@ -72,7 +72,7 @@ void encryptionCheck(int cryptoType, int funkType)
 
 				break;
 			}
-
+			break;
 		case 5:
 			switch (funkType)
 			{
@@ -83,11 +83,9 @@ void encryptionCheck(int cryptoType, int funkType)
 
 				break;
 			}
+			break;
 		}
 	}
-	else
-	{
-		system("PAUSE");
-	}
+	system("PAUSE");
 	system("CLS");
 }

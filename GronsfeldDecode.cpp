@@ -117,8 +117,8 @@ void GronsfeldDecode()
 	fin1 << outputString;
 	fin1.close();
 
-	system("PAUSE");
 #ifndef Clear
+	system("PAUSE");
 	system("CLS");
 #endif
 #ifdef Clear

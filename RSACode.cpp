@@ -2,5 +2,5 @@
 
 void RSACode()
 {
-	cout << "Stop";
+	cout << "Stop" << endl;
 }
