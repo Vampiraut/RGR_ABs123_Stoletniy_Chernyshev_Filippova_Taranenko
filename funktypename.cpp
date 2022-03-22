@@ -12,7 +12,7 @@ void funkTypeName(int cryptoType)
 		cout << "The Gronsfeld Cipher" << endl;
 		break;
 	case 3:
-		cout << "" << endl;
+		cout << "The Atbash Ñipher" << endl;
 		break;
 	case 4:
 		cout << "" << endl;
