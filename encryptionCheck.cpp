@@ -101,6 +101,8 @@ void encryptionCheck(int cryptoType, int funkType)
 			break;
 		}
 	}
+#ifdef Clear
 	system("PAUSE");
+#endif
 	system("CLS");
 }

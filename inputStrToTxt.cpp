@@ -1,6 +1,6 @@
 #include "Header.h"
 
-//Entering a string and saving it to a file
+//Entering a string and saving it to a file щr copying and encrypting your file
 void inputStrToTxt()
 {
 	string fileCreate = "";
@@ -30,7 +30,7 @@ void inputStrToTxt()
 		string path = "";
 		getline(cin, path);
 		string bufer = "";
-		ofstream fin("Some_text.txt");   //if - чтение, of - запись
+		ofstream fin("Some_text.txt");
 		ifstream fout;
 		fout.open(path);
 		while (!fout.is_open())
