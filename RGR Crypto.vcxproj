@@ -139,8 +139,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CaesarCode.cpp" />
-    <ClCompile Include="CaesarDecode.cpp" />
     <ClCompile Include="cryptoTypeSelect.cpp" />
     <ClCompile Include="encryptionCheck.cpp" />
     <ClCompile Include="funkPrinciple.cpp" />

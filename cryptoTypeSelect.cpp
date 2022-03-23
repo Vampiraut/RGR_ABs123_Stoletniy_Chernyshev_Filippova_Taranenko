@@ -4,7 +4,7 @@
 int cryptoTypeSelect(int funkType)
 {
 	funkPrinciple(funkType);
-	cout << "Select the encryption/decryption type: " << endl << "<1>Caesar's Cipher" << endl << "<2>The Gronsfeld Cipher" << endl << "<3>" << endl << "<4>" << endl << "<5>RSA Cipher" << endl << ": ";
+	cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>" << endl << "<3>" << endl << "<4>" << endl << "<5>RSA Cipher" << endl << ": ";
 	string strNumType;
 	getline(cin, strNumType);
 
@@ -19,7 +19,7 @@ int cryptoTypeSelect(int funkType)
 #endif
 		funkPrinciple(funkType);
 		cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" only." << endl;
-		cout << "Select the encryption/decryption type: " << endl << "<1>Caesar's Cipher" << endl << "<2>The Gronsfeld Cipher" << endl << "<3>" << endl << "<4>" << endl << "<5>RSA Cipher" << endl << ": ";
+		cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>" << endl << "<3>" << endl << "<4>" << endl << "<5>RSA Cipher" << endl << ": ";
 		getline(cin, strNumType);
 	}
 

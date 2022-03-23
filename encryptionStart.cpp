@@ -9,10 +9,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			CaesarCode();
+			GronsfeldCode(0);
 			break;
 		case 2:
-			CaesarDecode();
+			GronsfeldDecode(0);
 			break;
 		}
 		break;
@@ -20,10 +20,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			GronsfeldCode();
+			
 			break;
 		case 2:
-			GronsfeldDecode();
+			
 			break;
 		}
 		break;

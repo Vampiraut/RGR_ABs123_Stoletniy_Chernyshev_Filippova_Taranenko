@@ -1,18 +1,15 @@
 #include "Header.h"
 
-//Private exponentiation calculation function
+//Private exponentiation calculation function (privateExpon * publicExpon = 1 + k * eiler) => (privateExpon = (1 + k * eiler)/publicExpon) must be in integer!!!
 uint64_t privateExponSearch(uint64_t publicExpon, uint64_t eiler)
 {
-	for (uint64_t privateExpon = eiler - 1; privateExpon > 2; privateExpon--)
-	{
-		if (privateExpon == publicExpon)
-		{
-			continue;
-		}
-		else if (((privateExpon * publicExpon) % eiler) == 1)
-		{
-			return privateExpon;
-		}
-	}
-	return -1;
+    uint64_t k = 1;
+    while (true)
+    {
+        k = k + eiler;   //k - is a number initially equal to 1, to which we add the Euler function, i.e. we add it (k) times until, when dividing by a public exponent, we get a division without remainder.
+        if (k % publicExpon == 0)
+        {
+            return (k / publicExpon);
+        }
+    }
 }
