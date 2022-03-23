@@ -1,34 +1,71 @@
 #include "Header.h"
 
 //Decryption with the Gronsfeld cipher
-void GronsfeldDecode()
+void GronsfeldDecode(int codeCheck)
 {
-	string someKey;
-	cout << "Enter the KEY" << endl << ":";
-	getline(cin, someKey);
-	ofstream fin("SecretKEY.txt");
-	fin << someKey;
-	fin.close();
+	if (codeCheck != 1)
+	{
+		string bufer = "";
+		ifstream fout("Some_text.txt");//читает файл с нашим текстом
+		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
+		while (!fout.eof())
+		{
+			getline(fout, bufer);
+			promeg << bufer;
+			if (!fout.eof())
+			{
+				promeg << '\n';
+			}
+		}
+		fout.close();
+		promeg.close();
+
+		string someKey = "";
+		cout << "Enter the KEY" << endl << ":";
+		getline(cin, someKey);
+
+		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
+		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
+		fin << someKey << endl;
+		while (!promegCopy.eof())
+		{
+			getline(promegCopy, bufer);
+			fin << bufer;
+			if (!promegCopy.eof())
+			{
+				fin << '\n';
+			}
+		}
+		fin.close();
+		promegCopy.close();
+
 #ifndef Clear
-	system("CLS");
+		system("CLS");
 #endif
 #ifdef Clear
-	cout << endl;
+		cout << endl;
 #endif
+	}
+	string inputString = "";                                         //input string
+	string outputString = "";										//output string
+	bool isEnd = false;                                                   //cheсk-flag for continue
+	string key = "";
 
-	string inputString;                                         //input string
-	string outputString;										//output string
-	bool isEnd;                                                   //cheсk-flag for continue
-	string key;
+	string buferSec = "";
 
-
-	ifstream fout("Inputstring.txt");
-	getline(fout, inputString);
-	fout.close();
-
-	ifstream fout1("SecretKey.txt");
+	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
 	getline(fout1, key);
+	while (!fout1.eof())
+	{
+		getline(fout1, buferSec);
+		inputString = inputString + buferSec;
+		if (!fout1.eof())
+		{
+			inputString = inputString + '\n';
+		}
+	}
 	fout1.close();
+
 	int p = -1;
 
 	for (int i = 0; inputString[i] != '\0'; i++)                //input string check
@@ -59,7 +96,6 @@ void GronsfeldDecode()
 			if (inputString[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 			{
 				int smena = j - smehenie;									//shift by ASKII table (smehenie (default = 5))
-
 				for (int h = 33 - smehenie; h < 33; h++)					//exclusion of unreadable characters from the ASKII table module
 				{
 					if (smena == h)
@@ -67,7 +103,6 @@ void GronsfeldDecode()
 						smena = smena + 256 - 33;
 					}
 				}
-
 				char ASCIICod_smena = smena;                                //changing a character and saving it to the output array
 				outputString += ASCIICod_smena;
 				isEnd = true;													//set check-flag to true
@@ -109,16 +144,20 @@ void GronsfeldDecode()
 	system("CLS");
 #endif
 	funkPrinciple(2);
-	funkTypeName(2);
+	funkTypeName(1);
+	if (codeCheck == 1)
+	{
+		cout << "Your KEY: " << key << endl;
+	}
+	cout << "Decryption string: " << endl << outputString << endl;		//output of the decrypted string
 
-	cout << "Decryption string: " << outputString << endl;		//output of the decrypted string
+	ofstream fin2("Str_aft_proc.txt");
+	fin2 << key << endl;
+	fin2 << outputString;
+	fin2.close();
 
-	ofstream fin1("Inputstring.txt");
-	fin1 << outputString;
-	fin1.close();
-
-	system("PAUSE");
 #ifndef Clear
+	system("PAUSE");
 	system("CLS");
 #endif
 #ifdef Clear

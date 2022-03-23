@@ -6,10 +6,10 @@ void funkTypeName(int cryptoType)
 	switch (cryptoType)
 	{
 	case 1:
-		cout << "Caesar's Cipher" << endl;
+		cout << "The Gronsfeld Cipher" << endl;
 		break;
 	case 2:
-		cout << "The Gronsfeld Cipher" << endl;
+		cout << "" << endl;
 		break;
 	case 3:
 		cout << "" << endl;

@@ -1,38 +1,13 @@
 #include "Header.h"
 
 //Prime number generator
-#ifdef FORTWOENTERS
-uint64_t randPrimeSearch(int num)
-#endif
-
-#ifndef FORTWOENTERS
-void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
-#endif
+void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryBit)
 {
 	bool isNumber = false;
 	string memoryBitStr = "";
-	int memoryBit = 0;
 	while (isNumber == false)
 	{
-		memoryBit = 0;
-		isNumber = true;
-
-#ifndef FORTWOENTERS
-		cout << "Enter bit memory for prime numbers(in range from 5 to 32 (recommended no more than 24)" << endl << ":";
-#endif
-
-#ifdef FORTWOENTERS
-		cout << "Enter bit memory for ";
-		if (num == 1)
-		{
-			cout << "first prime number(in range from 5 to 32 (recommended no more than 24)" << endl << ":";
-		}
-		else if (num == 2)
-		{
-			cout << "second prime number(in range from 5 to 32 (recommended no more than 24)" << endl << ":";
-		}
-#endif
-
+		cout << "Enter bit memory for prime numbers in range from 5 to 32 (recommended no more than 24)" << endl << ": ";
 		getline(cin, memoryBitStr);
 
 #ifndef Clear
@@ -41,6 +16,8 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 #ifdef Clear
 		cout << endl;
 #endif
+		memoryBit = 0;
+		isNumber = true;
 
 		if (memoryBitStr == "")   //chek for empety string
 		{
@@ -112,27 +89,11 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 #ifdef Clear
 	cout << endl;
 #endif
-
 	//Returning a random prime number from a range
-#ifdef FORTWOENTERS
-	if (num == 1)
-	{
-		uint64_t first_prime = prime[rand() % prime.size()];
-		return first_prime;
-	}
-	else if (num == 2)
-	{
-		uint64_t second_prime = prime[rand() % prime.size()];
-		return second_prime;
-	}
-#endif
-
-#ifndef FORTWOENTERS
 	first_prime = prime[rand() % prime.size()];
 	second_prime = prime[rand() % prime.size()];
 	while (first_prime == second_prime)
 	{
 		second_prime = prime[rand() % prime.size()];
 	}
-#endif
 }

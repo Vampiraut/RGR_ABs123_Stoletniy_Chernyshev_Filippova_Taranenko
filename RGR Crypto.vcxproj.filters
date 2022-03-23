@@ -27,12 +27,6 @@
     <ClCompile Include="funkPrinciple.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="CaesarDecode.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CaesarCode.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="GronsfeldDecode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>

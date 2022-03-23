@@ -25,6 +25,21 @@ void encryptionCheck(int cryptoType, int funkType)
 #endif
 	if (codeCheck == "1")
 	{
+		string bufer = "";
+		ofstream fin("Some_text.txt");   //if - чтение, of - запись
+		ifstream promegCopy("Str_aft_proc.txt");
+		while (!promegCopy.eof())
+		{
+			getline(promegCopy, bufer);
+			fin << bufer;
+			if (!promegCopy.eof())
+			{
+				fin << '\n';
+			}
+		}
+		fin.close();
+		promegCopy.close();
+
 		passwordCheсk();
 		//Conditions for performing encryption for the selected type and principle of operation
 		switch (cryptoType)
@@ -33,24 +48,24 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-				CaesarDecode();
+				GronsfeldDecode(1);
 				break;
 			case 2:
-				CaesarCode();
+				GronsfeldCode(1);
 				break;
 			}
-
+			break;
 		case 2:
 			switch (funkType)
 			{
 			case 1:
-				GronsfeldDecode();
+				
 				break;
 			case 2:
-				GronsfeldCode();
+				
 				break;
 			}
-
+			break;
 		case 3:
 			switch (funkType)
 			{
@@ -61,7 +76,7 @@ void encryptionCheck(int cryptoType, int funkType)
 
 				break;
 			}
-
+			break;
 		case 4:
 			switch (funkType)
 			{
@@ -72,7 +87,7 @@ void encryptionCheck(int cryptoType, int funkType)
 
 				break;
 			}
-
+			break;
 		case 5:
 			switch (funkType)
 			{
@@ -83,11 +98,9 @@ void encryptionCheck(int cryptoType, int funkType)
 
 				break;
 			}
+			break;
 		}
 	}
-	else
-	{
-		system("PAUSE");
-	}
+	system("PAUSE");
 	system("CLS");
 }
