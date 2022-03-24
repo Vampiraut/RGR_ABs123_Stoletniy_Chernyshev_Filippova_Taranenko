@@ -7,7 +7,7 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 	string memoryBitStr = "";
 	while (isNumber == false)
 	{
-		cout << "Enter bit memory for prime numbers in range from 5 to 32 (recommended no more than 10)" << endl << ": ";
+		cout << "Enter bit memory for prime numbers in range from 5 to 32 (recommended no more than 10)" << endl << ": "; //24 for prime but in encrypt don't work
 		getline(cin, memoryBitStr);
 
 #ifndef Clear

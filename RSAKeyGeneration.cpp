@@ -1,27 +1,46 @@
 #include "Header.h"
 
-void RSAKeyGeneration()
+void RSAKeyGeneration(int mayDecode)
 {
 	uint64_t first_prime = 0, señond_prime = 0, modul = 0, eiler = 0, publicExpon = 0, privateExpon = 0;
+	string publicExponStr = "", privateExponStr = "", modulStr = "";
 	int memoryBit = 0;
-
-	randPrimeSearch(first_prime, señond_prime, memoryBit);
-
-	modul = first_prime * señond_prime;
-	eiler = (first_prime - 1) * (señond_prime - 1);
-#ifdef DEBUGRSA
-	cout << "First prime number: " << first_prime << endl << "Second prime number: " << señond_prime << endl;
-	cout << "Module (p*q): " << modul << endl;
-	cout << "Eiler funktion: " << eiler << endl;
-#endif
-	publicExpon = publicExponSearch(eiler, memoryBit);
-	cout << "PUBLIC KEY: {" << publicExpon << "," << modul << "}" << endl;
-	while (((privateExpon * publicExpon) % eiler != 1) || privateExpon == 0)
+	if (mayDecode != 1)
 	{
-		privateExpon = privateExponSearch(publicExpon, eiler);
-	}
-	cout << "PRIVATE KEY: {" << privateExpon << "," << modul << "}" << endl;
+		randPrimeSearch(first_prime, señond_prime, memoryBit);
 
+		modul = first_prime * señond_prime;
+		eiler = (first_prime - 1) * (señond_prime - 1);
+#ifdef DEBUGRSA
+		cout << "First prime number: " << first_prime << endl << "Second prime number: " << señond_prime << endl;
+		cout << "Module (p*q): " << modul << endl;
+		cout << "Eiler funktion: " << eiler << endl;
+#endif
+		publicExpon = publicExponSearch(eiler, memoryBit);
+		cout << "PUBLIC KEY: {" << publicExpon << "," << modul << "}" << endl;
+		while (((privateExpon * publicExpon) % eiler != 1) || privateExpon == 0)
+		{
+			privateExpon = privateExponSearch(publicExpon, eiler);
+		}
+		cout << "PRIVATE KEY: {" << privateExpon << "," << modul << "}" << endl;
+	}
+	else if (mayDecode == 1)
+	{
+		cout << "Enter public expon" << endl << ": ";
+		getline(cin, publicExponStr);
+		cout << "Enter private expon" << endl << ": ";
+		getline(cin, privateExponStr);
+		cout << "Enter module" << endl << ": ";
+		getline(cin, modulStr);
+#ifndef Clear
+		system("CLS");
+#endif
+#ifdef Clear
+		cout << endl;
+#endif
+		cout << "PUBLIC KEY: {" << publicExponStr << "," << modulStr << "}" << endl;
+		cout << "PRIVATE KEY: {" << privateExponStr << "," << modulStr << "}" << endl;
+	}
 	//[PUBLIC KEY: {publicExpon , modul}
 	//[PRIVATE KEY: {privateExpon , modul}
 
@@ -42,7 +61,16 @@ void RSAKeyGeneration()
 
 	ofstream fin("Some_text.txt");	 //î÷èùàåò ôàéë Some_text.txt êóäà ñíà÷àëà çàïèñûâàåòñÿ êëþ÷, à çàòåì èñõîäíûé òåêñò
 	ifstream promegCopy("bufer.txt");//÷èòàåò ôàéë ñ êîïèåé íàøåãî òåêñòà
-	fin << publicExpon << " " << privateExpon << " " << modul << endl;
+
+	if (mayDecode != 1)
+	{
+		fin << publicExpon << " " << privateExpon << " " << modul << endl;
+	}
+	else if (mayDecode == 1)
+	{
+		fin << publicExponStr << " " << privateExponStr << " " << modulStr << endl;
+	}
+
 	while (!promegCopy.eof())
 	{
 		getline(promegCopy, bufer);
@@ -55,6 +83,7 @@ void RSAKeyGeneration()
 	fin.close();
 	promegCopy.close();
 #ifndef Clear
+	system("PAUSE");
 	system("CLS");
 #endif
 #ifdef Clear

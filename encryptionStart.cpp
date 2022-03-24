@@ -53,10 +53,11 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			RSAKeyGeneration();
+			RSAKeyGeneration(0);
 			RSACode();
 			break;
 		case 2:
+			RSAKeyGeneration(1);
 			RSADecode();
 			break;
 		}
