@@ -46,23 +46,13 @@ void RSACode()
 	//string outputString = "";
 	for (int i = 0; inputString[i] != '\0'; i++)
 	{
-		if (inputString[i] == ' ')
-		{
-			fin << ' ';
-			continue;
-		}
 		uint64_t charASKII = inputString[i];
 		uint64_t smenaASKII = 1;
 		for (int j = 0; j < publicExpon; j++)
 		{
 			smenaASKII = (smenaASKII * charASKII) % modul;
 		}
-		while (smenaASKII > 256)
-		{
-			smenaASKII = smenaASKII - 256;
-		}
-		char ASKIICod = smenaASKII;
-		fin << ASKIICod;
+		fin << smenaASKII << ' ';
 	}
 	fin.close();
 }

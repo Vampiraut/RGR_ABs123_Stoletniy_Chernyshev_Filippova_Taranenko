@@ -36,11 +36,6 @@ void RSADecode()
 	{
 		buferInt = 0;
 		getline(fout, bufer, ' ');
-		if (bufer == "/")
-		{
-			fin << ' ';
-			continue;
-		}
 		for (int i = 0; bufer[i] != '\0'; i++)
 		{
 			buferInt = buferInt * 10 + (bufer[i] - 48);
