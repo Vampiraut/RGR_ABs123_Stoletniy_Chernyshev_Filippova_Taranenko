@@ -4,10 +4,14 @@
 int main()
 {
 	srand(time(0));
-	SetConsoleCP(1251);			//set ASKII by Windows console-in == console-out (for Russian language)
-	SetConsoleOutputCP(1251);
-	setlocale(LC_ALL, "Rus");	//Russian localization
-
+	SetConsoleCP(1251);			//installing the win-cp 1251 code page in the input stream
+	SetConsoleOutputCP(1251);	//installing the win-cp 1251 code page in the output stream
+	setlocale(LC_ALL, "Rus");
+	for (int i = 153; i < 256; i++)
+	{
+		char a = i;
+		cout << a << "     " << i << endl;
+	}
 	passwordCheñk();
 
 	int funkType = 0;

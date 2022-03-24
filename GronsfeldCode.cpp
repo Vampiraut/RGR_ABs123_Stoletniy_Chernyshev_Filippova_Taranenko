@@ -114,6 +114,7 @@ void GronsfeldCode(int codeCheck)
 			continue;
 		}
 
+
 		for (int j = 192; j < 256; j++)								//ASKII 192 -> 255 check in input string
 		{
 			char ASCIICod = j;											//int-dek to ASKII-symbol
@@ -139,7 +140,6 @@ void GronsfeldCode(int codeCheck)
 		}
 		outputString += inputString[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 	}
-
 #ifndef Clear
 	system("CLS");
 #endif

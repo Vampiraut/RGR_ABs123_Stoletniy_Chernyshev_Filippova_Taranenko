@@ -22,10 +22,42 @@ void RSAKeyGeneration()
 	}
 	cout << "PRIVATE KEY: {" << privateExpon << "," << modul << "}" << endl;
 
-	ofstream fin("Some_text.txt", ios_base::out | ios_base::app);
-	fin << endl << publicExpon << " " << modul;
-	fin << endl << privateExpon << " " << modul;
-	fin.close();
 	//[PUBLIC KEY: {publicExpon , modul}
 	//[PRIVATE KEY: {privateExpon , modul}
+
+	string bufer = "";
+	ifstream fout("Some_text.txt");//читает файл с нашим текстом
+	ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
+	while (!fout.eof())
+	{
+		getline(fout, bufer);
+		promeg << bufer;
+		if (!fout.eof())
+		{
+			promeg << '\n';
+		}
+	}
+	fout.close();
+	promeg.close();
+
+	ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
+	ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
+	fin << publicExpon << " " << privateExpon << " " << modul << endl;
+	while (!promegCopy.eof())
+	{
+		getline(promegCopy, bufer);
+		fin << bufer;
+		if (!promegCopy.eof())
+		{
+			fin << '\n';
+		}
+	}
+	fin.close();
+	promegCopy.close();
+#ifndef Clear
+	system("CLS");
+#endif
+#ifdef Clear
+	cout << endl;
+#endif
 }

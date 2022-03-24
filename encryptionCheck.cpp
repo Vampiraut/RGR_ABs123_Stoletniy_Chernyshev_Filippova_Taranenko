@@ -92,10 +92,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-
+				RSADecode();
 				break;
 			case 2:
-
+				RSACode();
 				break;
 			}
 			break;

@@ -57,7 +57,7 @@ void encryptionStart(int cryptoType, int funkType)
 			RSACode();
 			break;
 		case 2:
-			
+			RSADecode();
 			break;
 		}
 		break;

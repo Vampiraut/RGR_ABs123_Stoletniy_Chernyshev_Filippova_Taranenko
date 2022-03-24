@@ -26,7 +26,7 @@ void inputStrToTxt()
 #endif
 	if (fileCreate == "1")
 	{
-		cout << "Enter the path to the file" << endl << ": ";
+		cout << "Enter the path to the file (remember, the file must be ANSI or Windows-1251 encoded)" << endl << ": ";
 		string path = "";
 		getline(cin, path);
 		string bufer = "";
@@ -42,7 +42,7 @@ void inputStrToTxt()
 			cout << endl;
 #endif
 			cout << "Unknown file path!" << endl;
-			cout << "Enter the path to the file" << endl << ": ";
+			cout << "Enter the path to the file (remember, the file must be ANSI or Windows-1251 encoded)" << endl << ": ";
 			getline(cin, path);
 			fout.open(path);
 		}
