@@ -5,13 +5,13 @@ void RSADecode()
 	string publicExponStr = "";
 	string privateExponStr = "";
 	string modulStr = "";
-	string bufer = "";
 	string inputString = "";
-	ifstream fout("Some_text.txt"); //читает файл с ключом и нашим текстом
 
+	ifstream fout("Some_text.txt"); //читает файл с ключом и нашим текстом
 	getline(fout, publicExponStr, ' ');
 	getline(fout, privateExponStr, ' ');
 	getline(fout, modulStr);
+
 	uint64_t publicExpon = 0;
 	uint64_t privateExpon = 0;
 	uint64_t modul = 0;
@@ -34,23 +34,32 @@ void RSADecode()
 	funkTypeName(5);
 	cout << "Decryption string: " << endl;
 	uint64_t buferInt = 0;
+
 	while (!fout.eof())
 	{
-		buferInt = 0;
-		getline(fout, bufer, 'О');
-		for (int i = 0; bufer[i] != '\0'; i++)
+		getline(fout, inputString);
+		int i = 0;
+		for (; inputString[i] != '\0'; i++)
 		{
-			buferInt = buferInt * 10 + (bufer[i] - 48);
+			buferInt = 0;
+			for (; inputString[i] != 'О'; i++)
+			{
+				buferInt = buferInt * 10 + (inputString[i] - 48);
+			}
+			uint64_t smenaASKII = 1;
+			for (uint64_t j = 0; j < privateExpon; j++)
+			{
+				smenaASKII = (smenaASKII * buferInt) % modul;
+			}
+			char ASKIICod = smenaASKII;
+			fin << ASKIICod;
+			cout << ASKIICod;
 		}
-
-		uint64_t smenaASKII = 1;
-		for (uint64_t j = 0; j < privateExpon; j++)
+		if (!fout.eof())
 		{
-			smenaASKII = (smenaASKII * buferInt) % modul;
+			cout << '\n';
+			fin << '\n';
 		}
-		char ASKIICod = smenaASKII;
-		fin << ASKIICod;
-		cout << ASKIICod;
 	}
 	fout.close();
 	fin.close();
