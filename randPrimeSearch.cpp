@@ -1,15 +1,13 @@
 #include "Header.h"
 
-//Prime number generator
 void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryBit)
 {
 	bool isNumber = false;
 	string memoryBitStr = "";
 	while (isNumber == false)
 	{
-		cout << "Enter bit memory for prime numbers in range from 5 to 32 (recommended no more than 24)" << endl << ": ";
-		getline(cin, memoryBitStr);
-
+		cout << "Enter bit memory for prime numbers in range from 3 to 14 (recommended no more than 12(in 14 slow))" << endl << ": "; //may 30 for prime but in encrypt don't work
+		getline(cin, memoryBitStr);																										//max - 32
 #ifndef Clear
 		system("CLS");
 #endif
@@ -18,7 +16,6 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 #endif
 		memoryBit = 0;
 		isNumber = true;
-
 		if (memoryBitStr == "")   //chek for empety string
 		{
 			cout << "Wrong bit memory!" << endl;
@@ -39,7 +36,7 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 				}
 				else if (memoryBitStr[i] == askii)
 				{
-					memoryBit = memoryBit * 10 + (j - 48);
+					memoryBit = memoryBit * 10 + (j - 48);	//convert to integer
 					break;
 				}
 			}
@@ -48,39 +45,35 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 				break;
 			}
 		}
-		if ((isNumber == true) && (memoryBit < 5 || memoryBit > 32))
+		if ((isNumber == true) && (memoryBit < 3 || memoryBit > 14))
 		{
 			cout << "Wrong bit memory!" << endl;
 			isNumber = false;
 		}
 	}
-
 #ifndef Clear
 	system("CLS");
 #endif
-
 	cout << "Wait, there are complex calculations going on..." << endl;
 
 	uint64_t mayPrimeMin = stepen(2, memoryBit - 1) + 1;  //Calculating the maximum and minimum numbers in a given size value
 	uint64_t mayPrimeMax = stepen(2, memoryBit);
 
-	bool isPrime = true;
-	vector <uint64_t> prime;
+	vector <int16_t> primeNumErast(mayPrimeMax, 0);
+	vector <uint64_t> primeNum;
 
-	for (uint64_t i = mayPrimeMin; i < mayPrimeMax; i = i + 2)  //Checking numbers from a range for simplicity
+	for (uint64_t i = 2; i < mayPrimeMax; i++)
 	{
-		isPrime = true;
-		for (uint64_t j = 2; j <= ((uint64_t)sqrt((uint64_t)i)); j++)
+		if (primeNumErast[i] == 0)
 		{
-			if (i % j == 0)
+			for (uint64_t j = i * i; ((i*i) < mayPrimeMax) && (j < mayPrimeMax); j = j + i)
 			{
-				isPrime = false;
-				break;
+				primeNumErast[j] = 1;
 			}
-		}
-		if (isPrime == true)
-		{
-			prime.push_back(i);
+			if (i >= mayPrimeMin)
+			{
+				primeNum.push_back(i);
+			}
 		}
 	}
 #ifndef Clear
@@ -90,10 +83,10 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 	cout << endl;
 #endif
 	//Returning a random prime number from a range
-	first_prime = prime[rand() % prime.size()];
-	second_prime = prime[rand() % prime.size()];
+	first_prime = primeNum[rand() % primeNum.size()];
+	second_prime = primeNum[rand() % primeNum.size()];
 	while (first_prime == second_prime)
 	{
-		second_prime = prime[rand() % prime.size()];
+		second_prime = primeNum[rand() % primeNum.size()];
 	}
 }

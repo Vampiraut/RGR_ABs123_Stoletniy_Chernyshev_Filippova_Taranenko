@@ -27,18 +27,18 @@ void encryptionCheck(int cryptoType, int funkType)
 	{
 		string bufer = "";
 		ofstream fin("Some_text.txt");   //if - чтение, of - запись
-		ifstream promegCopy("Str_aft_proc.txt");
-		while (!promegCopy.eof())
+		ifstream fout("Str_aft_proc.txt");
+		while (!fout.eof())
 		{
-			getline(promegCopy, bufer);
+			getline(fout, bufer);
 			fin << bufer;
-			if (!promegCopy.eof())
+			if (!fout.eof())
 			{
 				fin << '\n';
 			}
 		}
 		fin.close();
-		promegCopy.close();
+		fout.close();
 
 		passwordCheсk();
 		//Conditions for performing encryption for the selected type and principle of operation
@@ -59,10 +59,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-				
+				RSADecode();
 				break;
 			case 2:
-				
+				RSACode();
 				break;
 			}
 			break;
@@ -92,6 +92,83 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			}
+			break;
+		case 6:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 7:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 8:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 9:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 10:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 11:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 12:
+			switch (funkType)
+			{
+			case 1:
 
 				break;
 			case 2:
@@ -101,6 +178,8 @@ void encryptionCheck(int cryptoType, int funkType)
 			break;
 		}
 	}
+#ifdef Clear
 	system("PAUSE");
+#endif
 	system("CLS");
 }

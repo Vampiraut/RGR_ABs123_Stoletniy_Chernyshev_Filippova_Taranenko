@@ -1,6 +1,6 @@
 #include "Header.h"
 
-void RSACode()
+void RSADecode()
 {
 	string publicExponStr = "";
 	string privateExponStr = "";
@@ -30,23 +30,28 @@ void RSACode()
 
 	ofstream fin("Str_aft_proc.txt");
 	fin << publicExpon << " " << privateExpon << " " << modul << endl;
-	funkPrinciple(1);
+	funkPrinciple(2);
 	funkTypeName(2);
-	cout << "Encryption string: " << endl;
-
+	cout << "Decryption string: " << endl;
+	uint64_t buferInt = 0;
 	while (!fout.eof())
 	{
 		getline(fout, inputString);
 		for (uint64_t i = 0; inputString[i] != '\0'; i++)
 		{
-			uint64_t charASKII = inputString[i];
-			uint64_t smenaASKII = 1;
-			for (uint64_t j = 0; j < publicExpon; j++)
+			buferInt = 0;
+			for (; inputString[i] != 'Î'; i++)
 			{
-				smenaASKII = (smenaASKII * charASKII) % modul;
+				buferInt = buferInt * 10 + (inputString[i] - 48);
 			}
-			fin << smenaASKII << 'Î';
-			cout << smenaASKII << 'Î';
+			uint64_t smenaASKII = 1;
+			for (uint64_t j = 0; j < privateExpon; j++)
+			{
+				smenaASKII = (smenaASKII * buferInt) % modul;
+			}
+			char ASKIICod = smenaASKII;
+			fin << ASKIICod;
+			cout << ASKIICod;
 		}
 		if (!fout.eof())
 		{

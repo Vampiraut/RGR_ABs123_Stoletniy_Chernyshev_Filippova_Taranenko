@@ -4,7 +4,7 @@
 int principleOfOperation()
 {
 	cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
-	string strNumPrinciple;
+	string strNumPrinciple = "";
 	getline(cin, strNumPrinciple);
 
 	//Protection against incorrectly entered operating principle

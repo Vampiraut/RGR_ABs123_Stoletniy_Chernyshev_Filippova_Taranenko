@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="checkIfNotANumber.cpp" />
     <ClCompile Include="cryptoTypeSelect.cpp" />
     <ClCompile Include="encryptionCheck.cpp" />
     <ClCompile Include="funkPrinciple.cpp" />
@@ -153,8 +154,9 @@
     <ClCompile Include="publicExponSearch.cpp" />
     <ClCompile Include="randPrimeSearch.cpp" />
     <ClCompile Include="RSACode.cpp" />
+    <ClCompile Include="RSADecode.cpp" />
     <ClCompile Include="RSAKeyGeneration.cpp" />
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="encryptionStart.cpp" />
     <ClCompile Include="uint64_stepen.cpp" />
   </ItemGroup>
