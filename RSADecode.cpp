@@ -31,15 +31,13 @@ void RSADecode()
 	ofstream fin("Str_aft_proc.txt");
 	fin << publicExpon << " " << privateExpon << " " << modul << endl;
 	funkPrinciple(2);
-	funkTypeName(5);
+	funkTypeName(2);
 	cout << "Decryption string: " << endl;
 	uint64_t buferInt = 0;
-
 	while (!fout.eof())
 	{
 		getline(fout, inputString);
-		int i = 0;
-		for (; inputString[i] != '\0'; i++)
+		for (uint64_t i = 0; inputString[i] != '\0'; i++)
 		{
 			buferInt = 0;
 			for (; inputString[i] != 'Î'; i++)
@@ -63,12 +61,9 @@ void RSADecode()
 	}
 	fout.close();
 	fin.close();
-	cout << endl;
+	cout << endl << endl;
 #ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
 #endif
 }

@@ -18,9 +18,11 @@ void RSAKeyGeneration(int mayDecode)
 #endif
 		publicExpon = publicExponSearch(eiler, memoryBit);
 		cout << "PUBLIC KEY: {" << publicExpon << "," << modul << "}" << endl;
-		while (((privateExpon * publicExpon) % eiler != 1) || privateExpon == 0)
+
+		uint64_t k = 1;
+		while ((privateExpon * publicExpon) % eiler != 1)
 		{
-			privateExpon = privateExponSearch(publicExpon, eiler);
+			privateExpon = privateExponSearch(publicExpon, eiler, k);
 		}
 		cout << "PRIVATE KEY: {" << privateExpon << "," << modul << "}" << endl;
 	}
@@ -53,7 +55,7 @@ void RSAKeyGeneration(int mayDecode)
 		promeg << bufer;
 		if (!fout.eof())
 		{
-			promeg << '\n';
+			promeg << endl;
 		}
 	}
 	fout.close();
@@ -77,16 +79,14 @@ void RSAKeyGeneration(int mayDecode)
 		fin << bufer;
 		if (!promegCopy.eof())
 		{
-			fin << '\n';
+			fin << endl;
 		}
 	}
 	fin.close();
 	promegCopy.close();
+	cout << endl;
 #ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
 #endif
 }

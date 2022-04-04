@@ -48,9 +48,6 @@
     <ClCompile Include="encryptionCheck.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="randPrimeSearch.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="uint64_stepen.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -70,6 +67,12 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RSADecode.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="randPrimeSearch.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="checkIfNotANumber.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

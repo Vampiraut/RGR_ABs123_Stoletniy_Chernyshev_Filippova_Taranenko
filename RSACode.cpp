@@ -31,13 +31,13 @@ void RSACode()
 	ofstream fin("Str_aft_proc.txt");
 	fin << publicExpon << " " << privateExpon << " " << modul << endl;
 	funkPrinciple(1);
-	funkTypeName(5);
+	funkTypeName(2);
 	cout << "Encryption string: " << endl;
 
 	while (!fout.eof())
 	{
 		getline(fout, inputString);
-		for (int i = 0; inputString[i] != '\0'; i++)
+		for (uint64_t i = 0; inputString[i] != '\0'; i++)
 		{
 			uint64_t charASKII = inputString[i];
 			uint64_t smenaASKII = 1;
@@ -56,12 +56,9 @@ void RSACode()
 	}
 	fout.close();
 	fin.close();
-	cout << endl;
+	cout << endl << endl;
 #ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
 #endif
 }

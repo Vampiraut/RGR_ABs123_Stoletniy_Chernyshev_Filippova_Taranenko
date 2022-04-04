@@ -1,6 +1,6 @@
 #include "Header.h"
 
-//Entering a string and saving it to a file ùr copying and encrypting your file
+//Entering a string and saving it to a file or copying and encrypting your file
 void inputStrToTxt()
 {
 	string fileCreate = "";
@@ -29,10 +29,8 @@ void inputStrToTxt()
 		cout << "Enter the path to the file (remember, the file must be ANSI or Windows-1251 encoded)" << endl << ": ";
 		string path = "";
 		getline(cin, path);
-		string bufer = "";
 		ofstream fin("Some_text.txt");
-		ifstream fout;
-		fout.open(path);
+		ifstream fout(path);
 		while (!fout.is_open())
 		{
 #ifndef Clear
@@ -46,13 +44,14 @@ void inputStrToTxt()
 			getline(cin, path);
 			fout.open(path);
 		}
+		string bufer = "";
 		while (!fout.eof())
 		{
 			getline(fout, bufer);
 			fin << bufer;
 			if (!fout.eof())
 			{
-				fin << '\n';
+				fin << endl;
 			}
 		}
 		fin.close();
@@ -66,9 +65,21 @@ void inputStrToTxt()
 	}
 	else if (fileCreate == "2")
 	{
-		string inputStr;
+		string inputStr = "";
 		cout << "Enter a line for encryption" << endl << ": ";
 		getline(cin, inputStr);
+		while (inputStr == "")
+		{
+#ifndef Clear
+			system("CLS");
+#endif
+#ifdef Clear
+			cout << endl;
+#endif
+			cout << "An empty string has been entered!" << endl;
+			cout << "Enter a line for encryption" << endl << ": ";
+			getline(cin, inputStr);
+		}
 		ofstream fin("Some_text.txt");
 		fin << inputStr;
 		fin.close();
