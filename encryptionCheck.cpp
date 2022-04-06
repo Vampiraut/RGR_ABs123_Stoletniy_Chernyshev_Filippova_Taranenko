@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//The function of starting the encryption check
 void encryptionCheck(int cryptoType, int funkType)
 {
 	cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";

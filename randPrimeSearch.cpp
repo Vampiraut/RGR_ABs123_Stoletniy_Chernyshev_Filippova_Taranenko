@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//Random prime number generation function (Erastophene sieve)
 void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryBit)
 {
 	bool isNumber = false;

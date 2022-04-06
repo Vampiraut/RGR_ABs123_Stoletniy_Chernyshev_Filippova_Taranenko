@@ -1,5 +1,6 @@
 #include "Header.h"
 
+//Key generation function for RSA encryption
 void RSAKeyGeneration(int mayDecode)
 {
 	uint64_t first_prime = 0, señond_prime = 0, modul = 0, eiler = 0, publicExpon = 0, privateExpon = 0;
