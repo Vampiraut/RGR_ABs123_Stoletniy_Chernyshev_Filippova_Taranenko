@@ -4,9 +4,10 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 {
 	bool isNumber = false;
 	string memoryBitStr = "";
-	while (isNumber == false)
+	while ((isNumber == false) || (memoryBit < 3 || memoryBit > 14))
 	{
-		cout << "Enter bit memory for prime numbers in range from 3 to 14 (recommended no more than 12(in 14 slow))" << endl << ": "; //may 30 for prime but in encrypt don't work
+		isNumber = false;
+		cout << "Enter bit memory for prime numbers in range from 3 to 14 (recommended no more than 12(in 14 slow))" << endl << ": ";	//may 30 for prime but in encrypt don't work
 		getline(cin, memoryBitStr);																										//max - 32
 #ifndef Clear
 		system("CLS");
@@ -14,41 +15,27 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 #ifdef Clear
 		cout << endl;
 #endif
+		isNumber = checkIfNotANumber(memoryBitStr);
 		memoryBit = 0;
-		isNumber = true;
-		if (memoryBitStr == "")   //chek for empety string
+		if (isNumber == false)
 		{
-			cout << "Wrong bit memory!" << endl;
-			isNumber = false;
 			continue;
 		}
-		for (int i = 0; memoryBitStr[i] != '\0'; i++)  //chek for not a number
+		else
 		{
-			char askii = 0;
-			for (int j = 48; j < 58; j++)
+			for (int i = 0; memoryBitStr[i] != '\0'; i++)  //chek for not a number
 			{
-				askii = j;
-				if (memoryBitStr[i] != askii && j == 57)
+				char askii = '0';
+				for (int j = 48; j < 58; j++)
 				{
-					cout << "Wrong bit memory!" << endl;
-					isNumber = false;
-					break;
-				}
-				else if (memoryBitStr[i] == askii)
-				{
-					memoryBit = memoryBit * 10 + (j - 48);	//convert to integer
-					break;
+					askii = j;
+					if (memoryBitStr[i] == askii)
+					{
+						memoryBit = (memoryBit * 10) + (memoryBitStr[i] - 48);
+						break;
+					}
 				}
 			}
-			if (isNumber == false)
-			{
-				break;
-			}
-		}
-		if ((isNumber == true) && (memoryBit < 3 || memoryBit > 14))
-		{
-			cout << "Wrong bit memory!" << endl;
-			isNumber = false;
 		}
 	}
 #ifndef Clear

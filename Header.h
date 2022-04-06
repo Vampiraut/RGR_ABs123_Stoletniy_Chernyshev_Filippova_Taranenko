@@ -44,8 +44,6 @@ uint64_t greatestCommonDivisor(uint64_t, uint64_t);
 uint64_t publicExponSearch(uint64_t, int);
 uint64_t privateExponSearch(uint64_t, uint64_t, uint64_t&);
 void RSAKeyGeneration(int);
-void RSACode();
-void RSADecode();
 
 void passwordCheñk();
 int principleOfOperation();
@@ -61,3 +59,6 @@ void encryptionCheck(int, int);
 
 void GronsfeldDecode(int);
 void GronsfeldCode(int);
+
+void RSACode();
+void RSADecode();
