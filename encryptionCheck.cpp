@@ -25,6 +25,21 @@ void encryptionCheck(int cryptoType, int funkType)
 #endif
 	if (codeCheck == "1")
 	{
+		string bufer = "";
+		ofstream fin("Some_text.txt");   //if - чтение, of - запись
+		ifstream fout("Str_aft_proc.txt");
+		while (!fout.eof())
+		{
+			getline(fout, bufer);
+			fin << bufer;
+			if (!fout.eof())
+			{
+				fin << '\n';
+			}
+		}
+		fin.close();
+		fout.close();
+
 		passwordCheсk();
 		//Conditions for performing encryption for the selected type and principle of operation
 		switch (cryptoType)
@@ -33,10 +48,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-				CaesarDecode();
+				GronsfeldDecode(1);
 				break;
 			case 2:
-				CaesarCode();
+				GronsfeldCode(1);
 				break;
 			}
 			break;
@@ -44,10 +59,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-				GronsfeldDecode();
+				RSADecode();
 				break;
 			case 2:
-				GronsfeldCode();
+				RSACode();
 				break;
 			}
 			break;
@@ -77,6 +92,83 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
+				
+				break;
+			case 2:
+				
+				break;
+			}
+			break;
+		case 6:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 7:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 8:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 9:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 10:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 11:
+			switch (funkType)
+			{
+			case 1:
+
+				break;
+			case 2:
+
+				break;
+			}
+			break;
+		case 12:
+			switch (funkType)
+			{
+			case 1:
 
 				break;
 			case 2:
@@ -86,6 +178,8 @@ void encryptionCheck(int cryptoType, int funkType)
 			break;
 		}
 	}
+#ifdef Clear
 	system("PAUSE");
+#endif
 	system("CLS");
 }

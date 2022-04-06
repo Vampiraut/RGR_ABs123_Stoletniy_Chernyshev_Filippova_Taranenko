@@ -3,26 +3,19 @@
 //Password verification function
 void passwordCheÒk()
 {
-	bool is—orrect = false;
-	while (is—orrect == false)
+	string password = "";
+	cout << "Enter password" << endl << ": ";
+	getline(cin, password);
+	while (password != PASSWORD)
 	{
-		string password;
-		cout << "Enter password" << endl << ": ";
-		getline(cin, password);
-		if (password == "1337")
-		{
-			is—orrect = true;
-		}
-		else
-		{
 #ifndef Clear
-			system("CLS");
+		system("CLS");
 #endif
 #ifdef Clear
-			cout << endl;
+		cout << endl;
 #endif
-			cout << "Wrong password!" << endl;
-		}
+		cout << "Wrong password!" << endl << "Enter password" << endl << ": ";
+		getline(cin, password);
 	}
 #ifndef Clear
 	system("CLS");

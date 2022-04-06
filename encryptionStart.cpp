@@ -9,10 +9,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			CaesarCode();
+			GronsfeldCode(0);
 			break;
 		case 2:
-			CaesarDecode();
+			GronsfeldDecode(0);
 			break;
 		}
 		break;
@@ -20,10 +20,12 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			GronsfeldCode();
+			RSAKeyGeneration(0);
+			RSACode();
 			break;
 		case 2:
-			GronsfeldDecode();
+			RSAKeyGeneration(1);
+			RSADecode();
 			break;
 		}
 		break;
@@ -53,11 +55,87 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			RSAKeyGeneration();
-			RSACode();
+			
 			break;
 		case 2:
-			
+
+			break;
+		}
+		break;
+	case 6:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		}
+		break;
+	case 7:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		}
+		break;
+	case 8:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		}
+		break;
+	case 9:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		}
+		break;
+	case 10:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		}
+		break;
+	case 11:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
+			break;
+		}
+		break;
+	case 12:
+		switch (funkType)
+		{
+		case 1:
+
+			break;
+		case 2:
+
 			break;
 		}
 		break;

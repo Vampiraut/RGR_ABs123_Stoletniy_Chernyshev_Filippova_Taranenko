@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="passwordCheсk.cpp">
@@ -25,12 +25,6 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="funkPrinciple.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CaesarDecode.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="CaesarCode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="GronsfeldDecode.cpp">
@@ -54,9 +48,6 @@
     <ClCompile Include="encryptionCheck.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="randPrimeSearch.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="uint64_stepen.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -73,6 +64,15 @@
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="RSAKeyGeneration.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="RSADecode.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="randPrimeSearch.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="checkIfNotANumber.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>

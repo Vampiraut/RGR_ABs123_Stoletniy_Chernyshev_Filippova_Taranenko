@@ -1,109 +1,66 @@
 #include "Header.h"
 
-//Prime number generator
-#ifdef FORTWOENTERS
-uint64_t randPrimeSearch(int num)
-#endif
-
-#ifndef FORTWOENTERS
-void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
-#endif
+void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryBit)
 {
 	bool isNumber = false;
 	string memoryBitStr = "";
-	int memoryBit = 0;
-	while (isNumber == false)
+	while ((isNumber == false) || (memoryBit < 3 || memoryBit > 14))
 	{
-		memoryBit = 0;
-		isNumber = true;
-
-#ifndef FORTWOENTERS
-		cout << "Enter bit memory for prime numbers(in range from 5 to 32 (recommended no more than 24)" << endl << ":";
-#endif
-
-#ifdef FORTWOENTERS
-		cout << "Enter bit memory for ";
-		if (num == 1)
-		{
-			cout << "first prime number(in range from 5 to 32 (recommended no more than 24)" << endl << ":";
-		}
-		else if (num == 2)
-		{
-			cout << "second prime number(in range from 5 to 32 (recommended no more than 24)" << endl << ":";
-		}
-#endif
-
-		getline(cin, memoryBitStr);
-
+		isNumber = false;
+		cout << "Enter bit memory for prime numbers in range from 3 to 14 (recommended no more than 12(in 14 slow))" << endl << ": ";	//may 30 for prime but in encrypt don't work
+		getline(cin, memoryBitStr);																										//max - 32
 #ifndef Clear
 		system("CLS");
 #endif
 #ifdef Clear
 		cout << endl;
 #endif
-
-		if (memoryBitStr == "")   //chek for empety string
+		isNumber = checkIfNotANumber(memoryBitStr);
+		memoryBit = 0;
+		if (isNumber == false)
 		{
-			cout << "Wrong bit memory!" << endl;
-			isNumber = false;
 			continue;
 		}
-		for (int i = 0; memoryBitStr[i] != '\0'; i++)  //chek for not a number
+		else
 		{
-			char askii = 0;
-			for (int j = 48; j < 58; j++)
+			for (int i = 0; memoryBitStr[i] != '\0'; i++)  //chek for not a number
 			{
-				askii = j;
-				if (memoryBitStr[i] != askii && j == 57)
+				char askii = '0';
+				for (int j = 48; j < 58; j++)
 				{
-					cout << "Wrong bit memory!" << endl;
-					isNumber = false;
-					break;
-				}
-				else if (memoryBitStr[i] == askii)
-				{
-					memoryBit = memoryBit * 10 + (j - 48);
-					break;
+					askii = j;
+					if (memoryBitStr[i] == askii)
+					{
+						memoryBit = (memoryBit * 10) + (memoryBitStr[i] - 48);
+						break;
+					}
 				}
 			}
-			if (isNumber == false)
-			{
-				break;
-			}
-		}
-		if ((isNumber == true) && (memoryBit < 5 || memoryBit > 32))
-		{
-			cout << "Wrong bit memory!" << endl;
-			isNumber = false;
 		}
 	}
-
 #ifndef Clear
 	system("CLS");
 #endif
-
 	cout << "Wait, there are complex calculations going on..." << endl;
 
 	uint64_t mayPrimeMin = stepen(2, memoryBit - 1) + 1;  //Calculating the maximum and minimum numbers in a given size value
 	uint64_t mayPrimeMax = stepen(2, memoryBit);
 
-	bool isPrime = true;
-	vector <uint64_t> prime;
+	vector <int16_t> primeNumErast(mayPrimeMax, 0);
+	vector <uint64_t> primeNum;
 
-	for (uint64_t i = mayPrimeMin; i < mayPrimeMax; i = i + 2)  //Checking numbers from a range for simplicity
+	for (uint64_t i = 2; i < mayPrimeMax; i++)
 	{
-		isPrime = true;
-		for (uint64_t j = 2; j <= ((uint64_t)sqrt((uint64_t)i)); j++)
+		if (primeNumErast[i] == 0)
 		{
-			if (i % j == 0)
+			for (uint64_t j = i * i; ((i*i) < mayPrimeMax) && (j < mayPrimeMax); j = j + i)
 			{
-				isPrime = false;
-				break;
+				primeNumErast[j] = 1;
 			}
-		}
-		if (isPrime == true)
-		{
-			prime.push_back(i);
+			if (i >= mayPrimeMin)
+			{
+				primeNum.push_back(i);
+			}
 		}
 	}
 #ifndef Clear
@@ -112,27 +69,11 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime)
 #ifdef Clear
 	cout << endl;
 #endif
-
 	//Returning a random prime number from a range
-#ifdef FORTWOENTERS
-	if (num == 1)
-	{
-		uint64_t first_prime = prime[rand() % prime.size()];
-		return first_prime;
-	}
-	else if (num == 2)
-	{
-		uint64_t second_prime = prime[rand() % prime.size()];
-		return second_prime;
-	}
-#endif
-
-#ifndef FORTWOENTERS
-	first_prime = prime[rand() % prime.size()];
-	second_prime = prime[rand() % prime.size()];
+	first_prime = primeNum[rand() % primeNum.size()];
+	second_prime = primeNum[rand() % primeNum.size()];
 	while (first_prime == second_prime)
 	{
-		second_prime = prime[rand() % prime.size()];
+		second_prime = primeNum[rand() % primeNum.size()];
 	}
-#endif
 }
