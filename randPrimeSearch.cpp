@@ -24,7 +24,7 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 		}
 		else
 		{
-			for (int i = 0; memoryBitStr[i] != '\0'; i++)  //chek for not a number
+			for (int i = 0; memoryBitStr[i] != '\0'; i++)  //convert from string to uint64_t
 			{
 				char askii = '0';
 				for (int j = 48; j < 58; j++)
