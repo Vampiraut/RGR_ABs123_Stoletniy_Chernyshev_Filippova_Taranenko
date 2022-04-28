@@ -161,7 +161,11 @@
     <ClCompile Include="uint64_stepen.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="checkIfNotANumber.h" />
+    <ClInclude Include="cryptoTypeSelect.h" />
+    <ClInclude Include="encryptionCheck.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="main.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
