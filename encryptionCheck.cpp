@@ -82,10 +82,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-
+				VernamDecode();
 				break;
 			case 2:
-
+				VernamCode();
 				break;
 			}
 			break;

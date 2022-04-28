@@ -44,10 +44,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-			
+			VernamCode();
 			break;
 		case 2:
-			
+			VernamDecode();
 			break;
 		}
 		break;
