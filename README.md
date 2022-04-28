@@ -16,7 +16,7 @@ methods:
 1)The Gronsfeld Cipher;
 2)RSA Cipher;
 3);
-4);
+4)Vernam Cipher;
 5);
 6);
 7);
