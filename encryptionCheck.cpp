@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "encryptionCheck.h"
 
 //The function of starting the encryption check
 void encryptionCheck(int cryptoType, int funkType)

@@ -12,10 +12,10 @@ void funkTypeName(int cryptoType)
 		cout << "RSA Cipher" << endl;
 		break;
 	case 3:
-		cout << "" << endl;
+		cout << "The Atbash Ñipher" << endl;
 		break;
 	case 4:
-		cout << "Vernam Cipher" << endl;
+		cout << "" << endl;
 		break;
 	case 5:
 		cout << "" << endl;

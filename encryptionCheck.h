@@ -12,3 +12,5 @@ void GronsfeldCode(int);
 void RSADecode();
 void RSACode();
 
+void VernamDecode();
+void VernamCode();

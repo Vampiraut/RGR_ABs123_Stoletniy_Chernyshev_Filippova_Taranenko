@@ -44,3 +44,6 @@ void GronsfeldCode(int);										//Encryption with the Gronsfeld cipher
 
 void RSACode();													//Encryption with the Gronsfeld cipher
 void RSADecode();												//Decryption with the Gronsfeld cipher
+
+void VernamDecode();
+void VernamCode();

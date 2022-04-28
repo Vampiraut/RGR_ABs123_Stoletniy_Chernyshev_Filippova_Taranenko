@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "main.h"
 
 //Main funk
 int main()

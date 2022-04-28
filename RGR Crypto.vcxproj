@@ -159,6 +159,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="encryptionStart.cpp" />
     <ClCompile Include="uint64_stepen.cpp" />
+    <ClCompile Include="VernamCode.cpp" />
+    <ClCompile Include="VernamDecode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="checkIfNotANumber.h" />
@@ -166,6 +168,8 @@
     <ClInclude Include="encryptionCheck.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="VernamCode.h" />
+    <ClInclude Include="VernamDecode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "cryptoTypeSelect.h"
 
 //Encryption type select
 int cryptoTypeSelect(int funkType)

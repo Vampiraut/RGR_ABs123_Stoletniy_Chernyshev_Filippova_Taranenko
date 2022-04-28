@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "checkIfNotANumber.h"
 
 //The function of checking whether the entered string is a number
 bool checkIfNotANumber(string intInStr)
