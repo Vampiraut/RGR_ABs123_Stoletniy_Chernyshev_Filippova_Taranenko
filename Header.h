@@ -25,8 +25,8 @@ int cryptoTypeSelect(int);				//Encryption type select (Gronsfeld, RSA etc.)
 bool checkIfNotANumber(string);			//The function of checking whether the entered string is a number
 uint64_t stepen(uint64_t, int);			//8 byte unsigned int exponentiation function
 
-void funkTypeName(int);					//The function of writing the encryption type (print in consol what your do(encryption or decription))
-void funkPrinciple(int);				//The function of writing the principle of action (print in consol what type of encryption your choose)
+void funkTypeName(int);					//The function of writing the principle of action (print in consol what type of encryption your choose)
+void funkPrinciple(int);				//The function of writing the encryption type (print in consol what your do(encryption or decription))
 
 void encryptionStart(int, int);			//Conditions for performing encryption for the selected type and principle of operation
 void encryptionCheck(int, int);			//The function of starting the encryption check

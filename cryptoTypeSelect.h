@@ -1,9 +1,9 @@
 #pragma once
 #include <iostream>
-#include <cstdlib>
 #include <string>
 
 using namespace std;
 
-int cryptoTypeSelect(int);		//somnenia
-void funkPrinciple(int);				//The function of writing the principle of action (print in consol what type of encryption your choose)
+int cryptoTypeSelect(int);				//Encryption type select
+
+void funkPrinciple(int);				//The function of writing the encryption type (print in consol what your do(encryption or decription))

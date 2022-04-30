@@ -149,7 +149,7 @@
     <ClInclude Include="RSAKeyGeneration.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="stepen.h">
+    <ClInclude Include="uint64_stepen.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

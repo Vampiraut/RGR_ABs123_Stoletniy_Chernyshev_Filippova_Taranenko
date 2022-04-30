@@ -1,5 +1,6 @@
 #include "RSADecode.h"
 
+//Decryption with RSA cipher
 void RSADecode()
 {
 	string publicExponStr = "";
@@ -7,7 +8,7 @@ void RSADecode()
 	string modulStr = "";
 	string inputString = "";
 
-	ifstream fout("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ifstream fout("Some_text.txt");
 	getline(fout, publicExponStr, ' ');
 	getline(fout, privateExponStr, ' ');
 	getline(fout, modulStr);

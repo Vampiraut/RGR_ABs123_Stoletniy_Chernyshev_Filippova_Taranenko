@@ -1,8 +1,6 @@
 #pragma once
-#include <iostream>
-#include <cstdlib>
 #include <string>
 
 using namespace std;
 
-bool checkIfNotANumber(string);
+bool checkIfNotANumber(string);		//The function of checking whether the entered string is a number

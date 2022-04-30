@@ -183,7 +183,7 @@
     <ClInclude Include="RSACode.h" />
     <ClInclude Include="RSADecode.h" />
     <ClInclude Include="RSAKeyGeneration.h" />
-    <ClInclude Include="stepen.h" />
+    <ClInclude Include="uint64_stepen.h" />
     <ClInclude Include="VernamCode.h" />
     <ClInclude Include="VernamDecode.h" />
   </ItemGroup>
