@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "funkTypeName.h"
 
 //The function of writing the encryption type
 void funkTypeName(int cryptoType)
@@ -12,10 +12,10 @@ void funkTypeName(int cryptoType)
 		cout << "RSA Cipher" << endl;
 		break;
 	case 3:
-		cout << "The Atbash Ñipher" << endl;
+		cout << "" << endl;
 		break;
 	case 4:
-		cout << "" << endl;
+		cout << "Vernam Ñipher" << endl;
 		break;
 	case 5:
 		cout << "" << endl;
