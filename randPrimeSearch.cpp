@@ -3,6 +3,7 @@
 //Random prime number generation function (Erastophene sieve)
 void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryBit)
 {
+	srand(time(0));
 	bool isNumber = false;
 	string memoryBitStr = "";
 	while ((isNumber == false) || (memoryBit < 3 || memoryBit > 14))
