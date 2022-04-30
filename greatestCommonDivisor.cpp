@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "greatestCommonDivisor.h"
 
 //Greatest common divisor search function
 uint64_t greatestCommonDivisor(uint64_t expon, uint64_t eiler)

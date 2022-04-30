@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "funkPrinciple.h"
 
 //The function of writing the principle of action
 void funkPrinciple(int funkType)

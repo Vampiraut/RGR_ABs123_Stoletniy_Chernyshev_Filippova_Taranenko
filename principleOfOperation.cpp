@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "principleOfOperation.h"
 
 //Choosing the principle of operation
 int principleOfOperation()

@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "RSAKeyGeneration.h"
 
 //Key generation function for RSA encryption
 void RSAKeyGeneration(int mayDecode)

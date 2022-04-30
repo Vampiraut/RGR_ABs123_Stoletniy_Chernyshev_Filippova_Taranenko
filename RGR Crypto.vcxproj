@@ -166,8 +166,24 @@
     <ClInclude Include="checkIfNotANumber.h" />
     <ClInclude Include="cryptoTypeSelect.h" />
     <ClInclude Include="encryptionCheck.h" />
+    <ClInclude Include="encryptionStart.h" />
+    <ClInclude Include="funkPrinciple.h" />
+    <ClInclude Include="funkTypeName.h" />
+    <ClInclude Include="greatestCommonDivisor.h" />
+    <ClInclude Include="GronsfeldCode.h" />
+    <ClInclude Include="GronsfeldDecode.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="inputStrToTxt.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="passwordCheсk.h" />
+    <ClInclude Include="principleOfOperation.h" />
+    <ClInclude Include="privateExponSearch.h" />
+    <ClInclude Include="publicExponSearch.h" />
+    <ClInclude Include="randPrimeSearch.h" />
+    <ClInclude Include="RSACode.h" />
+    <ClInclude Include="RSADecode.h" />
+    <ClInclude Include="RSAKeyGeneration.h" />
+    <ClInclude Include="stepen.h" />
     <ClInclude Include="VernamCode.h" />
     <ClInclude Include="VernamDecode.h" />
   </ItemGroup>

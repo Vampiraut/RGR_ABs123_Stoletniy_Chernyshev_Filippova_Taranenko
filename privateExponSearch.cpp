@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "privateExponSearch.h"
 
 //Private exponentiation calculation function (privateExpon * publicExpon = 1 + k * eiler) => (privateExpon = (1 + k * eiler)/publicExpon) must be in integer!!!
 uint64_t privateExponSearch(uint64_t publicExpon, uint64_t eiler, uint64_t& k)

@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "publicExponSearch.h"
 
 //Public exponentiation calculation function
 uint64_t publicExponSearch(uint64_t eiler, int memoryBit)

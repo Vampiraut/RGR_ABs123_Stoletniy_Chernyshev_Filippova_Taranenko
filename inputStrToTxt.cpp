@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "inputStrToTxt.h"
 
 //Entering a string and saving it to a file or copying and encrypting your file
 void inputStrToTxt()

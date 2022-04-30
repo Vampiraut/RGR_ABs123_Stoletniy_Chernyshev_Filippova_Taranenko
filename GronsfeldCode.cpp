@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "GronsfeldCode.h"
 
 //Encryption with the Gronsfeld cipher
 void GronsfeldCode(int codeCheck)

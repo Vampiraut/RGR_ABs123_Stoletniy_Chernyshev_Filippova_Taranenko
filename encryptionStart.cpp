@@ -1,4 +1,4 @@
-#include "Header.h"
+#include "encryptionStart.h"
 
 //Conditions for performing encryption for the selected type and principle of operation
 void encryptionStart(int cryptoType, int funkType)
