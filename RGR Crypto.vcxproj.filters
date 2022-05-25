@@ -18,37 +18,10 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="passwordCheсk.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="funkTypeName.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="funkPrinciple.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="GronsfeldDecode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="GronsfeldCode.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="principleOfOperation.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="cryptoTypeSelect.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="encryptionStart.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="inputStrToTxt.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="encryptionCheck.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="uint64_stepen.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="greatestCommonDivisor.cpp">
@@ -72,13 +45,19 @@
     <ClCompile Include="randPrimeSearch.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="checkIfNotANumber.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="VernamCode.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
     <ClCompile Include="VernamDecode.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="programInMain.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="consolOutputInform.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="helpFunc.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -86,31 +65,13 @@
     <ClInclude Include="Header.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="checkIfNotANumber.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="cryptoTypeSelect.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="encryptionCheck.h">
+    <ClInclude Include="programInMain.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="VernamCode.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="VernamDecode.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="encryptionStart.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="funkPrinciple.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="funkTypeName.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="greatestCommonDivisor.h">
@@ -120,15 +81,6 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="GronsfeldDecode.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="inputStrToTxt.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="passwordCheсk.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="principleOfOperation.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="privateExponSearch.h">
@@ -149,7 +101,10 @@
     <ClInclude Include="RSAKeyGeneration.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="uint64_stepen.h">
+    <ClInclude Include="consolOutputInform.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="helpFunc.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -1,11 +1,10 @@
-#include "main.h"
+#include "programInMain.h"
 
 //Main funk
 int main()
 {
 	SetConsoleCP(1251);			//installing the win-cp 1251 code page in the input stream
 	SetConsoleOutputCP(1251);	//installing the win-cp 1251 code page in the output stream
-	setlocale(LC_ALL, "Rus");
 
 	passwordCheñk();
 
