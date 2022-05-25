@@ -3,7 +3,7 @@
 #include <string>
 #include <windows.h>
 
-#define PASSWORD "1337"
+#define PASSWORD "1111"
 
 using namespace std;
 
