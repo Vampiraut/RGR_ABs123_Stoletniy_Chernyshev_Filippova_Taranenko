@@ -205,138 +205,138 @@ int cryptoTypeSelect(int funkType)
 //Conditions for performing encryption for the selected type and principle of operation
 void encryptionStart(int cryptoType, int funkType)
 {
-	switch (cryptoType)
+	switch (Ciphers(cryptoType))
 	{
-	case 1:
-		switch (funkType)
+	case Ciphers::Gronsfeld:
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 			GronsfeldCode(0);
 			break;
-		case 2:
+		case Principle::Decription:
 			GronsfeldDecode(0);
 			break;
 		}
 		break;
-	case 2:
-		switch (funkType)
+	case Ciphers::RSA:
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 			RSAKeyGeneration(0);
 			RSACode();
 			break;
-		case 2:
+		case Principle::Decription:
 			RSAKeyGeneration(1);
 			RSADecode();
 			break;
 		}
 		break;
-	case 3:
-		switch (funkType)
+	case Ciphers::Vigener:
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
-	case 4:
-		switch (funkType)
+	case Ciphers::Vernam:
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 			VernamCode();
 			break;
-		case 2:
+		case Principle::Decription:
 			VernamDecode();
 			break;
 		}
 		break;
 	case 5:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 6:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 7:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 8:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 9:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 10:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 11:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
 		break;
 	case 12:
-		switch (funkType)
+		switch (Principle(funkType))
 		{
-		case 1:
+		case Principle::Encription:
 
 			break;
-		case 2:
+		case Principle::Decription:
 
 			break;
 		}
@@ -387,136 +387,136 @@ void encryptionCheck(int cryptoType, int funkType)
 
 		passwordCheñk();
 		//Conditions for performing encryption for the selected type and principle of operation
-		switch (cryptoType)
+		switch (Ciphers(cryptoType))
 		{
-		case 1:
-			switch (funkType)
+		case Ciphers::Gronsfeld:
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 				GronsfeldDecode(1);
 				break;
-			case 2:
+			case Principle::Decription:
 				GronsfeldCode(1);
 				break;
 			}
 			break;
-		case 2:
-			switch (funkType)
+		case Ciphers::RSA:
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 				RSADecode();
 				break;
-			case 2:
+			case Principle::Decription:
 				RSACode();
 				break;
 			}
 			break;
-		case 3:
-			switch (funkType)
+		case Ciphers::Vigener:
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
-		case 4:
-			switch (funkType)
+		case Ciphers::Vernam:
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 				VernamDecode();
 				break;
-			case 2:
+			case Principle::Decription:
 				VernamCode();
 				break;
 			}
 			break;
 		case 5:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 6:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 7:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 8:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 9:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 10:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 11:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}
 			break;
 		case 12:
-			switch (funkType)
+			switch (Principle(funkType))
 			{
-			case 1:
+			case Principle::Encription:
 
 				break;
-			case 2:
+			case Principle::Decription:
 
 				break;
 			}

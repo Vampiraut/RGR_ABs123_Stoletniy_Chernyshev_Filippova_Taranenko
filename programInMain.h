@@ -8,6 +8,20 @@
 
 using namespace std;
 
+enum Ciphers
+{
+	Gronsfeld = 1,
+	RSA,
+	Vigener,
+	Vernam
+};
+
+enum Principle
+{
+	Encription = 1,
+	Decription
+};
+
 void passwordCheñk();					//Password verification function
 
 void inputStrToTxt();					//Entering a string and saving it to a file or copying and encrypting your file
