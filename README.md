@@ -20,7 +20,7 @@ methods:
 
 2)RSA Cipher; Cipher completion date - March 30;
 
-3)Vigener Cipher;
+3);
 
 4)Vernam Cipher; Cipher completion date - April 15;
 
@@ -28,11 +28,11 @@ methods:
 
 6);
 
-7);
+7)Vigener Cipher;
 
-8);
+8)Binary Cipher;
 
-9);
+9)Morze Cipher;
 
 10);
 
