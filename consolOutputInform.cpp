@@ -23,11 +23,11 @@ void funkTypeName(int cryptoType)
 	case 6:
 		cout << "" << endl;
 		break;
-	case 7:
-		cout << "" << endl;
+	case Ciphers::Atbash:
+		cout << "Atbash Cipher" << endl;
 		break;
-	case 8:
-		cout << "" << endl;
+	case Ciphers::SimpleTablePermutation:
+		cout << "Simple Table Permutation" << endl;
 		break;
 	case 9:
 		cout << "" << endl;

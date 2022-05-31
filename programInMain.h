@@ -17,8 +17,8 @@ enum Ciphers
 	Vernam,
 	SomeCip5,
 	SomeCip6,
-	SomeCip7,
-	SomeCip8,
+	Atbash,
+	SimpleTablePermutation,
 	SomeCip9,
 	Vigener,
 	Binary,
@@ -56,6 +56,18 @@ void RSADecode();								//Decryption with RSA cipher
 
 void VernamDecode();							//Decryption with Vernam cipher
 void VernamCode();								//Encryption with Vernam cipher
+
+
+
+
+
+
+
+void AtbashCode(int);
+void AtbashDecode(int);
+
+void SimpleTablePermutationCode(int);
+void SimpleTablePermutationDecode(int);
 
 
 

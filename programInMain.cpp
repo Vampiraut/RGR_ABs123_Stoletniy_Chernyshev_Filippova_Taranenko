@@ -163,7 +163,7 @@ int cryptoTypeSelect(int funkType)
 	funkPrinciple(funkType);
 	cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 		<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-		<< endl << "<7>" << endl << "<8>" << endl << "<9>"
+		<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
 		<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
 		<< endl << ": ";
 	string strNumType;
@@ -183,7 +183,7 @@ int cryptoTypeSelect(int funkType)
 		cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" or \"6\" or \"7\" or \"8\" or \"9\" or \"10\" or \"11\" or \"12\" only." << endl;
 		cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 			<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-			<< endl << "<7>" << endl << "<8>" << endl << "<9>"
+			<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
 			<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
 			<< endl << ": ";
 		getline(cin, strNumType);
@@ -275,25 +275,25 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case 7:
+	case Ciphers::Atbash:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			AtbashCode(0);
 			break;
 		case Principle::Decription:
-
+			AtbashDecode(0);
 			break;
 		}
 		break;
-	case 8:
+	case Ciphers::SimpleTablePermutation:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			SimpleTablePermutationCode(0);
 			break;
 		case Principle::Decription:
-
+			SimpleTablePermutationDecode(0);
 			break;
 		}
 		break;
@@ -455,25 +455,25 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case 7:
+		case Ciphers::Atbash:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				AtbashDecode(1);
 				break;
 			case Principle::Decription:
-
+				AtbashCode(1);
 				break;
 			}
 			break;
-		case 8:
+		case Ciphers::SimpleTablePermutation:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				SimpleTablePermutationDecode(1);
 				break;
 			case Principle::Decription:
-
+				SimpleTablePermutationCode(1);
 				break;
 			}
 			break;
