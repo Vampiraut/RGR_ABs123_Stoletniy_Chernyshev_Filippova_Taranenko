@@ -80,12 +80,12 @@ void GronsfeldCode(int codeCheck)
 	}
 	cout << "Encrypted string: " << endl;
 
+	int p = -1;
 	while (!fout1.eof())
 	{
 		inputString = "";
 		outputString = "";
 		getline(fout1, inputString);	
-		int p = -1;
 
 		for (int i = 0; inputString[i] != '\0'; i++)                //input string check
 		{

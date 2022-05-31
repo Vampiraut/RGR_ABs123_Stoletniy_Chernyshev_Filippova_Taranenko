@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include <vector>
 
 #define PASSWORD "1111"
 
@@ -12,8 +13,16 @@ enum Ciphers
 {
 	Gronsfeld = 1,
 	RSA,
+	Morse,
+	Vernam,
+	SomeCip5,
+	SomeCip6,
+	SomeCip7,
+	SomeCip8,
+	SomeCip9,
 	Vigener,
-	Vernam
+	Binary,
+	Gibberish
 };
 
 enum Principle
@@ -42,5 +51,20 @@ void RSAKeyGeneration(int);						//Key generation function for RSA encryption
 void RSACode();									//Encryption with RSA cipher
 void RSADecode();								//Decryption with RSA cipher
 
+//void MorseCode();								//Encryption with Morse cipher
+//void MorseDecode();								//Decryption with Morse cipher
+
 void VernamDecode();							//Decryption with Vernam cipher
 void VernamCode();								//Encryption with Vernam cipher
+
+
+
+vector<vector<char>> VigenerMatrixCreate();
+void VigenerCode(vector<vector<char>>, int);	//Encryption with Vigener cipher
+void VigenerDecode(vector<vector<char>>, int);	//Decryption with Vigener cipher
+
+//void BinaryCode();								//Encryption with Binary cipher
+//void BinaryDecode();							//Decryption with Binary cipher
+
+//void GibberishCode();							//Encryption with Gibberish letter
+//void GibberishDecode();							//Decryption with Gibberish letter

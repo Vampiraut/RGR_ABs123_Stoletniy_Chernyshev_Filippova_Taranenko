@@ -3,18 +3,18 @@
 //The function of writing the encryption type
 void funkTypeName(int cryptoType)
 {
-	switch (cryptoType)
+	switch (Ciphers(cryptoType))
 	{
-	case 1:
-		cout << "The Gronsfeld Cipher" << endl;
+	case Ciphers::Gronsfeld:
+		cout << "Gronsfeld Cipher" << endl;
 		break;
-	case 2:
+	case Ciphers::RSA:
 		cout << "RSA Cipher" << endl;
 		break;
-	case 3:
-		cout << "" << endl;
+	case Ciphers::Morse:
+		cout << "Morse Cipher" << endl;
 		break;
-	case 4:
+	case Ciphers::Vernam:
 		cout << "Vernam Ñipher" << endl;
 		break;
 	case 5:
@@ -32,14 +32,14 @@ void funkTypeName(int cryptoType)
 	case 9:
 		cout << "" << endl;
 		break;
-	case 10:
-		cout << "" << endl;
+	case Ciphers::Vigener:
+		cout << "Vigener Cipher" << endl;
 		break;
-	case 11:
-		cout << "" << endl;
+	case Ciphers::Binary:
+		cout << "Binary Cipher" << endl;
 		break;
-	case 12:
-		cout << "" << endl;
+	case Ciphers::Gibberish:
+		cout << "Gibberish letter" << endl;
 		break;
 	}
 }
@@ -47,12 +47,12 @@ void funkTypeName(int cryptoType)
 //The function of writing the principle of action
 void funkPrinciple(int funkType)
 {
-	switch (funkType)
+	switch (Principle(funkType))
 	{
-	case 1:
+	case Principle::Encription:
 		cout << "Encryption" << endl;
 		break;
-	case 2:
+	case Principle::Decription:
 		cout << "Decryption" << endl;
 		break;
 	}

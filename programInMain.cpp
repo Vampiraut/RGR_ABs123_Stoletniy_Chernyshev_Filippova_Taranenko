@@ -161,10 +161,10 @@ int principleOfOperation()
 int cryptoTypeSelect(int funkType)
 {
 	funkPrinciple(funkType);
-	cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>" << endl
+	cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 		<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
 		<< endl << "<7>" << endl << "<8>" << endl << "<9>"
-		<< endl << "<10>" << endl << "<11>" << endl << "<12>"
+		<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
 		<< endl << ": ";
 	string strNumType;
 	getline(cin, strNumType);
@@ -181,10 +181,10 @@ int cryptoTypeSelect(int funkType)
 #endif
 		funkPrinciple(funkType);
 		cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" or \"6\" or \"7\" or \"8\" or \"9\" or \"10\" or \"11\" or \"12\" only." << endl;
-		cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>" << endl
+		cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 			<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
 			<< endl << "<7>" << endl << "<8>" << endl << "<9>"
-			<< endl << "<10>" << endl << "<11>" << endl << "<12>"
+			<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
 			<< endl << ": ";
 		getline(cin, strNumType);
 	}
@@ -231,14 +231,14 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case Ciphers::Vigener:
+	case Ciphers::Morse:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			//MorseCode();
 			break;
 		case Principle::Decription:
-
+			//MorseDecode();
 			break;
 		}
 		break;
@@ -308,36 +308,36 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case 10:
+	case Ciphers::Vigener:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			VigenerCode(VigenerMatrixCreate(), 0);
 			break;
 		case Principle::Decription:
-
+			VigenerDecode(VigenerMatrixCreate(), 0);
 			break;
 		}
 		break;
-	case 11:
+	case Ciphers::Binary:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			//BinaryCode();
 			break;
 		case Principle::Decription:
-
+			//BinaryDecode();
 			break;
 		}
 		break;
-	case 12:
+	case Ciphers::Gibberish:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			//GibberishCode();
 			break;
 		case Principle::Decription:
-
+			//GibberishDecode();
 			break;
 		}
 		break;
@@ -411,14 +411,14 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case Ciphers::Vigener:
+		case Ciphers::Morse:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				//MorseDecode();
 				break;
 			case Principle::Decription:
-
+				//MorseCode();
 				break;
 			}
 			break;
@@ -488,36 +488,36 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case 10:
+		case Ciphers::Vigener:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				VigenerDecode(VigenerMatrixCreate(), 1);
 				break;
 			case Principle::Decription:
-
+				VigenerCode(VigenerMatrixCreate(), 1);
 				break;
 			}
 			break;
-		case 11:
+		case Ciphers::Binary:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				//BinaryDecode();
 				break;
 			case Principle::Decription:
-
+				//BinaryCode();
 				break;
 			}
 			break;
-		case 12:
+		case Ciphers::Gibberish:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				//GibberishDecode();
 				break;
 			case Principle::Decription:
-
+				//GibberishCode();
 				break;
 			}
 			break;
