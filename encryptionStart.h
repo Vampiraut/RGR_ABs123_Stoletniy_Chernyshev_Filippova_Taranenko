@@ -9,3 +9,9 @@ void RSADecode();								//Decryption with RSA cipher
 
 void VernamDecode();							//Decryption with Vernam cipher
 void VernamCode();								//Encryption with Vernam cipher
+
+void SimpleTablePermutationDecode(int);
+void SimpleTablePermutationCode(int);
+
+void AtbashDecode(int);
+void AtbashCode(int);

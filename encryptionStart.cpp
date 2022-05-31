@@ -110,10 +110,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-
+			SimpleTablePermutationCode(0);
 			break;
 		case 2:
-
+			SimpleTablePermutationDecode(0);
 			break;
 		}
 		break;
@@ -121,10 +121,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (funkType)
 		{
 		case 1:
-
+			AtbashCode(0);
 			break;
 		case 2:
-
+			AtbashDecode(0);
 			break;
 		}
 		break;

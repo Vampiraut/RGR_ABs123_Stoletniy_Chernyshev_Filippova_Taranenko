@@ -148,10 +148,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-
+				SimpleTablePermutationDecode(1);
 				break;
 			case 2:
-
+				SimpleTablePermutationCode(1);
 				break;
 			}
 			break;
@@ -159,10 +159,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (funkType)
 			{
 			case 1:
-
+				AtbashCode(1);
 				break;
 			case 2:
-
+				AtbashDecode(1);
 				break;
 			}
 			break;

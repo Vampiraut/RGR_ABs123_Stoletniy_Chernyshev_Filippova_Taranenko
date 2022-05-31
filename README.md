@@ -22,7 +22,7 @@ methods:
 7);
 8);
 9);
-10);
+10)SimpleTablePermutation Cipher;
 11);
 12).
 to be continued

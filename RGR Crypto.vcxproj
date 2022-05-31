@@ -139,6 +139,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AtbashCode.cpp" />
+    <ClCompile Include="AtbashDecode.cpp" />
     <ClCompile Include="checkIfNotANumber.cpp" />
     <ClCompile Include="cryptoTypeSelect.cpp" />
     <ClCompile Include="encryptionCheck.cpp" />
@@ -147,6 +149,8 @@
     <ClCompile Include="greatestCommonDivisor.cpp" />
     <ClCompile Include="GronsfeldCode.cpp" />
     <ClCompile Include="GronsfeldDecode.cpp" />
+    <ClCompile Include="HillCode.cpp" />
+    <ClCompile Include="HillDecode.cpp" />
     <ClCompile Include="inputStrToTxt.cpp" />
     <ClCompile Include="passwordCheсk.cpp" />
     <ClCompile Include="principleOfOperation.cpp" />
@@ -158,11 +162,15 @@
     <ClCompile Include="RSAKeyGeneration.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="encryptionStart.cpp" />
+    <ClCompile Include="SimpleTablePermutationCode.cpp" />
+    <ClCompile Include="SimpleTablePermutationDecode.cpp" />
     <ClCompile Include="uint64_stepen.cpp" />
     <ClCompile Include="VernamCode.cpp" />
     <ClCompile Include="VernamDecode.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AtbashCode.h" />
+    <ClInclude Include="AtbashDecode.h" />
     <ClInclude Include="checkIfNotANumber.h" />
     <ClInclude Include="cryptoTypeSelect.h" />
     <ClInclude Include="encryptionCheck.h" />
@@ -173,6 +181,8 @@
     <ClInclude Include="GronsfeldCode.h" />
     <ClInclude Include="GronsfeldDecode.h" />
     <ClInclude Include="Header.h" />
+    <ClInclude Include="HillCode.h" />
+    <ClInclude Include="HillDecode.h" />
     <ClInclude Include="inputStrToTxt.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="passwordCheсk.h" />
@@ -183,6 +193,8 @@
     <ClInclude Include="RSACode.h" />
     <ClInclude Include="RSADecode.h" />
     <ClInclude Include="RSAKeyGeneration.h" />
+    <ClInclude Include="SimpleTablePermutationCode.h" />
+    <ClInclude Include="SimpleTablePermutationDecode.h" />
     <ClInclude Include="uint64_stepen.h" />
     <ClInclude Include="VernamCode.h" />
     <ClInclude Include="VernamDecode.h" />

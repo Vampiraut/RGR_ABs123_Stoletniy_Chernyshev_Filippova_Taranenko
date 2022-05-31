@@ -7,7 +7,7 @@ int cryptoTypeSelect(int funkType)
 	cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>" << endl
 		<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
 		<< endl << "<7>" << endl << "<8>" << endl << "<9>"
-		<< endl << "<10>" << endl << "<11>" << endl << "<12>"
+		<< endl << "<10>SimpleTablePermutation Cipher" << endl << "<11>Atbash Cipher" << endl << "<12>"
 		<< endl << ": ";
 	string strNumType;
 	getline(cin, strNumType);
@@ -27,7 +27,7 @@ int cryptoTypeSelect(int funkType)
 		cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>" << endl
 			<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
 			<< endl << "<7>" << endl << "<8>" << endl << "<9>"
-			<< endl << "<10>" << endl << "<11>" << endl << "<12>"
+			<< endl << "<10>SimpleTablePermutation Cipher" << endl << "<11>Atbash Cipher" << endl << "<12>"
 			<< endl << ": ";
 		getline(cin, strNumType);
 	}

@@ -33,10 +33,10 @@ void funkTypeName(int cryptoType)
 		cout << "" << endl;
 		break;
 	case 10:
-		cout << "" << endl;
+		cout << "Simple Table Permutation Cipher" << endl;
 		break;
 	case 11:
-		cout << "" << endl;
+		cout << "Atbash Cipher" << endl;
 		break;
 	case 12:
 		cout << "" << endl;
