@@ -6,8 +6,8 @@ int cryptoTypeSelect(int funkType)
 	funkPrinciple(funkType);
 	cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>" << endl
 		<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-		<< endl << "<7>" << endl << "<8>" << endl << "<9>"
-		<< endl << "<10>SimpleTablePermutation Cipher" << endl << "<11>Atbash Cipher" << endl << "<12>"
+		<< endl << "<7>SimpleTablePermutation Cipher" << endl << "<8>Atbash Cipher" << endl << "<9>"
+		<< endl << "<10>" << endl << "<11>" << endl << "<12>"
 		<< endl << ": ";
 	string strNumType;
 	getline(cin, strNumType);
@@ -25,9 +25,9 @@ int cryptoTypeSelect(int funkType)
 		funkPrinciple(funkType);
 		cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" or \"6\" or \"7\" or \"8\" or \"9\" or \"10\" or \"11\" or \"12\" only." << endl;
 		cout << "Select the encryption/decryption type: " << endl << "<1>The Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>" << endl
-			<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-			<< endl << "<7>" << endl << "<8>" << endl << "<9>"
-			<< endl << "<10>SimpleTablePermutation Cipher" << endl << "<11>Atbash Cipher" << endl << "<12>"
+			<< "<4>Vernam Cipher" << endl << "<5>Atbash Cipher" << endl << "<6>"
+			<< endl << "<7>SimpleTablePermutation Cipher" << endl << "<8>" << endl << "<9>"
+			<< endl << "<10>" << endl << "<11>" << endl << "<12>"
 			<< endl << ": ";
 		getline(cin, strNumType);
 	}
