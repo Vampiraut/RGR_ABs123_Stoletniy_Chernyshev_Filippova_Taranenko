@@ -146,6 +146,8 @@
     <ClCompile Include="GronsfeldCode.cpp" />
     <ClCompile Include="GronsfeldDecode.cpp" />
     <ClCompile Include="helpFunc.cpp" />
+    <ClCompile Include="MorseCode.cpp" />
+    <ClCompile Include="MorseDecode.cpp" />
     <ClCompile Include="privateExponSearch.cpp" />
     <ClCompile Include="programInMain.cpp" />
     <ClCompile Include="publicExponSearch.cpp" />
@@ -171,6 +173,8 @@
     <ClInclude Include="GronsfeldDecode.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="helpFunc.h" />
+    <ClInclude Include="MorseCode.h" />
+    <ClInclude Include="MorseDecode.h" />
     <ClInclude Include="programInMain.h" />
     <ClInclude Include="privateExponSearch.h" />
     <ClInclude Include="publicExponSearch.h" />

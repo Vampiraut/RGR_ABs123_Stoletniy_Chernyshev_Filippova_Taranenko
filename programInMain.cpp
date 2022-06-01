@@ -235,10 +235,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-			//MorseCode();
+			MorseCode();
 			break;
 		case Principle::Decription:
-			//MorseDecode();
+			MorseDecode();
 			break;
 		}
 		break;
@@ -415,10 +415,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-				//MorseDecode();
+				MorseDecode();
 				break;
 			case Principle::Decription:
-				//MorseCode();
+				MorseCode();
 				break;
 			}
 			break;

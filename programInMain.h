@@ -51,8 +51,8 @@ void RSAKeyGeneration(int);						//Key generation function for RSA encryption
 void RSACode();									//Encryption with RSA cipher
 void RSADecode();								//Decryption with RSA cipher
 
-//void MorseCode();								//Encryption with Morse cipher
-//void MorseDecode();								//Decryption with Morse cipher
+void MorseCode();								//Encryption with Morse cipher
+void MorseDecode();								//Decryption with Morse cipher
 
 void VernamDecode();							//Decryption with Vernam cipher
 void VernamCode();								//Encryption with Vernam cipher
