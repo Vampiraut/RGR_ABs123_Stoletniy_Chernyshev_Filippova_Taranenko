@@ -57,3 +57,9 @@ void funkPrinciple(int funkType)
 		break;
 	}
 }
+
+/*
+void consolAndFileOutput(string outputString)
+{
+
+}*/

@@ -1,4 +1,6 @@
 #include "programInMain.h"
+#include "Encryption.h"
+#include "Decryption.h"
 
 //Password verification function
 void passwordCheñk()

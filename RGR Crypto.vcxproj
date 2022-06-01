@@ -139,55 +139,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="AtbashCode.cpp" />
-    <ClCompile Include="AtbashDecode.cpp" />
     <ClCompile Include="consolOutputInform.cpp" />
-    <ClCompile Include="greatestCommonDivisor.cpp" />
-    <ClCompile Include="GronsfeldCode.cpp" />
-    <ClCompile Include="GronsfeldDecode.cpp" />
+    <ClCompile Include="Decryption.cpp" />
+    <ClCompile Include="Encryption.cpp" />
     <ClCompile Include="helpFunc.cpp" />
-    <ClCompile Include="MorseCode.cpp" />
-    <ClCompile Include="MorseDecode.cpp" />
-    <ClCompile Include="privateExponSearch.cpp" />
     <ClCompile Include="programInMain.cpp" />
-    <ClCompile Include="publicExponSearch.cpp" />
-    <ClCompile Include="randPrimeSearch.cpp" />
-    <ClCompile Include="RSACode.cpp" />
-    <ClCompile Include="RSADecode.cpp" />
     <ClCompile Include="RSAKeyGeneration.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="SimpleTablePermutationCode.cpp" />
-    <ClCompile Include="SimpleTablePermutationDecode.cpp" />
-    <ClCompile Include="VernamCode.cpp" />
-    <ClCompile Include="VernamDecode.cpp" />
-    <ClCompile Include="VigenerCode.cpp" />
-    <ClCompile Include="VigenerDecode.cpp" />
     <ClCompile Include="VigenerMatrixCreate.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AtbashCode.h" />
-    <ClInclude Include="AtbashDecode.h" />
     <ClInclude Include="consolOutputInform.h" />
-    <ClInclude Include="greatestCommonDivisor.h" />
-    <ClInclude Include="GronsfeldCode.h" />
-    <ClInclude Include="GronsfeldDecode.h" />
+    <ClInclude Include="Decryption.h" />
+    <ClInclude Include="Encryption.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="helpFunc.h" />
-    <ClInclude Include="MorseCode.h" />
-    <ClInclude Include="MorseDecode.h" />
     <ClInclude Include="programInMain.h" />
-    <ClInclude Include="privateExponSearch.h" />
-    <ClInclude Include="publicExponSearch.h" />
-    <ClInclude Include="randPrimeSearch.h" />
-    <ClInclude Include="RSACode.h" />
-    <ClInclude Include="RSADecode.h" />
     <ClInclude Include="RSAKeyGeneration.h" />
-    <ClInclude Include="SimpleTablePermutationCode.h" />
-    <ClInclude Include="SimpleTablePermutationDecode.h" />
-    <ClInclude Include="VernamCode.h" />
-    <ClInclude Include="VernamDecode.h" />
-    <ClInclude Include="VigenerCode.h" />
-    <ClInclude Include="VigenerDecode.h" />
     <ClInclude Include="VigenerMatrixCreate.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
