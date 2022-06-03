@@ -14,6 +14,7 @@ void VernamCode();								//Encryption with Vernam cipher
 void AtbashCode(int);							//Encryption with Atbash cipher
 void SimpleTablePermutationCode(int);			//Encryption with Simple Table Permutation
 void VigenerCode(vector<vector<char>>, int);	//Encryption with Vigener cipher
+void BinaryCode();								//Encryption with Binary cipher
 
 bool checkIfNotANumber(string);					//The function of checking whether the entered string is a number
 

@@ -325,10 +325,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-			//BinaryCode();
+			BinaryCode();
 			break;
 		case Principle::Decription:
-			//BinaryDecode();
+			BinaryDecode();
 			break;
 		}
 		break;
@@ -505,10 +505,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-				//BinaryDecode();
+				BinaryDecode();
 				break;
 			case Principle::Decription:
-				//BinaryCode();
+				BinaryCode();
 				break;
 			}
 			break;

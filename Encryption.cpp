@@ -695,3 +695,53 @@ void VigenerCode(vector<vector<char>> vigenerTable, int codeCheck)
 	system("CLS");
 #endif
 }
+
+//Encryption with Binary cipher
+void BinaryCode()
+{
+	ifstream fout("Some_text.txt");
+	ofstream fin("Str_aft_proc.txt");
+	string inputString = "";
+	string outputString = "";
+
+	funkPrinciple(1);
+	funkTypeName(11);
+
+	cout << "Encrypted string:" << endl;
+	while (!fout.eof())
+	{
+		inputString = "";
+		outputString = "";
+		getline(fout, inputString);
+		int binCod = 0;
+		int mnog = 1;
+
+		for (int i = 0; i < inputString.length(); i++)
+		{
+			binCod = 0;
+			mnog = 1;
+			int simbCod = (int)inputString[i];
+			while (simbCod > 0)
+			{
+				binCod = binCod + ((simbCod % 2) * mnog);
+				mnog *= 10;
+				simbCod /= 2;
+			}
+			outputString += to_string(binCod);
+			outputString += ' ';
+		}
+		fin << outputString;											//output of encrypted string
+		cout << outputString << endl;
+		if (!fout.eof())
+		{
+			fin << endl;
+		}
+	}
+	fout.close();
+	fin.close();
+	cout << endl;
+#ifndef Clear
+	system("PAUSE");
+	system("CLS");
+#endif
+}

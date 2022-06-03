@@ -14,6 +14,7 @@ void VernamDecode();							//Decryption with Vernam cipher
 void AtbashDecode(int);							//Decryption with Atbash cipher
 void SimpleTablePermutationDecode(int);			//Decryption with Simple Table Permutation
 void VigenerDecode(vector<vector<char>>, int);	//Decryption with Vigener cipher
+void BinaryDecode();							//Decryption with Binary cipher
 
 bool checkIfNotANumber(string);			//The function of checking whether the entered string is a number
 
