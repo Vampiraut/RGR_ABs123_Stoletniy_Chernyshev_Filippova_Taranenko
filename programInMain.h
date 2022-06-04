@@ -19,10 +19,10 @@ enum Ciphers
 	Gibberish,
 	Atbash,
 	SimpleTablePermutation,
-	SomeCip9,
+	Shamir,
 	Vigener,
 	Binary,
-	some
+	Hil
 };
 
 enum Principle
@@ -31,7 +31,7 @@ enum Principle
 	Decription
 };
 
-void passwordCheñk();					//Password verification function
+void passwordCheck();					//Password verification function
 
 void inputStrToTxt();					//Entering a string and saving it to a file or copying and encrypting your file
 
@@ -44,13 +44,6 @@ void encryptionCheck(int, int);			//The function of starting the encryption chec
 void funkPrinciple(int);				//The function of writing the encryption type (print in consol what your do(encryption or decription))
 
 
-void RSAKeyGeneration(int);						//Key generation function for RSA encryption
+void ShamirKeygen(int);					//Key generation function for Shamir encryption
+void RSAKeyGeneration(int);				//Key generation function for RSA encryption
 vector<vector<char>> VigenerMatrixCreate();
-
-void ShamirKeygen(int);							//Key generation function for Shamir encryption
-
-//void BinaryCode();								//Encryption with Binary cipher
-//void BinaryDecode();							//Decryption with Binary cipher
-
-//void GibberishCode();							//Encryption with Gibberish letter
-//void GibberishDecode();							//Decryption with Gibberish letter

@@ -369,7 +369,6 @@ void ElGamalCode(){
 #endif
 }
 
-
 //Encryption with Gibberish cipher
 void GibberishCode(){
 	map<char, char> alfavit{ { 'b', 'z' }, { 'c', 'x' }, { 'd', 'w' }, { 'f', 'v' }, { 'g', 't' }, { 'h', 's' }, { 'j', 'r' }, { 'k', 'q' }, { 'l', 'p' }, { 'm', 'n' },
@@ -660,7 +659,7 @@ void SimpleTablePermutationCode(int code) {
 	}
 
 //Encryption with Shamir cipher
-	void ShamirCode() {
+void ShamirCode() {
 		string publicp = "";
 		string publicCa = "";
 		string publicCb = "";

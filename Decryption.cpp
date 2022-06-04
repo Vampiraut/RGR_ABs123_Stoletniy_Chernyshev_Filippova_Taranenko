@@ -336,7 +336,6 @@ void VernamDecode()
 #endif
 }
 
-
 //Decryption with ElGamal cipher
 void ElGamalDecode(){
 	int p = 997;
@@ -387,7 +386,6 @@ void ElGamalDecode(){
 	system("CLS");
 #endif
 }
-
 
 //Decryption with Gibberish cipher
 void GibberishDecode(){

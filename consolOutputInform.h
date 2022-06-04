@@ -16,7 +16,7 @@ enum Ciphers
 	Shamir,
 	Vigener,
 	Binary,
-	some
+	Hil
 };
 
 enum Principle

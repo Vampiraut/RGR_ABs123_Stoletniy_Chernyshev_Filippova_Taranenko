@@ -26,6 +26,7 @@ void BinaryCode();								//Encryption with Binary cipher
 bool checkIfNotANumber(string);					//The function of checking whether the entered string is a number
 int deg(int, int, int);
 int mod(int, int, int);
+int shamir(int, int, int);
 
 void funkTypeName(int);							//The function of writing the principle of action (print in consol what type of encryption your choose)
 void funkPrinciple(int);						//The function of writing the encryption type (print in consol what your do(encryption or decription))

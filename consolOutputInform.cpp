@@ -29,7 +29,7 @@ void funkTypeName(int cryptoType)
 	case Ciphers::SimpleTablePermutation:
 		cout << "Simple Table Permutation Cipher" << endl;
 		break;
-	case Ciphers::Shamir::
+	case Ciphers::Shamir:
 		cout << "Shamir Cipher" << endl;
 		break;
 	case Ciphers::Vigener:
@@ -38,7 +38,7 @@ void funkTypeName(int cryptoType)
 	case Ciphers::Binary:
 		cout << "Binary Cipher" << endl;
 		break;
-	case Ciphers::some:
+	case Ciphers::Hil:
 		cout << "some" << endl;
 		break;
 	}
