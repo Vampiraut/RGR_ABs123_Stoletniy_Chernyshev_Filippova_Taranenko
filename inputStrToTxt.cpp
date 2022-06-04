@@ -8,22 +8,14 @@ void inputStrToTxt()
 	getline(cin, fileCreate);
 	while (fileCreate != "1" && fileCreate != "2")
 	{
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		cout << "Error. Write \"1\" or \"2\" only." << endl;
 		cout << "Do you want to encrypt your file or create a new one?" << endl << "<1>Your file" << endl << "<2>A new file" << endl << ": ";
 		getline(cin, fileCreate);
 	}
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
+
+	
 	if (fileCreate == "1")
 	{
 		cout << "Enter the path to the file (remember, the file must be ANSI or Windows-1251 encoded)" << endl << ": ";
