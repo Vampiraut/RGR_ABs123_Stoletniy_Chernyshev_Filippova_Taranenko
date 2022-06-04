@@ -44,7 +44,7 @@ void RSAKeyGeneration(int mayDecode)
 				}
 				if (!checkIfNotANumber(publicExponStr))
 				{
-					throw runtime_error("You entered \"" + publicExponStr + "\", when a number was expected.\n");
+					throw runtime_error("You entered \"" + publicExponStr + "\", when a number was expected.\nTry again.\n");
 				}
 
 				cout << "Enter private expon" << endl << ": ";
@@ -66,7 +66,7 @@ void RSAKeyGeneration(int mayDecode)
 				}
 				if (!checkIfNotANumber(modulStr))
 				{
-					throw runtime_error("You entered \"" + modulStr + "\", when a number was expected.\n");
+					throw runtime_error("You entered \"" + modulStr + "\", when a number was expected.\nTry again.\n");
 				}
 				isGood = true;
 			}
