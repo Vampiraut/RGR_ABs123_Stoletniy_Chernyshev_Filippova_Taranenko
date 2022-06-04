@@ -10,29 +10,14 @@ void passwordCheñk()
 	getline(cin, password);
 	while (password != PASSWORD)
 	{
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		cout << "Wrong password!" << endl << "Enter password" << endl << ": ";
 		getline(cin, password);
 	}
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
 	cout << "Authorization success!" << endl;;
 	Sleep(500);
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
 }
 
 //Entering a string and saving it to a file or copying and encrypting your file
@@ -43,87 +28,91 @@ void inputStrToTxt()
 	getline(cin, fileCreate);
 	while (fileCreate != "1" && fileCreate != "2")
 	{
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		cout << "Error. Write \"1\" or \"2\" only." << endl;
 		cout << "Do you want to encrypt your file or create a new one?" << endl << "<1>Your file" << endl << "<2>A new file" << endl << ": ";
 		getline(cin, fileCreate);
 	}
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
 	if (fileCreate == "1")
 	{
-		cout << "Enter the path to the file (remember, the file must be ANSI or Windows-1251 encoded)" << endl << ": ";
-		string path = "";
-		getline(cin, path);
 		ofstream fin("Some_text.txt");
-		ifstream fout(path);
-		while (!fout.is_open())
+		ifstream fout;
+		bool isGood = false;
+		string path = "";
+		do
 		{
-#ifndef Clear
-			system("CLS");
-#endif
-#ifdef Clear
-			cout << endl;
-#endif
-			cout << "Unknown file path!" << endl;
 			cout << "Enter the path to the file (remember, the file must be ANSI or Windows-1251 encoded)" << endl << ": ";
 			getline(cin, path);
-			fout.open(path);
-		}
-		string bufer = "";
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			fin << bufer;
-			if (!fout.eof())
+			try
 			{
-				fin << endl;
+				fout.open(path);
+				if (!fout.is_open())
+				{
+					throw runtime_error("Unknown file path!\nTry again.\n");
+				}
+				string bufer = "";
+				while (!fout.eof())
+				{
+					getline(fout, bufer);
+					for (int i = 0; i < bufer.length(); i++)
+					{
+						if ((int)bufer[i] < 32 || (int)bufer[i] > 126)
+						{
+							throw runtime_error("There are excluded characters in the text.\nLatin alphabet characters punctuation marks and special characters are expected!\nTry again.\n");
+						}
+					}
+					fin << bufer;
+					if (!fout.eof())
+					{
+						fin << endl;
+					}
+				}
+				isGood = true;
 			}
-		}
+			catch (const exception& error)
+			{
+				system("CLS");
+				cerr << error.what();
+			}
+		} while (isGood == false);
 		fin.close();
 		fout.close();
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 	}
 	else if (fileCreate == "2")
 	{
+		bool isGood = false;
 		string inputStr = "";
-		cout << "Enter a line for encryption" << endl << ": ";
-		getline(cin, inputStr);
-		while (inputStr == "")
+		do
 		{
-#ifndef Clear
-			system("CLS");
-#endif
-#ifdef Clear
-			cout << endl;
-#endif
-			cout << "An empty string has been entered!" << endl;
 			cout << "Enter a line for encryption" << endl << ": ";
-			getline(cin, inputStr);
-		}
+			try
+			{
+				getline(cin, inputStr);
+				if (inputStr == "")
+				{
+					throw runtime_error("An empty string has been entered!\nTry again.\n");
+				}
+				for (int i = 0; i < inputStr.length(); i++)
+				{
+					if ((int)inputStr[i] < 32 || (int)inputStr[i] > 126)
+					{
+						throw runtime_error("There are excluded characters in the text.\nLatin alphabet characters punctuation marks and special characters are expected!\nTry again.\n");
+					}
+				}
+				isGood = true;
+			}
+			catch (const exception& error)
+			{
+				system("CLS");
+				cerr << error.what();
+			}
+		} while (isGood == false);
 		ofstream fin("Some_text.txt");
 		fin << inputStr;
 		fin.close();
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 	}
 }
 
@@ -137,12 +126,7 @@ int principleOfOperation()
 	//Protection against incorrectly entered operating principle
 	while (strNumPrinciple != "1" && strNumPrinciple != "2")
 	{
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		cout << "Error. Write \"1\" or \"2\" only." << endl;
 		cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
 		getline(cin, strNumPrinciple);
@@ -150,12 +134,7 @@ int principleOfOperation()
 
 	int intNumPrinciple = strNumPrinciple[0] - 48;
 
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
 	return intNumPrinciple;
 }
 
@@ -175,12 +154,7 @@ int cryptoTypeSelect(int funkType)
 	while (strNumType != "1" && strNumType != "2" && strNumType != "3" && strNumType != "4" && strNumType != "5" && strNumType != "6"
 		&& strNumType != "7" && strNumType != "8" && strNumType != "9" && strNumType != "10" && strNumType != "11" && strNumType != "12")
 	{
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		funkPrinciple(funkType);
 		cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" or \"6\" or \"7\" or \"8\" or \"9\" or \"10\" or \"11\" or \"12\" only." << endl;
 		cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
@@ -195,12 +169,7 @@ int cryptoTypeSelect(int funkType)
 	{
 		intNumType = (intNumType * 10) + (strNumType[i] - 48);
 	}
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
 	return intNumType;
 }
 
@@ -354,22 +323,12 @@ void encryptionCheck(int cryptoType, int funkType)
 	getline(cin, codeCheck);
 	while (codeCheck != "1" && codeCheck != "2")
 	{
-#ifndef Clear
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		cout << "Error. Write \"1\" or \"2\" only." << endl;
 		cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";
 		getline(cin, codeCheck);
 	}
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
 	if (codeCheck == "1")
 	{
 		string bufer = "";
@@ -525,8 +484,5 @@ void encryptionCheck(int cryptoType, int funkType)
 			break;
 		}
 	}
-#ifdef Clear
-	system("PAUSE");
-#endif
 	system("CLS");
 }

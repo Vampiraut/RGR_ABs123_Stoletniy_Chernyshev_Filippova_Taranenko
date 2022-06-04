@@ -114,7 +114,7 @@ void GronsfeldCode(int codeCheck)
 				char ASCIICod = j;											//int-dek to ASKII-symbol															
 				if (inputString[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 				{
-					int smena = j + smehenie;									//shift by ASKII table (smehenie (default = 5))
+					int smena = j + smehenie;									//shift by ASKII table
 					for (int h = 127; h < (127 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
 					{
 						if (smena == h)
@@ -138,7 +138,7 @@ void GronsfeldCode(int codeCheck)
 				char ASCIICod = j;											//int-dek to ASKII-symbol
 				if (inputString[i] == ASCIICod)								//comparison of the symbol of the input string and the ASKII character
 				{
-					int smena = j + smehenie;									//shift by ASKII table (smehenie (defalt = 5))
+					int smena = j + smehenie;									//shift by ASKII table
 					for (int h = 256; h < (256 + smehenie); h++)				//exclusion of unreadable characters from the ASKII table module
 					{
 						if (smena == h)
