@@ -11,7 +11,7 @@ void passwordCheñk()
 	while (password != PASSWORD)
 	{
 		system("CLS");
-		cout << "Wrong password!" << endl << "Enter password" << endl << ": ";
+		cout << "Wrong password!" << endl << "Try again." << endl << ": ";
 		getline(cin, password);
 	}
 	system("CLS");
@@ -24,21 +24,37 @@ void passwordCheñk()
 void inputStrToTxt()
 {
 	string fileCreate = "";
-	cout << "Do you want to encrypt your file or create a new one?" << endl << "<1>Your file" << endl << "<2>A new file" << endl << ": ";
-	getline(cin, fileCreate);
-	while (fileCreate != "1" && fileCreate != "2")
+	bool isGood = false;
+	do
 	{
-		system("CLS");
-		cout << "Error. Write \"1\" or \"2\" only." << endl;
-		cout << "Do you want to encrypt your file or create a new one?" << endl << "<1>Your file" << endl << "<2>A new file" << endl << ": ";
-		getline(cin, fileCreate);
-	}
+		try
+		{
+			cout << "Do you want to encrypt your file or create a new one?" << endl << "<1>Your file" << endl << "<2>A new file" << endl << ": ";
+			getline(cin, fileCreate);
+			if (fileCreate == "")
+			{
+				throw runtime_error("An empty string has been entered.\nTry again.\n");
+			}
+			if (fileCreate != "1" && fileCreate != "2")
+			{
+				string err;
+				err = "Invalid input.\nYou have entered \"" + fileCreate + "\", when \"1\" or \"2\" was expected.\nTry again.\n";
+				throw runtime_error(err);
+			}
+			isGood = true;
+		}
+		catch (const std::exception& error)
+		{
+			system("CLS");
+			cerr << error.what();
+		}
+	} while (isGood == false);
 	system("CLS");
 	if (fileCreate == "1")
 	{
 		ofstream fin("Some_text.txt");
 		ifstream fout;
-		bool isGood = false;
+		isGood = false;
 		string path = "";
 		do
 		{
@@ -49,17 +65,21 @@ void inputStrToTxt()
 				fout.open(path);
 				if (!fout.is_open())
 				{
-					throw runtime_error("Unknown file path!\nTry again.\n");
+					throw runtime_error("Unknown file path.\nTry again.\n");
 				}
 				string bufer = "";
 				while (!fout.eof())
 				{
 					getline(fout, bufer);
+					if (bufer == "")
+					{
+						throw runtime_error("The file is empty.\nTry again.\n");
+					}
 					for (int i = 0; i < bufer.length(); i++)
 					{
 						if ((int)bufer[i] < 32 || (int)bufer[i] > 126)
 						{
-							throw runtime_error("There are excluded characters in the text.\nLatin alphabet characters punctuation marks and special characters are expected!\nTry again.\n");
+							throw runtime_error("There are excluded characters in the text.\nLatin alphabet characters punctuation marks and special characters are expected.\nTry again.\n");
 						}
 					}
 					fin << bufer;
@@ -82,7 +102,7 @@ void inputStrToTxt()
 	}
 	else if (fileCreate == "2")
 	{
-		bool isGood = false;
+		isGood = false;
 		string inputStr = "";
 		do
 		{
@@ -92,13 +112,13 @@ void inputStrToTxt()
 				getline(cin, inputStr);
 				if (inputStr == "")
 				{
-					throw runtime_error("An empty string has been entered!\nTry again.\n");
+					throw runtime_error("An empty text has been entered.\nTry again.\n");
 				}
 				for (int i = 0; i < inputStr.length(); i++)
 				{
 					if ((int)inputStr[i] < 32 || (int)inputStr[i] > 126)
 					{
-						throw runtime_error("There are excluded characters in the text.\nLatin alphabet characters punctuation marks and special characters are expected!\nTry again.\n");
+						throw runtime_error("There are excluded characters in the text.\nLatin alphabet characters punctuation marks and special characters are expected.\nTry again.\n");
 					}
 				}
 				isGood = true;
@@ -119,18 +139,33 @@ void inputStrToTxt()
 //Choosing the principle of operation
 int principleOfOperation()
 {
-	cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
 	string strNumPrinciple = "";
-	getline(cin, strNumPrinciple);
-
-	//Protection against incorrectly entered operating principle
-	while (strNumPrinciple != "1" && strNumPrinciple != "2")
+	bool isGood = false;
+	do
 	{
-		system("CLS");
-		cout << "Error. Write \"1\" or \"2\" only." << endl;
+		//Protection against incorrectly entered operating principle
 		cout << "Choose the principle of operation: " << endl << "<1>Encryption" << endl << "<2>Decryption" << endl << ": ";
-		getline(cin, strNumPrinciple);
-	}
+		try
+		{
+			getline(cin, strNumPrinciple);
+			if (strNumPrinciple == "")
+			{
+				throw runtime_error("An empty string has been entered.\nTry again.\n");
+			}
+			if (strNumPrinciple != "1" && strNumPrinciple != "2")
+			{
+				string err;
+				err = "Invalid input.\nYou have entered \"" + strNumPrinciple + "\", when \"1\" or \"2\" was expected.\nTry again.\n";
+				throw runtime_error(err);
+			}
+			isGood = true;
+		}
+		catch (const exception& error)
+		{
+			system("CLS");
+			cerr << error.what();
+		}
+	} while (isGood == false);
 
 	int intNumPrinciple = strNumPrinciple[0] - 48;
 
@@ -142,33 +177,44 @@ int principleOfOperation()
 int cryptoTypeSelect(int funkType)
 {
 	funkPrinciple(funkType);
-	cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
-		<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-		<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
-		<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
-		<< endl << ": ";
-	string strNumType;
-	getline(cin, strNumType);
-
-	//Protection against an incorrectly entered encryption type
-	while (strNumType != "1" && strNumType != "2" && strNumType != "3" && strNumType != "4" && strNumType != "5" && strNumType != "6"
-		&& strNumType != "7" && strNumType != "8" && strNumType != "9" && strNumType != "10" && strNumType != "11" && strNumType != "12")
+	string strNumType = "";
+	bool isGood = false;
+	do
 	{
-		system("CLS");
-		funkPrinciple(funkType);
-		cout << "Error. Write \"1\" or \"2\" or \"3\" or \"4\" or \"5\" or \"6\" or \"7\" or \"8\" or \"9\" or \"10\" or \"11\" or \"12\" only." << endl;
-		cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
-			<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-			<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
-			<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
-			<< endl << ": ";
-		getline(cin, strNumType);
-	}
+		try //Protection against an incorrectly entered encryption type
+		{
+			cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
+				<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
+				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
+				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
+				<< endl << ": ";
+			getline(cin, strNumType);
+			if (strNumType == "")
+			{
+				throw runtime_error("An empty string has been entered.\nTry again.\n");
+			}
+			if (strNumType != "1" && strNumType != "2" && strNumType != "3" && strNumType != "4" && strNumType != "5" && strNumType != "6"
+				&& strNumType != "7" && strNumType != "8" && strNumType != "9" && strNumType != "10" && strNumType != "11" && strNumType != "12")
+			{
+				string err;
+				err = "Invalid input.\nYou have entered \"" + strNumType + "\", when \"1\" or \"2\" or \"3\" or \"4\" or \"5\" or \"6\" or \"7\" or \"8\" or \"9\" or \"10\" or \"11\" or \"12\" was expected.\nTry again.\n";
+				throw runtime_error(err);
+			}
+			isGood = true;
+		}
+		catch (const exception& error)
+		{
+			system("CLS");
+			cerr << error.what();
+		}
+	} while (isGood == false);
+
 	int intNumType = 0;
 	for (int i = 0; strNumType[i] != '\0'; i++)
 	{
 		intNumType = (intNumType * 10) + (strNumType[i] - 48);
 	}
+
 	system("CLS");
 	return intNumType;
 }
@@ -318,16 +364,32 @@ void encryptionStart(int cryptoType, int funkType)
 //The function of starting the encryption check
 void encryptionCheck(int cryptoType, int funkType)
 {
-	cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";
 	string codeCheck = "";
-	getline(cin, codeCheck);
-	while (codeCheck != "1" && codeCheck != "2")
+	bool isGood = false;
+	do
 	{
-		system("CLS");
-		cout << "Error. Write \"1\" or \"2\" only." << endl;
-		cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";
-		getline(cin, codeCheck);
-	}
+		try
+		{
+			cout << "Do you want to check the encryption?" << endl << "<1>Yes" << endl << "<2>No" << endl << ":";
+			getline(cin, codeCheck);
+			if (codeCheck == "")
+			{
+				throw runtime_error("An empty string has been entered.\nTry again.\n");
+			}
+			if (codeCheck != "1" && codeCheck != "2")
+			{
+				string err;
+				err = "Invalid input.\nYou have entered \"" + codeCheck + "\", when \"1\" or \"2\" was expected.\nTry again.\n";
+				throw runtime_error(err);
+			}
+			isGood = true;
+		}
+		catch (const exception& error)
+		{
+			system("CLS");
+			cerr << error.what();
+		}
+	} while (isGood == false);
 	system("CLS");
 	if (codeCheck == "1")
 	{
