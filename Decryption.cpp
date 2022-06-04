@@ -490,46 +490,39 @@ void AtbashDecode(int code) {
 	funkPrinciple(2);
 	funkTypeName(7);
 	cout << "Decryption string: " << endl;
-
-	getline(fout1, inputString);
-	const char seng[27] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' };
-	const char beng[27] = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
-	const char srus[34] = { 'à', 'á', 'â', 'ã', 'ä', 'å', '¸', 'æ', 'ç', 'è', 'é', 'ê', 'ë', 'ì', 'í', 'î', 'ï', 'ð', 'ñ', 'ò', 'ó', 'ô', 'õ', 'ö', '÷', 'ø', 'ù', 'ý', 'þ', 'ÿ' };
-	const char brus[34] = { 'À', 'Á', 'Â', 'Ã', 'Ä', 'Å', '¨', 'Æ', 'Ç', 'È', 'É', 'Ê', 'Ë', 'Ì', 'Í', 'Î', 'Ï', 'Ð', 'Ñ', 'Ò', 'Ó', 'Ô', 'Õ', 'Ö', '×', 'Ø', 'Ù', 'Ý', 'Þ', 'ß' };
-	char c;
-	bool flag;
-	for (int i = 0; inputString[i] != '\0'; i++) {
-		flag = false;
-		for (int j = 0; j < 26; j++) {
-			if (inputString[i] == beng[j]) {
-				c = beng[25 - j];
-				flag = true;
-				outputString += c;
+	while (!fout1.eof()) {
+		vector<char> seng = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' };
+		vector<char> beng = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
+		inputString = "";
+		outputString = "";
+		getline(fout1, inputString);
+		char c;
+		bool flag;
+		for (int i = 0; inputString[i] != '\0'; i++) {
+			flag = false;
+			for (int j = 0; j < beng.size(); j++) {
+				if (inputString[i] == beng[j]) {
+					c = beng[25 - j];
+					flag = true;
+					outputString += c;
+				}
+				if (inputString[i] == seng[j]) {
+					c = seng[25 - j];
+					flag = true;
+					outputString += c;
+				}
 			}
-			if (inputString[i] == seng[j]) {
-				c = seng[25 - j];
-				flag = true;
-				outputString += c;
-			}
-		}
-		for (int j = 0; j < 33; j++) {
-			if (inputString[i] == brus[j]) {
-				c = brus[32 - j];
-				flag = true;
-				outputString += c;
-			}
-			if (inputString[i] == srus[j]) {
-				c = srus[32 - j];
-				flag = true;
-				outputString += c;
+			if (flag == false) {
+				outputString += inputString[i];
 			}
 		}
-		if (flag == false) {
-			outputString += inputString[i];
+		fin2 << outputString;
+		cout << outputString << endl;
+		if (!fout1.eof())
+		{
+			fin2 << endl;
 		}
 	}
-	cout << outputString << endl;
-	fin2 << outputString;
 	fout1.close();
 	fin2.close();
 	cout << endl;
@@ -589,50 +582,153 @@ void SimpleTablePermutationDecode(int code) {
 #endif
 	funkPrinciple(2);
 	funkTypeName(8);
-	getline(fout1, inputString);
+	cout << "Decryption string: " << endl;
+	while (!fout1.eof()) {
+		inputString = "";
+		outputString = "";
+		getline(fout1, inputString);
 
-	int strings = 1;
-	int i, j, rez;
-	for (i = 0; i < inputString.length(); i++)
-	{
-		if (inputString[i] == ' ')
+		int columns = 1;
+		int i, j, rez, count;
+		for (i = 0; i < inputString.length(); i++)
 		{
-			strings++;
-			inputString.erase(i, 1);
-		}
-	}
-	int columns;
-	columns = inputString.length() / strings;
-	char** a = new char* [strings];
-	for (int i = 0; i < strings; ++i)
-		a[i] = new char[columns];
-	rez = 0;
-	for (i = 0; i < columns; i++)
-	{
-		for (j = 0; j < strings; j++)
-		{
-			a[i][j] = inputString[rez];
-			rez++;
-		}
-	}
-	rez = -1;
-	for (i = 0; i < strings; i++)
-	{
-		for (j = 0; j < columns; j++)
-		{
-			rez++;
-			if (rez == columns) {
-				rez = 0;
-				outputString += " ";
+			if (inputString[i] == ' ')
+			{
+				columns++;
+				inputString.erase(i, 1);
 			}
-			outputString += a[j][i];
+		}
+		count = inputString.length();
+		if (columns == 1) {
+			outputString = inputString;
+		}
+		else {
+			int strings;
+			strings = inputString.length() / columns + inputString.length() % columns;
+			char** a = new char* [strings];
+			for (int i = 0; i < strings; ++i)
+				a[i] = new char[columns];
+			rez = 0;
+			for (i = 0; i < strings; i++)
+			{
+				for (j = 0; j < columns; j++)
+				{
+					a[i][j] = '$';
+					rez++;
+				}
+			}
+			rez = 0;
+			for (i = 0; i < strings; i++)
+			{
+				for (j = 0; j < columns; j++)
+				{
+					a[i][j] = inputString[rez];
+					if (rez == count) {
+						break;
+					}
+					rez++;
+				}
+				if (rez == count) {
+					break;
+				}
+			}
+			rez = -1;
+			for (i = 0; i < columns; i++)
+			{
+				for (j = 0; j < strings; j++)
+				{
+					if (a[j][i] != '$') {
+						rez++;
+						if (rez == columns) {
+							rez = 0;
+							outputString += " ";
+						}
+						outputString += a[j][i];
+					}
+				}
+			}
+		}
+		fin2 << outputString;
+		cout << outputString << endl;
+		if (!fout1.eof())
+		{
+			fin2 << endl;
 		}
 	}
-	cout << outputString << endl;
-	fin2 << outputString;
 	fout1.close();
 	fin2.close();
 	cout << endl;
+#ifndef Clear
+	system("PAUSE");
+	system("CLS");
+#endif
+}
+
+//Decryption with Shamir cipher
+void ShamirDecode() {
+	string publicp = "";
+	string publicCa = "";
+	string publicCb = "";
+	string privateDa = "";
+	string privateDb = "";
+	string input = "";
+
+	ifstream fout("Some_text.txt");
+	getline(fout, publicp);
+	getline(fout, publicCa);
+	getline(fout, publicCb);
+	getline(fout, privateDa);
+	getline(fout, privateDb);
+
+	int p = stoi(publicp);
+	int Ca = stoi(publicCa);
+	int Cb = stoi(publicCb);
+	int Da = stoi(privateDa);
+	int Db = stoi(privateDb);
+
+	ofstream fin("Str_aft_proc.txt");
+	fin << p << endl;
+	fin << Ca << endl;
+	fin << Cb << endl;
+	fin << Da << endl;
+	fin << Db << endl;
+	funkPrinciple(2);
+	funkTypeName(9);
+	cout << "Decryption string: " << endl;
+	int bufer = 0;
+	int shag;
+	while (!fout.eof())
+	{
+		getline(fout, input);
+		bufer = 0;
+		for (uint64_t i = 0; i < input.length(); ++i)
+		{
+			if ((input[i] == ' ') || (input[i] == '\0')) {
+				shag = shamir(bufer, Da, p);
+				shag = shamir(shag, Db, p);
+				char out = shag;
+				fin << out;
+				cout << out;
+				bufer = 0;
+			}
+			else {
+				bufer = bufer * 10 + (input[i] - 48);
+			}
+		}
+		shag = shamir(bufer, Da, p);
+		shag = shamir(shag, Db, p);
+		char out = shag;
+		fin << out;
+		cout << out;
+		if (!fout.eof())
+		{
+			cout << '\n';
+			fin << '\n';
+		}
+	}
+	fout.close();
+	fin.close();
+	cout << endl << endl;
 #ifndef Clear
 	system("PAUSE");
 	system("CLS");

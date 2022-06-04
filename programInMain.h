@@ -47,6 +47,8 @@ void funkPrinciple(int);				//The function of writing the encryption type (print
 void RSAKeyGeneration(int);						//Key generation function for RSA encryption
 vector<vector<char>> VigenerMatrixCreate();
 
+void ShamirKeygen(int);							//Key generation function for Shamir encryption
+
 //void BinaryCode();								//Encryption with Binary cipher
 //void BinaryDecode();							//Decryption with Binary cipher
 

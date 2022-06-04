@@ -3,7 +3,7 @@
 #include "Decryption.h"
 
 //Password verification function
-void passwordCheñk()
+void passwordCheÃ±k()
 {
 	string password = "";
 	cout << "Enter password" << endl << ": ";
@@ -185,7 +185,7 @@ int cryptoTypeSelect(int funkType)
 		{
 			cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 				<< "<4>Vernam Cipher" << endl << "<5>ElGamal Cipher" << endl << "<6>Gibberish letter"
-				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
+				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>Shamir Cipher"
 				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>"
 				<< endl << ": ";
 			getline(cin, strNumType);
@@ -314,14 +314,16 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case 9:
+	case Ciphers::Shamir:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			ShamirKeygen(0);
+			ShamirCode();
 			break;
 		case Principle::Decription:
-
+			ShamirKeygen(1);
+			ShamirDecode();
 			break;
 		}
 		break;
@@ -394,7 +396,7 @@ void encryptionCheck(int cryptoType, int funkType)
 	if (codeCheck == "1")
 	{
 		string bufer = "";
-		ofstream fin("Some_text.txt");   //if - ÷òåíèå, of - çàïèñü
+		ofstream fin("Some_text.txt");   //if - Ã·Ã²Ã¥Ã­Ã¨Ã¥, of - Ã§Ã Ã¯Ã¨Ã±Ã¼
 		ifstream fout("Str_aft_proc.txt");
 		while (!fout.eof())
 		{
@@ -408,7 +410,7 @@ void encryptionCheck(int cryptoType, int funkType)
 		fin.close();
 		fout.close();
 
-		passwordCheñk();
+		passwordCheÃ±k();
 		//Conditions for performing encryption for the selected type and principle of operation
 		switch (Ciphers(cryptoType))
 		{
@@ -500,14 +502,14 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case 9:
+		case Ciphers::Shamir:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				ShamirDecode();
 				break;
 			case Principle::Decription:
-
+				ShamirCode();
 				break;
 			}
 			break;

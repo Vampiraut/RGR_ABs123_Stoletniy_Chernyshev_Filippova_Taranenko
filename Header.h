@@ -48,3 +48,20 @@ void RSADecode();												//Decryption with the Gronsfeld cipher
 
 void VernamDecode();
 void VernamCode();
+
+void AtbashCode(int);											//Encryption with the Atbash cipher
+void AtbashDecode(int);											//Decryption with the Atbash cipher
+
+void SimpleTablePermutationCode(int);							//Encryption with the SimpleTablePermutation cipher
+void SimpleTablePermutationDecode(int);							//Decryption with the SimpleTablePermutation cipher
+
+//Shamir encryption components
+int shamir(int, int, int);										//
+int gcd(int, int);												//
+int Extendedgcd(int, int, int&, int&);							//
+bool simplenumberFerma(long long);								//
+void ShamirKeygen(int);											//Key generation function for Shamir encryption
+//
+
+void ShamirCode();												//Encryption with the Shamir cipher
+void ShamirDecode()												//Decryption with the Shamir cipher
