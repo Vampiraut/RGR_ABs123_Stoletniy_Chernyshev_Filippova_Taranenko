@@ -13,6 +13,7 @@ void MorseDecode();								//Decryption with Morse cipher
 void VernamDecode();							//Decryption with Vernam cipher
 void AtbashDecode(int);							//Decryption with Atbash cipher
 void SimpleTablePermutationDecode(int);			//Decryption with Simple Table Permutation
+void ShamirDecode();							//Decryption with Shamir cipher
 void VigenerDecode(vector<vector<char>>, int);	//Decryption with Vigener cipher
 void BinaryDecode();							//Decryption with Binary cipher
 

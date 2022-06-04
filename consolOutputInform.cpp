@@ -27,10 +27,10 @@ void funkTypeName(int cryptoType)
 		cout << "Atbash Cipher" << endl;
 		break;
 	case Ciphers::SimpleTablePermutation:
-		cout << "Simple Table Permutation" << endl;
+		cout << "Simple Table Permutation Cipher" << endl;
 		break;
-	case 9:
-		cout << "" << endl;
+	case Ciphers::Shamir::
+		cout << "Shamir Cipher" << endl;
 		break;
 	case Ciphers::Vigener:
 		cout << "Vigener Cipher" << endl;

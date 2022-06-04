@@ -13,7 +13,7 @@ enum Ciphers
 	SomeCip6,
 	Atbash,
 	SimpleTablePermutation,
-	SomeCip9,
+	Shamir,
 	Vigener,
 	Binary,
 	Gibberish

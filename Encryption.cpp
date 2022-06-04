@@ -377,46 +377,39 @@ void AtbashCode(int code) {
 	funkPrinciple(1);
 	funkTypeName(7);
 	cout << "Encrypted string: " << endl;
-
-	getline(fout1, inputString);
-	const char seng[27] = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' };
-	const char beng[27] = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
-	const char srus[34] = { 'а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'э', 'ю', 'я' };
-	const char brus[34] = { 'А', 'Б', 'В', 'Г', 'Д', 'Е', 'Ё', 'Ж', 'З', 'И', 'Й', 'К', 'Л', 'М', 'Н', 'О', 'П', 'Р', 'С', 'Т', 'У', 'Ф', 'Х', 'Ц', 'Ч', 'Ш', 'Щ', 'Э', 'Ю', 'Я' };
-	char c;
-	bool flag;
-	for (int i = 0; inputString[i] != '\0'; i++) {
-		flag = false;
-		for (int j = 0; j < 26; j++) {
-			if (inputString[i] == beng[j]) {
-				c = beng[25 - j];
-				flag = true;
-				outputString += c;
+	while (!fout1.eof()) {
+		inputString = "";
+		outputString = "";
+		getline(fout1, inputString);
+		vector<char> seng = { 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z' };
+		vector<char> beng = { 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z' };
+		char c;
+		bool flag;
+		for (int i = 0; inputString[i] != '\0'; i++) {
+			flag = false;
+			for (int j = 0; j < beng.size(); j++) {
+				if (inputString[i] == beng[j]) {
+					c = beng[25 - j];
+					flag = true;
+					outputString += c;
+				}
+				if (inputString[i] == seng[j]) {
+					c = seng[25 - j];
+					flag = true;
+					outputString += c;
+				}
 			}
-			if (inputString[i] == seng[j]) {
-				c = seng[25 - j];
-				flag = true;
-				outputString += c;
-			}
-		}
-		for (int j = 0; j < 33; j++) {
-			if (inputString[i] == brus[j]) {
-				c = brus[32 - j];
-				flag = true;
-				outputString += c;
-			}
-			if (inputString[i] == srus[j]) {
-				c = srus[32 - j];
-				flag = true;
-				outputString += c;
+			if (flag == false) {
+				outputString += inputString[i];
 			}
 		}
-		if (flag == false) {
-			outputString += inputString[i];
+		fin2 << outputString;
+		cout << outputString << endl;
+		if (!fout1.eof())
+		{
+			fin2 << endl;
 		}
 	}
-	cout << outputString << endl;
-	fin2 << outputString;
 	fout1.close();
 	fin2.close();
 	cout << endl;
@@ -445,47 +438,8 @@ void SimpleTablePermutationCode(int code) {
 		fout.close();
 		promeg.close();
 
-		string someKey1 = "";
-		string someKey2 = "";
-		cout << "Enter the KEY1" << endl << ":";
-		getline(cin, someKey1);
-		cout << endl;
-
-		bool isNumber = checkIfNotANumber(someKey1);
-		while (isNumber != true)
-		{
-#ifndef Clear
-			system("CLS");
-#endif
-#ifdef Clear
-			cout << endl;
-#endif
-			cout << "Wrong KEY!" << endl << "Enter the KEY1" << endl << ":";
-			getline(cin, someKey1);
-			isNumber = checkIfNotANumber(someKey1);
-		}
-
-		cout << "Enter the KEY2" << endl << ":";
-		getline(cin, someKey2);
-
-		isNumber = checkIfNotANumber(someKey2);
-		while (isNumber != true)
-		{
-#ifndef Clear
-			system("CLS");
-#endif
-#ifdef Clear
-			cout << endl;
-#endif
-			cout << "Wrong KEY!" << endl << "Enter the KEY2" << endl << ":";
-			getline(cin, someKey2);
-			isNumber = checkIfNotANumber(someKey2);
-		}
-
 		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
 		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		fin << someKey1 << endl;
-		fin << someKey2 << endl;
 		while (!promegCopy.eof())
 		{
 			getline(promegCopy, bufer);
@@ -508,57 +462,100 @@ void SimpleTablePermutationCode(int code) {
 	string inputString = "";
 	string outputString = "";
 	bool isEnd = false;                                                   //cheсk-flag for continue
-	string Sstrings = "";
-	string Scolumns = "";
 
 	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
-	getline(fout1, Sstrings);
-	getline(fout1, Scolumns);
 	ofstream fin2("Str_aft_proc.txt");
 #ifndef Clear
 	system("CLS");
 #endif
 	funkPrinciple(1);
 	funkTypeName(8);
-	int columns = stoi(Scolumns);
-	int strings = stoi(Sstrings);
-	getline(fout1, inputString);
-	int i, j, rez;
-	for (i = 0; inputString[i] != '\0'; i++)
-	{
-		if (inputString[i] == ' ')
+	cout << "Encrypted string: " << endl;
+	while (!fout1.eof()) {
+		inputString = "";
+		outputString = "";
+		getline(fout1, inputString);
+
+		int strings = 1;
+		int i, j, rez, count;
+		for (i = 0; i < inputString.length(); i++)
 		{
-			inputString.erase(i, 1);
-		}
-	}
-	char** a = new char* [strings];
-	for (int i = 0; i < strings; ++i)
-		a[i] = new char[columns];
-	rez = 0;
-	for (i = 0; i < columns; i++)
-	{
-		for (j = 0; j < strings; j++)
-		{
-			a[j][i] = inputString[rez];
-			rez++;
-		}
-	}
-	rez = -1;
-	for (i = 0; i < strings; i++)
-	{
-		for (j = 0; j < columns; j++)
-		{
-			rez++;
-			if (rez == strings)
+			if (inputString[i] == ' ')
 			{
-				rez = 0;
-				outputString += " ";
+				strings++;
+				inputString.erase(i, 1);
 			}
-			outputString += a[i][j];
 		}
-	}
-	cout << outputString << endl;
-	fin2 << outputString;
+		count = inputString.length();
+		if (strings == 1) {
+			outputString = inputString;
+		}
+		else {
+			int columns = inputString.length() / strings;
+			if (inputString.length() % strings != 0) {
+				columns++;
+			}
+			int i, j, rez;
+			char** a = new char* [strings];
+			for (int i = 0; i < strings; ++i)
+				a[i] = new char[columns];
+			rez = 0;
+			for (i = 0; i < strings; i++)
+			{
+				for (j = 0; j < columns; j++)
+				{
+					a[i][j] = '$';
+					rez++;
+				}
+			}
+			rez = 0;
+			for (i = 0; i < columns; i++)
+			{
+				for (j = 0; j < strings; j++)
+				{
+					a[j][i] = ' ';
+					rez++;
+				}
+			}
+			rez = 0;
+			for (i = 0; i < columns; i++)
+			{
+				for (j = 0; j < strings; j++)
+				{
+					a[j][i] = inputString[rez];
+					if (rez == count) {
+						break;
+					}
+					rez++;
+				}
+				if (rez == count) {
+					break;
+				}
+			}
+			rez = -1;
+			for (i = 0; i < strings; i++)
+			{
+				for (j = 0; j < columns; j++)
+				{
+					if (a[i][j] != '$') {
+						rez++;
+						if (rez == strings)
+						{
+							rez = 0;
+							outputString += " ";
+						}
+						outputString += a[i][j];
+					}
+				}
+			}
+			}
+		fin2 << outputString;
+		cout << outputString << endl;
+		if (!fout1.eof())
+		{
+			fin2 << endl;
+		}
+		}
 	fout1.close();
 	fin2.close();
 	cout << endl;
@@ -566,7 +563,66 @@ void SimpleTablePermutationCode(int code) {
 	system("PAUSE");
 	system("CLS");
 #endif
-}
+	}
+
+//Encryption with Shamir cipher
+	void ShamirCode() {
+		string publicp = "";
+		string publicCa = "";
+		string publicCb = "";
+		string privateDa = "";
+		string privateDb = "";
+		string input = "";
+
+		ifstream fout("Some_text.txt");
+		getline(fout, publicp);
+		getline(fout, publicCa);
+		getline(fout, publicCb);
+		getline(fout, privateDa);
+		getline(fout, privateDb);
+
+		int p = stoi(publicp);
+		int Ca = stoi(publicCa);
+		int Cb = stoi(publicCb);
+		int Da = stoi(privateDa);
+		int Db = stoi(privateDb);
+
+		ofstream fin("Str_aft_proc.txt");
+		fin << p << endl;
+		fin << Ca << endl;
+		fin << Cb << endl;
+		fin << Da << endl;
+		fin << Db << endl;
+		funkPrinciple(1);
+		funkTypeName(9);
+		cout << "Encryption string: " << endl;
+
+		while (!fout.eof())
+		{
+			getline(fout, input);
+			for (int i = 0; input[i] != '\0'; i++)
+			{
+				int el = input[i];
+				int shag;
+				shag = shamir(el, Ca, p);
+				shag = shamir(shag, Cb, p);
+				fin << shag << ' ';
+				cout << shag << ' ';
+			}
+			if (!fout.eof())
+			{
+				cout << '\n';
+				fin << '\n';
+			}
+		}
+		fout.close();
+		fin.close();
+		cout << endl << endl;
+#ifndef Clear
+		system("PAUSE");
+		system("CLS");
+#endif
+	}
 
 //Encryption with Vigener cipher
 void VigenerCode(vector<vector<char>> vigenerTable, int codeCheck)

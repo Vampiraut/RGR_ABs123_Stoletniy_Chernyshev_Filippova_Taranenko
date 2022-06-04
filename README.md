@@ -6,7 +6,7 @@ Group:      ABs-123
 Made by:    Stoletniy Semyon,
             Chernyshev Pavel,
             Filippova Alena,
-            Taranenko Alexander.
+            Taranenko Aleksandr.
 
 Project start
 date:       February 15, 2022
@@ -32,7 +32,7 @@ methods:
 
 8)Simple Table Permutation; Cipher completion date - May 27;
 
-9);
+9)Shamir Cipher; Cipher completion date - June 4;
 
 10)Vigener Cipher; Cipher completion date - May 30;
 

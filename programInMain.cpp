@@ -185,7 +185,7 @@ int cryptoTypeSelect(int funkType)
 		{
 			cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 				<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
+				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation Cipher" << endl << "<9>Shamir Cipher"
 				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
 				<< endl << ": ";
 			getline(cin, strNumType);
@@ -314,14 +314,16 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case 9:
+	case Ciphers::Shamir:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			ShamirKeygen(0);
+			ShamirCode();
 			break;
 		case Principle::Decription:
-
+			ShamirKeygen(1);
+			ShamirDecode();
 			break;
 		}
 		break;
@@ -500,14 +502,14 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case 9:
+		case Ciphers::Shamir:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				ShamirDecode();
 				break;
 			case Principle::Decription:
-
+				ShamirCode();
 				break;
 			}
 			break;

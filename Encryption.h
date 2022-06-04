@@ -13,6 +13,7 @@ void MorseCode();								//Encryption with Morse cipher
 void VernamCode();								//Encryption with Vernam cipher
 void AtbashCode(int);							//Encryption with Atbash cipher
 void SimpleTablePermutationCode(int);			//Encryption with Simple Table Permutation
+void ShamirCode();								//Encryption with Shamir cipher
 void VigenerCode(vector<vector<char>>, int);	//Encryption with Vigener cipher
 void BinaryCode();								//Encryption with Binary cipher
 
