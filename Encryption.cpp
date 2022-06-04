@@ -300,7 +300,7 @@ void VernamCode()
 		int i = 0;
 		for (i = 0; oStr[i] != '\0'; i++)
 		{
-			key += (char)(rand() % 127);
+			key += (char)(32 + rand() % (126 - 32 + 1));
 		}
 
 		string shStr = "";
@@ -313,6 +313,100 @@ void VernamCode()
 		cout << shStr << endl;
 		if (!fout.eof())
 		{
+			fin << endl;
+		}
+	}
+	fout.close();
+	fin.close();
+	cout << endl;
+#ifndef Clear
+	system("PAUSE");
+	system("CLS");
+#endif
+}
+
+//Encryption with ElGamal cipher
+void ElGamalCode(){
+	int p = 997;
+	int g = 840;
+	int x = 581;
+
+	ifstream fout("Some_text.txt");
+	ofstream fin("Str_aft_proc.txt");
+
+	funkPrinciple(1);
+	funkTypeName(5);
+
+	int y = deg(g, x, p);
+	cout << "Encrypted string:" << endl;
+	while (!fout.eof()){
+		string shStr = "";
+		string oStr = "";
+		getline(fout, oStr);
+		int m = 1;
+		int i = 0;
+		while (1){
+			m = oStr[i];
+			if (m == 0){ break; }
+			int k = rand() % (p - 2) + 1; // 1 < k < (p-1)
+			int a = deg(g, k, p);
+			int b = mod(deg(y, k, p), m, p);
+			shStr += to_string(a) + " " + to_string(b) + " ";
+			i++;
+		}
+		fin << shStr;
+		cout << shStr << endl;
+		if (!fout.eof()){
+			fin << endl;
+		}
+	}
+	fout.close();
+	fin.close();
+	cout << endl;
+#ifndef Clear
+	system("PAUSE");
+	system("CLS");
+#endif
+}
+
+
+//Encryption with Gibberish cipher
+void GibberishCode(){
+	map<char, char> alfavit{ { 'b', 'z' }, { 'c', 'x' }, { 'd', 'w' }, { 'f', 'v' }, { 'g', 't' }, { 'h', 's' }, { 'j', 'r' }, { 'k', 'q' }, { 'l', 'p' }, { 'm', 'n' },
+	{ 'z', 'b' }, { 'x', 'c' }, { 'w', 'd' }, { 'v', 'f' }, { 't', 'g' }, { 's', 'h' }, { 'r', 'j' }, { 'q', 'k' }, { 'p', 'l' }, { 'n', 'm' },
+	{ 'B', 'Z' }, { 'C', 'X' }, { 'D', 'W' }, { 'F', 'V' }, { 'G', 'T' }, { 'H', 'S' }, { 'J', 'R' }, { 'K', 'Q' }, { 'L', 'P' }, { 'M', 'N' },
+	{ 'Z', 'B' }, { 'X', 'C' }, { 'W', 'D' }, { 'V', 'F' }, { 'T', 'G' }, { 'S', 'H' }, { 'R', 'J' }, { 'Q', 'K' }, { 'P', 'L' }, { 'N', 'M' },
+	{ 'a', 'o' }, { 'e', 'u' }, { 'i', 'y' }, { 'o', 'a' }, { 'u', 'e' }, { 'y', 'i' },
+	{ 'A', 'O' }, { 'E', 'U' }, { 'I', 'Y' }, { 'O', 'A' }, { 'U', 'E' }, { 'Y', 'I' } };
+
+
+	ifstream fout("Some_text.txt");
+	ofstream fin("Str_aft_proc.txt");
+
+
+	funkPrinciple(1);
+	funkTypeName(6);
+
+	cout << "Encrypted string:" << endl;
+	while (!fout.eof()){
+		string oStr = "";
+		getline(fout, oStr);
+
+		string shStr = "";
+
+		for (int i = 0; oStr[i] != '\0'; i++){
+			if ((oStr[i] >= 'a' && oStr[i] <= 'z') || (oStr[i] >= 'A' && oStr[i] <= 'Z')){
+				auto it = alfavit.find(oStr[i]);
+				shStr += it->second;
+			}
+			else{
+				shStr += oStr[i];
+			}
+		}
+
+		fin << shStr;
+		cout << shStr << endl;
+		if (!fout.eof()){
 			fin << endl;
 		}
 	}

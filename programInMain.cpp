@@ -3,7 +3,7 @@
 #include "Decryption.h"
 
 //Password verification function
-void passwordCheñk()
+void passwordCheÃ±k()
 {
 	string password = "";
 	cout << "Enter password" << endl << ": ";
@@ -184,9 +184,9 @@ int cryptoTypeSelect(int funkType)
 		try //Protection against an incorrectly entered encryption type
 		{
 			cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
-				<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
-				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation Cipher" << endl << "<9>Shamir Cipher"
-				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
+				<< "<4>Vernam Cipher" << endl << "<5>ElGamal Cipher" << endl << "<6>Gibberish letter"
+				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>Shamir Cipher"
+				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>"
 				<< endl << ": ";
 			getline(cin, strNumType);
 			if (strNumType == "")
@@ -270,25 +270,25 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case 5:
+	case Ciphers::ElGamal:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			ElGamalCode();
 			break;
 		case Principle::Decription:
-
+			ElGamalDecode();
 			break;
 		}
 		break;
-	case 6:
+	case Ciphers::Gibberish:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			GibberishCode();
 			break;
 		case Principle::Decription:
-
+			GibberishDecode();
 			break;
 		}
 		break;
@@ -349,14 +349,14 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case Ciphers::Gibberish:
+	case Ciphers::some:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-			//GibberishCode();
+			
 			break;
 		case Principle::Decription:
-			//GibberishDecode();
+
 			break;
 		}
 		break;
@@ -396,7 +396,7 @@ void encryptionCheck(int cryptoType, int funkType)
 	if (codeCheck == "1")
 	{
 		string bufer = "";
-		ofstream fin("Some_text.txt");   //if - ÷òåíèå, of - çàïèñü
+		ofstream fin("Some_text.txt");   //if - Ã·Ã²Ã¥Ã­Ã¨Ã¥, of - Ã§Ã Ã¯Ã¨Ã±Ã¼
 		ifstream fout("Str_aft_proc.txt");
 		while (!fout.eof())
 		{
@@ -410,7 +410,7 @@ void encryptionCheck(int cryptoType, int funkType)
 		fin.close();
 		fout.close();
 
-		passwordCheñk();
+		passwordCheÃ±k();
 		//Conditions for performing encryption for the selected type and principle of operation
 		switch (Ciphers(cryptoType))
 		{
@@ -458,25 +458,25 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case 5:
+		case Ciphers::ElGamal:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				ElGamalDecode();
 				break;
 			case Principle::Decription:
-
+				ElGamalCode();
 				break;
 			}
 			break;
-		case 6:
+		case Ciphers::Gibberish:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				GibberishDecode();
 				break;
 			case Principle::Decription:
-
+				GibberishCode();
 				break;
 			}
 			break;
@@ -535,14 +535,14 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case Ciphers::Gibberish:
+		case Ciphers::some:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-				//GibberishDecode();
+
 				break;
 			case Principle::Decription:
-				//GibberishCode();
+
 				break;
 			}
 			break;

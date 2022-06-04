@@ -17,11 +17,11 @@ void funkTypeName(int cryptoType)
 	case Ciphers::Vernam:
 		cout << "Vernam Ñipher" << endl;
 		break;
-	case 5:
-		cout << "" << endl;
+	case Ciphers::ElGamal:
+		cout << "ElGamal cipher" << endl;
 		break;
-	case 6:
-		cout << "" << endl;
+	case Ciphers::Gibberish:
+		cout << "Gibberish letter" << endl;
 		break;
 	case Ciphers::Atbash:
 		cout << "Atbash Cipher" << endl;
@@ -38,8 +38,8 @@ void funkTypeName(int cryptoType)
 	case Ciphers::Binary:
 		cout << "Binary Cipher" << endl;
 		break;
-	case Ciphers::Gibberish:
-		cout << "Gibberish letter" << endl;
+	case Ciphers::some:
+		cout << "some" << endl;
 		break;
 	}
 }
@@ -57,9 +57,3 @@ void funkPrinciple(int funkType)
 		break;
 	}
 }
-
-/*
-void consolAndFileOutput(string outputString)
-{
-
-}*/
