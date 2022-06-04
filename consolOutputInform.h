@@ -9,14 +9,14 @@ enum Ciphers
 	RSA,
 	Morse,
 	Vernam,
-	SomeCip5,
-	SomeCip6,
+	ElGamal,
+	Gibberish,
 	Atbash,
 	SimpleTablePermutation,
 	SomeCip9,
 	Vigener,
 	Binary,
-	Gibberish
+	some
 };
 
 enum Principle

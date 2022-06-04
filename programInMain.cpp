@@ -184,9 +184,9 @@ int cryptoTypeSelect(int funkType)
 		try //Protection against an incorrectly entered encryption type
 		{
 			cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
-				<< "<4>Vernam Cipher" << endl << "<5>" << endl << "<6>"
+				<< "<4>Vernam Cipher" << endl << "<5>ElGamal Cipher" << endl << "<6>Gibberish letter"
 				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>"
-				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Gibberish letter"
+				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>"
 				<< endl << ": ";
 			getline(cin, strNumType);
 			if (strNumType == "")
@@ -270,25 +270,25 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case 5:
+	case Ciphers::ElGamal:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			ElGamalCode();
 			break;
 		case Principle::Decription:
-
+			ElGamalDecode();
 			break;
 		}
 		break;
-	case 6:
+	case Ciphers::Gibberish:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-
+			GibberishCode();
 			break;
 		case Principle::Decription:
-
+			GibberishDecode();
 			break;
 		}
 		break;
@@ -347,14 +347,14 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case Ciphers::Gibberish:
+	case Ciphers::some:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-			//GibberishCode();
+			
 			break;
 		case Principle::Decription:
-			//GibberishDecode();
+
 			break;
 		}
 		break;
@@ -456,25 +456,25 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case 5:
+		case Ciphers::ElGamal:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				ElGamalDecode();
 				break;
 			case Principle::Decription:
-
+				ElGamalCode();
 				break;
 			}
 			break;
-		case 6:
+		case Ciphers::Gibberish:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				GibberishDecode();
 				break;
 			case Principle::Decription:
-
+				GibberishCode();
 				break;
 			}
 			break;
@@ -533,14 +533,14 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case Ciphers::Gibberish:
+		case Ciphers::some:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-				//GibberishDecode();
+
 				break;
 			case Principle::Decription:
-				//GibberishCode();
+
 				break;
 			}
 			break;
