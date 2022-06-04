@@ -24,9 +24,9 @@ methods:
 
 4)Vernam Cipher; Cipher completion date - April 15;
 
-5);
+5)The El Gamal Cipher; Cipher completion date - May 30;
 
-6);
+6)Gibberish letter; Cipher completion date - May 31;
 
 7)Atbash Cipher; Cipher completion date - May 15;
 
@@ -38,4 +38,4 @@ methods:
 
 11)Binary Cipher;
 
-12)Morze Cipher;
+12)
