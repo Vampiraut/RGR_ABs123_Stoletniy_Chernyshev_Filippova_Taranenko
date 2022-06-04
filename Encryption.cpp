@@ -220,8 +220,8 @@ void RSACode()
 			{
 				smenaASKII = (smenaASKII * charASKII) % modul;
 			}
-			fin << smenaASKII << 'Î';
-			cout << smenaASKII << 'Î';
+			fin << smenaASKII << 'O';
+			cout << smenaASKII << 'O';
 		}
 		if (!fout.eof())
 		{

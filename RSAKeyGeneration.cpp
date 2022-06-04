@@ -30,18 +30,53 @@ void RSAKeyGeneration(int mayDecode)
 	}
 	else if (mayDecode == 1)
 	{
-		cout << "Enter public expon" << endl << ": ";
-		getline(cin, publicExponStr);
-		cout << "Enter private expon" << endl << ": ";
-		getline(cin, privateExponStr);
-		cout << "Enter module" << endl << ": ";
-		getline(cin, modulStr);
-#ifndef Clear
+		bool isGood = false;
+		do
+		{
+			publicExponStr = "", privateExponStr = "", modulStr = "";
+			try
+			{
+				cout << "Enter public expon" << endl << ": ";
+				getline(cin, publicExponStr);
+				if (publicExponStr == "")
+				{
+					throw runtime_error("An empty string has been entered.\nTry again.\n");
+				}
+				if (!checkIfNotANumber(publicExponStr))
+				{
+					throw runtime_error("You entered \"" + publicExponStr + "\", when a number was expected.\n");
+				}
+
+				cout << "Enter private expon" << endl << ": ";
+				getline(cin, privateExponStr);
+				if (privateExponStr == "")
+				{
+					throw runtime_error("An empty string has been entered.\nTry again.\n");
+				}
+				if (!checkIfNotANumber(privateExponStr))
+				{
+					throw runtime_error("You entered \"" + privateExponStr + "\", when a number was expected.\nTry again.\n");
+				}
+
+				cout << "Enter module" << endl << ": ";
+				getline(cin, modulStr);
+				if (modulStr == "")
+				{
+					throw runtime_error("An empty string has been entered.\nTry again.\n");
+				}
+				if (!checkIfNotANumber(modulStr))
+				{
+					throw runtime_error("You entered \"" + modulStr + "\", when a number was expected.\n");
+				}
+				isGood = true;
+			}
+			catch (const std::exception& error)
+			{
+				system("CLS");
+				cerr << error.what();
+			}
+		} while (isGood == false);
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 		cout << "PUBLIC KEY: {" << publicExponStr << "," << modulStr << "}" << endl;
 		cout << "PRIVATE KEY: {" << privateExponStr << "," << modulStr << "}" << endl;
 	}
@@ -87,10 +122,8 @@ void RSAKeyGeneration(int mayDecode)
 	fin.close();
 	promegCopy.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Random prime number generation function (Erastophene sieve)
@@ -99,43 +132,53 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 	srand(time(0));
 	bool isNumber = false;
 	string memoryBitStr = "";
-	while ((isNumber == false) || (memoryBit < 3 || memoryBit > 14))
+	do
 	{
-		isNumber = false;
-		cout << "Enter bit memory for prime numbers in range from 3 to 14 (recommended no more than 12(in 14 slow))" << endl << ": ";	//may 30 for prime but in encrypt don't work
-		getline(cin, memoryBitStr);																										//max - 32
-#ifndef Clear
-		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
-		isNumber = checkIfNotANumber(memoryBitStr);
-		memoryBit = 0;
-		if (isNumber == false)
+		try
 		{
-			continue;
-		}
-		else
-		{
+			cout << "Enter bit memory for prime numbers in range from 3 to 14 (recommended no more than 12(in 14 slow))" << endl << ": ";	//may 30 for prime but in encrypt don't work
+			getline(cin, memoryBitStr);																										//max - 32
+			if (memoryBitStr == "")
+			{
+				throw runtime_error("An empty string has been entered.\nTry again.\n");
+			}
+			isNumber = checkIfNotANumber(memoryBitStr);
+			if (isNumber == false)
+			{
+				string err;
+				err = "Invalid input.\nYou have entered \"" + memoryBitStr + "\", when a number between 3 and 14 was expected.\nTry again.\n";
+				throw runtime_error(err);
+			}
 			for (int i = 0; memoryBitStr[i] != '\0'; i++)  //convert from string to uint64_t
 			{
 				char askii = '0';
 				for (int j = 48; j < 58; j++)
 				{
-					askii = j;
+					askii = (char)j;
 					if (memoryBitStr[i] == askii)
 					{
-						memoryBit = (memoryBit * 10) + (memoryBitStr[i] - 48);
+						memoryBit = (memoryBit * 10) + ((int)memoryBitStr[i] - 48);
 						break;
 					}
 				}
 			}
+			if (memoryBit < 3 || memoryBit > 14)
+			{
+				string err;
+				err = "Invalid input.\nYou have entered \"" + to_string(memoryBit) + "\", when a number between 3 and 14 was expected.\nTry again.\n";
+				throw runtime_error(err);
+			}
 		}
-	}
-#ifndef Clear
+		catch (const exception& error)
+		{
+			memoryBit = 0;
+			isNumber = false;
+			system("CLS");
+			cerr << error.what();
+		}
+	} while (isNumber == false);
+
 	system("CLS");
-#endif
 	cout << "Wait, there are complex calculations going on..." << endl;
 
 	uint64_t mayPrimeMin = stepen(2, memoryBit - 1) + 1;  //Calculating the maximum and minimum numbers in a given size value
@@ -158,12 +201,8 @@ void randPrimeSearch(uint64_t& first_prime, uint64_t& second_prime, int& memoryB
 			}
 		}
 	}
-#ifndef Clear
 	system("CLS");
-#endif
-#ifdef Clear
-	cout << endl;
-#endif
+
 	//Returning a random prime number from a range
 	first_prime = primeNum[rand() % primeNum.size()];
 	second_prime = primeNum[rand() % primeNum.size()];

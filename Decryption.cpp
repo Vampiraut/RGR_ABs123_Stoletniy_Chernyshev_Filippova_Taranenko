@@ -215,7 +215,7 @@ void RSADecode()
 		for (uint64_t i = 0; inputString[i] != '\0'; i++)
 		{
 			buferInt = 0;
-			for (; inputString[i] != 'Î'; i++)
+			for (; inputString[i] != 'O'; i++)
 			{
 				buferInt = buferInt * 10 + (inputString[i] - 48);
 			}
