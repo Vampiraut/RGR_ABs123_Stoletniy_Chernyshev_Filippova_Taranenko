@@ -38,4 +38,4 @@ methods:
 
 11)Binary Cipher;
 
-12)
+12);
