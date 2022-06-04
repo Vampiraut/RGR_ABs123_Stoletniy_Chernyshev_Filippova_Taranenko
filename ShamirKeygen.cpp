@@ -46,7 +46,6 @@ bool simplenumberFerma(long long x) {
 	return true;
 }
 
-
 void ShamirKeygen(int code) {
 	int p, Ca, Cb, Da, Db;
 	string publicp = "";

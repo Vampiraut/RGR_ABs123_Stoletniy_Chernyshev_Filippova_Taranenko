@@ -147,6 +147,7 @@
     <ClCompile Include="programInMain.cpp" />
     <ClCompile Include="RSAKeyGeneration.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ShamirKeygen.cpp" />
     <ClCompile Include="VigenerMatrixCreate.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +159,7 @@
     <ClInclude Include="helpFunc.h" />
     <ClInclude Include="programInMain.h" />
     <ClInclude Include="RSAKeyGeneration.h" />
+    <ClInclude Include="ShamirKeygen.h" />
     <ClInclude Include="VigenerMatrixCreate.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

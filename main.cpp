@@ -6,7 +6,7 @@ int main()
 	SetConsoleCP(1251);			//installing the win-cp 1251 code page in the input stream
 	SetConsoleOutputCP(1251);	//installing the win-cp 1251 code page in the output stream
 
-	passwordCheñk();
+	passwordCheck();
 
 	int funkType = 0;
 	int cryptoType = 0;

@@ -3,7 +3,7 @@
 #include "Decryption.h"
 
 //Password verification function
-void passwordCheñk()
+void passwordCheck()
 {
 	string password = "";
 	cout << "Enter password" << endl << ": ";
@@ -349,7 +349,7 @@ void encryptionStart(int cryptoType, int funkType)
 			break;
 		}
 		break;
-	case Ciphers::some:
+	case Ciphers::Hil:
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
@@ -410,7 +410,7 @@ void encryptionCheck(int cryptoType, int funkType)
 		fin.close();
 		fout.close();
 
-		passwordCheñk();
+		passwordCheck();
 		//Conditions for performing encryption for the selected type and principle of operation
 		switch (Ciphers(cryptoType))
 		{
@@ -535,7 +535,7 @@ void encryptionCheck(int cryptoType, int funkType)
 				break;
 			}
 			break;
-		case Ciphers::some:
+		case Ciphers::Hil:
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
