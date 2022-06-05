@@ -36,6 +36,6 @@ methods:
 
 10)Vigener Cipher; Cipher completion date - May 30;
 
-11)Binary Cipher;
+11)Binary Cipher; Cipher completion date - June 1;
 
-12);
+12)Hill Cipher; Cipher completion date - June 5;
