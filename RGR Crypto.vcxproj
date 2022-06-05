@@ -144,6 +144,7 @@
     <ClCompile Include="ElGamalComp.cpp" />
     <ClCompile Include="Encryption.cpp" />
     <ClCompile Include="helpFunc.cpp" />
+    <ClCompile Include="HillComp.cpp" />
     <ClCompile Include="programInMain.cpp" />
     <ClCompile Include="RSAKeyGeneration.cpp" />
     <ClCompile Include="main.cpp" />
@@ -157,6 +158,7 @@
     <ClInclude Include="Encryption.h" />
     <ClInclude Include="Header.h" />
     <ClInclude Include="helpFunc.h" />
+    <ClInclude Include="HillComp.h" />
     <ClInclude Include="programInMain.h" />
     <ClInclude Include="RSAKeyGeneration.h" />
     <ClInclude Include="ShamirKeygen.h" />

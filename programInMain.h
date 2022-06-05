@@ -22,7 +22,7 @@ enum Ciphers
 	Shamir,
 	Vigener,
 	Binary,
-	Hil
+	Hill
 };
 
 enum Principle

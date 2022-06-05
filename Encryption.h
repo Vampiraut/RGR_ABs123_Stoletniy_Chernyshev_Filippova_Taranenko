@@ -21,7 +21,7 @@ void ShamirCode();								//Encryption with Shamir cipher
 
 void VigenerCode(vector<vector<char>>, int);	//Encryption with Vigener cipher
 void BinaryCode();								//Encryption with Binary cipher
-string HilCode();								//Encryption with Hila cipher
+void HillCode(int);								//Encryption with Hila cipher
 
 
 bool checkIfNotANumber(string);					//The function of checking whether the entered string is a number
