@@ -21,7 +21,7 @@ void ShamirDecode();							//Decryption with Shamir cipher
 
 void VigenerDecode(vector<vector<char>>, int);	//Decryption with Vigener cipher
 void BinaryDecode();							//Decryption with Binary cipher
-string HilDecode();								//Decryption with Hila cipher
+void HillDecode(int);								//Decryption with Hila cipher
 
 bool checkIfNotANumber(string);			//The function of checking whether the entered string is a number
 int deg(int, int, int);
