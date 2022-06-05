@@ -39,7 +39,7 @@ void funkTypeName(int cryptoType)
 		cout << "Binary Cipher" << endl;
 		break;
 	case Ciphers::Hil:
-		cout << "some" << endl;
+		cout << "Hila Cipher" << endl;
 		break;
 	}
 }

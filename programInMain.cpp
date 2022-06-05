@@ -187,7 +187,7 @@ int cryptoTypeSelect(int funkType)
 			cout << "Select the encryption/decryption type: " << endl << "<1>Gronsfeld Cipher" << endl << "<2>RSA Cipher" << endl << "<3>Morse Cipher" << endl
 				<< "<4>Vernam Cipher" << endl << "<5>ElGamal Cipher" << endl << "<6>Gibberish letter"
 				<< endl << "<7>Atbash Cipher" << endl << "<8>Simple Table Permutation" << endl << "<9>Shamir Cipher"
-				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>"
+				<< endl << "<10>Vigener Cipher" << endl << "<11>Binary Cipher" << endl << "<12>Hila Cipher"
 				<< endl << ": ";
 			getline(cin, strNumType);
 			if (strNumType == "")
@@ -354,10 +354,10 @@ void encryptionStart(int cryptoType, int funkType)
 		switch (Principle(funkType))
 		{
 		case Principle::Encription:
-			
+			HilCode();
 			break;
 		case Principle::Decription:
-
+			HilDecode();
 			break;
 		}
 		break;
@@ -541,10 +541,10 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-
+				HilDecode();
 				break;
 			case Principle::Decription:
-
+				HilCode();
 				break;
 			}
 			break;
