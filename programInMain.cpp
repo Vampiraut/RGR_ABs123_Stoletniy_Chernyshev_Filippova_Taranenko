@@ -134,7 +134,7 @@ void inputStrToTxt()
 		fin.close();
 		system("CLS");
 	}
-	//system("notepad Some_text.txt");
+	system("notepad Some_text.txt");
 }
 
 //Choosing the principle of operation
@@ -362,7 +362,7 @@ void encryptionStart(int cryptoType, int funkType)
 		}
 		break;
 	}
-	//system("notepad Str_aft_proc.txt");
+	system("notepad Str_aft_proc.txt");
 }
 
 //The function of starting the encryption check
@@ -550,6 +550,6 @@ void encryptionCheck(int cryptoType, int funkType)
 			break;
 		}
 	}
-	//system("notepad Str_aft_proc.txt");
+	system("notepad Str_aft_proc.txt");
 	system("CLS");
 }
