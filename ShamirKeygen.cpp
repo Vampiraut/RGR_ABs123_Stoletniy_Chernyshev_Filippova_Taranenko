@@ -114,35 +114,15 @@ void ShamirKeygen(int code) {
 		getline(cin, privateDa);
 		cout << "Enter private key Db" << endl << ": ";
 		getline(cin, privateDb);
-#ifndef Clear
+
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
+
 		cout << "PUBLIC KEY P: {" << publicp << "}" << endl;
 		cout << "PUBLIC KEYS: {" << publicCa << "," << publicCb << "}" << endl;
 		cout << "PRIVATE KEYS: {" << privateDa << "," << privateDb << "}" << endl;
 	}
 
-	string bufer = "";
-	ifstream fout("Some_text.txt");//читает файл с нашим текстом
-	ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-	while (!fout.eof())
-	{
-		getline(fout, bufer);
-		promeg << bufer;
-		if (!fout.eof())
-		{
-			promeg << endl;
-		}
-	}
-	fout.close();
-	promeg.close();
-
-	ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-	ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-
+	ofstream fin("keys.txt");	 //очищает файл keys.txt куда сначала записывается ключ, а затем исходный текст
 	if (code != 1)
 	{
 		fin << p << endl;
@@ -160,21 +140,8 @@ void ShamirKeygen(int code) {
 		fin << privateDa << endl;
 		fin << privateDb << endl;
 	}
-
-	while (!promegCopy.eof())
-	{
-		getline(promegCopy, bufer);
-		fin << bufer;
-		if (!promegCopy.eof())
-		{
-			fin << endl;
-		}
-	}
 	fin.close();
-	promegCopy.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }

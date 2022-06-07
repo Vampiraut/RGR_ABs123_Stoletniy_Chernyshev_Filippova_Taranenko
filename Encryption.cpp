@@ -6,73 +6,35 @@ void GronsfeldCode(int codeCheck)
 {
 	if (codeCheck != 1)
 	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
 		string someKey = "";
 		cout << "Enter the KEY" << endl << ":";
 		getline(cin, someKey);
-
 		bool isNumber = checkIfNotANumber(someKey);
 		while (isNumber != true)
 		{
-#ifndef Clear
 			system("CLS");
-#endif
-#ifdef Clear
-			cout << endl;
-#endif
 			cout << "Wrong KEY!" << endl << "Enter the KEY" << endl << ":";
 			getline(cin, someKey);
 			isNumber = checkIfNotANumber(someKey);
 		}
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		fin << someKey << endl;
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
+		ofstream fin1("keys.txt");
+		fin1 << someKey << endl;
+		fin1.close();
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 	}
 	string inputString = "";                                         //input string
 	string outputString = "";										//output string
 	bool isEnd = false;                                                   //cheсk-flag for continue
 	string key = "";
 
-	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ifstream fout("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ofstream fin("Str_aft_proc.txt");
+
+	ifstream fout1("keys.txt");
 	getline(fout1, key);
-	ofstream fin2("Str_aft_proc.txt");
-	fin2 << key << endl;
-#ifndef Clear
+	fout1.close();
+
 	system("CLS");
-#endif
 	funkPrinciple(1);
 	funkTypeName(1);
 	if (codeCheck == 1)
@@ -82,11 +44,11 @@ void GronsfeldCode(int codeCheck)
 	cout << "Encrypted string: " << endl;
 
 	int p = -1;
-	while (!fout1.eof())
+	while (!fout.eof())
 	{
 		inputString = "";
 		outputString = "";
-		getline(fout1, inputString);
+		getline(fout, inputString);
 
 		for (int i = 0; inputString[i] != '\0'; i++)                //input string check
 		{
@@ -159,20 +121,19 @@ void GronsfeldCode(int codeCheck)
 			}
 			outputString += inputString[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 		}
-		fin2 << outputString;											//output of encrypted string
+		fin << outputString;											//output of encrypted string
 		cout << outputString << endl;
-		if (!fout1.eof())
+		if (!fout.eof())
 		{
-			fin2 << endl;
+			fin << endl;
 		}
 	}
-	fout1.close();
-	fin2.close();
+	fout.close();
+	fin.close();
 	cout << endl;
-#ifndef Clear
+
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Encryption with RSA cipher
@@ -183,11 +144,13 @@ void RSACode()
 	string modulStr = "";
 	string inputString = "";
 
-	ifstream fout("Some_text.txt");
-	getline(fout, publicExponStr, ' ');
-	getline(fout, privateExponStr, ' ');
-	getline(fout, modulStr);
+	ifstream fout1("keys.txt");
+	getline(fout1, publicExponStr, ' ');
+	getline(fout1, privateExponStr, ' ');
+	getline(fout1, modulStr);
+	fout1.close();
 
+	ifstream fout("Some_text.txt");
 	uint64_t publicExpon = 0;
 	uint64_t privateExpon = 0;
 	uint64_t modul = 0;
@@ -205,7 +168,7 @@ void RSACode()
 	}
 
 	ofstream fin("Str_aft_proc.txt");
-	fin << publicExpon << " " << privateExpon << " " << modul << endl;
+
 	funkPrinciple(1);
 	funkTypeName(2);
 	cout << "Encryption string: " << endl;
@@ -233,10 +196,8 @@ void RSACode()
 	fout.close();
 	fin.close();
 	cout << endl << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Encryption with Morse cipher
@@ -244,7 +205,7 @@ void MorseCode()
 {
 	string inputString = "";                                         //input string
 	string outputString = "";										//output string
-	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ifstream fout1("Some_text.txt"); //читает файл с нашим текстом
 	ofstream fin2("Str_aft_proc.txt");
 	map <char, string> alfForCode = { {'A',"._"}, {'B',"_..."}, {'C',"_._."}, {'D',"_.."}, {'E',"."}, {'F',".._."}, {'G',"__."}, {'H',"...."}, {'I',".."}, {'J',".___"},{'K',"_._"}, {'L',"._.."}, {'M',"__"},
 									  {'N',"_."}, {'O',"___"}, {'P',".__."}, {'Q',"__._"}, {'R',"._."}, {'S',"..."}, {'T',"_"}, {'U',".._"}, {'V',"..._"}, {'W',".__"}, {'X',"_.._"}, {'Y',"_.__"}, {'Z',"__.."},
@@ -274,10 +235,8 @@ void MorseCode()
 	fout1.close();
 	fin2.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Encryption with Vernam cipher
@@ -364,10 +323,9 @@ void ElGamalCode(){
 	fout.close();
 	fin.close();
 	cout << endl;
-#ifndef Clear
+
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Encryption with Gibberish cipher
@@ -413,61 +371,24 @@ void GibberishCode(){
 	fout.close();
 	fin.close();
 	cout << endl;
-#ifndef Clear
+
 	system("PAUSE");
 	system("CLS");
-#endif
+
 }
 
 //Encryption with Atbash cipher
-void AtbashCode(int code) {
-	if (code != 1)
-	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
-		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
-	}
+void AtbashCode(int code)
+{
 	string inputString = "";
 	string outputString = "";
 	bool isEnd = false;                                                   //cheсk-flag for continue
 
 	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
 	ofstream fin2("Str_aft_proc.txt");
-#ifndef Clear
+
 	system("CLS");
-#endif
+
 	funkPrinciple(1);
 	funkTypeName(7);
 	cout << "Encrypted string: " << endl;
@@ -507,61 +428,24 @@ void AtbashCode(int code) {
 	fout1.close();
 	fin2.close();
 	cout << endl;
-#ifndef Clear
+
 	system("PAUSE");
 	system("CLS");
-#endif
+
 }
 
 //Encryption with Simple Table Permutation
-void SimpleTablePermutationCode(int code) {
-	if (code != 1)
-	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
-		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
-	}
+void SimpleTablePermutationCode(int code)
+{
 	string inputString = "";
 	string outputString = "";
 	bool isEnd = false;                                                   //cheсk-flag for continue
 
 	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
 	ofstream fin2("Str_aft_proc.txt");
-#ifndef Clear
+
 	system("CLS");
-#endif
+
 	funkPrinciple(1);
 	funkTypeName(8);
 	cout << "Encrypted string: " << endl;
@@ -649,15 +533,14 @@ void SimpleTablePermutationCode(int code) {
 		{
 			fin2 << endl;
 		}
-		}
+	}
 	fout1.close();
 	fin2.close();
 	cout << endl;
-#ifndef Clear
+
 	system("PAUSE");
 	system("CLS");
-#endif
-	}
+}
 
 //Encryption with Shamir cipher
 void ShamirCode() {
@@ -668,12 +551,13 @@ void ShamirCode() {
 		string privateDb = "";
 		string input = "";
 
-		ifstream fout("Some_text.txt");
-		getline(fout, publicp);
-		getline(fout, publicCa);
-		getline(fout, publicCb);
-		getline(fout, privateDa);
-		getline(fout, privateDb);
+		ifstream fout1("keys.txt");
+		getline(fout1, publicp);
+		getline(fout1, publicCa);
+		getline(fout1, publicCb);
+		getline(fout1, privateDa);
+		getline(fout1, privateDb);
+		fout1.close();
 
 		int p = stoi(publicp);
 		int Ca = stoi(publicCa);
@@ -681,12 +565,9 @@ void ShamirCode() {
 		int Da = stoi(privateDa);
 		int Db = stoi(privateDb);
 
+		ifstream fout("Some_text.txt");
 		ofstream fin("Str_aft_proc.txt");
-		fin << p << endl;
-		fin << Ca << endl;
-		fin << Cb << endl;
-		fin << Da << endl;
-		fin << Db << endl;
+
 		funkPrinciple(1);
 		funkTypeName(9);
 		cout << "Encryption string: " << endl;
@@ -712,73 +593,43 @@ void ShamirCode() {
 		fout.close();
 		fin.close();
 		cout << endl << endl;
-#ifndef Clear
 		system("PAUSE");
 		system("CLS");
-#endif
 	}
 
 //Encryption with Vigener cipher
 void VigenerCode(vector<vector<char>> vigenerTable, int codeCheck)
 {
-	vector<char> alfForCod = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-							   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-							   '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+	vector<char> alfForCod; //= { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+							  // 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+							  // '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+	for (int i = 32; i < 127; i++)
+	{
+		alfForCod.push_back((char)i);
+	}
+
 	if (codeCheck != 1)
 	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
 		string someKey = "";
-		cout << "Enter code word" << endl << ": ";
+		cout << "Enter the KEY" << endl << ":";
 		getline(cin, someKey);
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		fin << someKey << endl;
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
+		ofstream fin1("keys.txt");
+		fin1 << someKey << endl;
+		fin1.close();
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 	}
 
 	string inputString = "";                                         //input string
 	string outputString = "";										//output string
+	
+	ifstream fout1("keys.txt");
 	string key = "";
-
-	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
 	getline(fout1, key);
-	ofstream fin2("Str_aft_proc.txt");
-	fin2 << key << endl;
-#ifndef Clear
-	system("CLS");
-#endif
+	fout1.close();
+
+	ifstream fout("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ofstream fin("Str_aft_proc.txt");
+
 	funkPrinciple(1);
 	funkTypeName(10);
 
@@ -789,11 +640,11 @@ void VigenerCode(vector<vector<char>> vigenerTable, int codeCheck)
 	cout << "Encrypted string: " << endl;
 
 	int p = 0;
-	while (!fout1.eof())
+	while (!fout.eof())
 	{
 		inputString = "";
 		outputString = "";
-		getline(fout1, inputString);
+		getline(fout, inputString);
 
 		for (int i = 0; i < inputString.size(); i++)
 		{
@@ -810,7 +661,6 @@ void VigenerCode(vector<vector<char>> vigenerTable, int codeCheck)
 			{
 				p = 0;
 			}
-
 			int y = 0;
 			for (int k = 0; k < alfForCod.size(); k++)
 			{
@@ -830,20 +680,18 @@ void VigenerCode(vector<vector<char>> vigenerTable, int codeCheck)
 			}
 			outputString += vigenerTable[y][x];
 		}
-		fin2 << outputString;											//output of encrypted string
+		fin << outputString;											//output of encrypted string
 		cout << outputString << endl;
-		if (!fout1.eof())
+		if (!fout.eof())
 		{
-			fin2 << endl;
+			fin << endl;
 		}
 	}
-	fout1.close();
-	fin2.close();
+	fout.close();
+	fin.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Encryption with Binary cipher
@@ -908,7 +756,6 @@ void HillCode(int codeCheck)
 	alf.push_back('№');
 	alf.push_back((char)181);
 
-
 	vector<int> codByAlfKey;
 	vector<vector<int>> matrixKey;
 	int g = 0;
@@ -968,16 +815,18 @@ void HillCode(int codeCheck)
 				break;
 			}
 		}
+		ofstream fin1("keys.txt");
+		fin1 << someKey << endl;
+		fin1.close();
 	}
+
 	ifstream fout("Some_text.txt");//читает файл с нашим текстом
 	ofstream fin("Str_aft_proc.txt"); //очищает файл Str_aft_proc.txt куда записывает зашифрованный текст
-	if (codeCheck == 1)
-	{
-		getline(fout, someKey);
-	}
-	fin << someKey << endl;
 
-	string key = someKey;
+	string key = "";
+	ifstream fout1("keys.txt");
+	getline(fout1, key);
+	fout1.close();
 
 	if (codeCheck == 1)
 	{
@@ -1005,11 +854,14 @@ void HillCode(int codeCheck)
 			}
 		}
 	}
+
+
 	system("CLS");
 	funkPrinciple(1);
 	funkTypeName(12);
 	cout << "Your KEY: " << key << endl;
 	cout << "Encrypted string: " << endl;
+
 	while (!fout.eof())
 	{
 		string inputString = "";

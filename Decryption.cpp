@@ -6,73 +6,34 @@ void GronsfeldDecode(int codeCheck)
 {
 	if (codeCheck != 1)
 	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
 		string someKey = "";
 		cout << "Enter the KEY" << endl << ":";
 		getline(cin, someKey);
-
 		bool isNumber = checkIfNotANumber(someKey);
 		while (isNumber != true)
 		{
-#ifndef Clear
 			system("CLS");
-#endif
-#ifdef Clear
-			cout << endl;
-#endif
 			cout << "Wrong KEY!" << endl << "Enter the KEY" << endl << ":";
 			getline(cin, someKey);
 			isNumber = checkIfNotANumber(someKey);
 		}
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		fin << someKey << endl;
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
+		ofstream fin1("keys.txt");
+		fin1 << someKey << endl;
+		fin1.close();
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 	}
 	string inputString = "";                                         //input string
 	string outputString = "";										//output string
 	bool isEnd = false;                                                   //cheсk-flag for continue
+	
 	string key = "";
-
-	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ifstream fout1("keys.txt");
 	getline(fout1, key);
-	ofstream fin2("Str_aft_proc.txt");
-	fin2 << key << endl;
-#ifndef Clear
+	fout1.close();
+
+	ifstream fout("Some_text.txt"); //читает файл c нашим текстом
+	ofstream fin("Str_aft_proc.txt");
 	system("CLS");
-#endif
 	funkPrinciple(2);
 	funkTypeName(1);
 	if (codeCheck == 1)
@@ -82,11 +43,11 @@ void GronsfeldDecode(int codeCheck)
 	cout << "Decryption string: " << endl;
 
 	int p = -1;
-	while (!fout1.eof())
+	while (!fout.eof())
 	{
 		inputString = "";
 		outputString = "";
-		getline(fout1, inputString);
+		getline(fout, inputString);
 
 		for (int i = 0; inputString[i] != '\0'; i++)                //input string check
 		{
@@ -159,20 +120,18 @@ void GronsfeldDecode(int codeCheck)
 			}
 			outputString += inputString[i];								//if there is no ASKII in the range -> copy them to the output array without modification
 		}
-		fin2 << outputString;
+		fin << outputString;
 		cout << outputString << endl;
-		if (!fout1.eof())
+		if (!fout.eof())
 		{
-			fin2 << endl;
+			fin << endl;
 		}
 	}
-	fout1.close();
-	fin2.close();
+	fout.close();
+	fin.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with RSA cipher
@@ -183,11 +142,13 @@ void RSADecode()
 	string modulStr = "";
 	string inputString = "";
 
-	ifstream fout("Some_text.txt");
-	getline(fout, publicExponStr, ' ');
-	getline(fout, privateExponStr, ' ');
-	getline(fout, modulStr);
+	ifstream fout1("keys.txt");
+	getline(fout1, publicExponStr, ' ');
+	getline(fout1, privateExponStr, ' ');
+	getline(fout1, modulStr);
+	fout1.close();
 
+	ifstream fout("Some_text.txt");
 	uint64_t publicExpon = 0;
 	uint64_t privateExpon = 0;
 	uint64_t modul = 0;
@@ -205,7 +166,7 @@ void RSADecode()
 	}
 
 	ofstream fin("Str_aft_proc.txt");
-	fin << publicExpon << " " << privateExpon << " " << modul << endl;
+
 	funkPrinciple(2);
 	funkTypeName(2);
 	cout << "Decryption string: " << endl;
@@ -238,10 +199,8 @@ void RSADecode()
 	fout.close();
 	fin.close();
 	cout << endl << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Morse cipher
@@ -284,11 +243,8 @@ void MorseDecode()
 	fout1.close();
 	fin2.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
-
 }
 
 //Decryption with Vernam cipher
@@ -331,10 +287,8 @@ void VernamDecode()
 	fout.close();
 	fin.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with ElGamal cipher
@@ -382,10 +336,8 @@ void ElGamalDecode(){
 	fout.close();
 	fin.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Gibberish cipher
@@ -431,61 +383,19 @@ void GibberishDecode(){
 	fout.close();
 	fin.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Atbash cipher
 void AtbashDecode(int code) {
-	if (code != 1)
-	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
-		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
-	}
 	string inputString = "";
 	string outputString = "";
 	bool isEnd = false;                                                   //cheсk-flag for continue
 
 	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
 	ofstream fin2("Str_aft_proc.txt");
-#ifndef Clear
-	system("CLS");
-#endif
+
 	funkPrinciple(2);
 	funkTypeName(7);
 	cout << "Decryption string: " << endl;
@@ -525,60 +435,18 @@ void AtbashDecode(int code) {
 	fout1.close();
 	fin2.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Simple Table Permutation
 void SimpleTablePermutationDecode(int code) {
-	if (code != 1)
-	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
-		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
-	}
 	string inputString = "";
 	string outputString = "";
 	bool isEnd = false;
 	ifstream fout1("Some_text.txt");
 	ofstream fin2("Str_aft_proc.txt");
-#ifndef Clear
-	system("CLS");
-#endif
+
 	funkPrinciple(2);
 	funkTypeName(8);
 	cout << "Decryption string: " << endl;
@@ -657,10 +525,8 @@ void SimpleTablePermutationDecode(int code) {
 	fout1.close();
 	fin2.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Shamir cipher
@@ -672,12 +538,13 @@ void ShamirDecode() {
 	string privateDb = "";
 	string input = "";
 
-	ifstream fout("Some_text.txt");
-	getline(fout, publicp);
-	getline(fout, publicCa);
-	getline(fout, publicCb);
-	getline(fout, privateDa);
-	getline(fout, privateDb);
+	ifstream fout1("keys.txt");
+	getline(fout1, publicp);
+	getline(fout1, publicCa);
+	getline(fout1, publicCb);
+	getline(fout1, privateDa);
+	getline(fout1, privateDb);
+	fout1.close();
 
 	int p = stoi(publicp);
 	int Ca = stoi(publicCa);
@@ -685,12 +552,9 @@ void ShamirDecode() {
 	int Da = stoi(privateDa);
 	int Db = stoi(privateDb);
 
+	ifstream fout("Some_text.txt");
 	ofstream fin("Str_aft_proc.txt");
-	fin << p << endl;
-	fin << Ca << endl;
-	fin << Cb << endl;
-	fin << Da << endl;
-	fin << Db << endl;
+
 	funkPrinciple(2);
 	funkTypeName(9);
 	cout << "Decryption string: " << endl;
@@ -728,73 +592,43 @@ void ShamirDecode() {
 	fout.close();
 	fin.close();
 	cout << endl << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Vigener cipher
 void VigenerDecode(vector<vector<char>> vigenerTable, int codeCheck)
 {
-	vector<char> alfForCod = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
-							   'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
-							   '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+	vector<char> alfForCod; //= { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z',
+							 //  'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+							  // '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+	for (int i = 32; i < 127; i++)
+	{
+		alfForCod.push_back((char)i);
+	}
+
 	if (codeCheck != 1)
 	{
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
 		string someKey = "";
-		cout << "Enter code word" << endl << ": ";
+		cout << "Enter the KEY" << endl << ":";
 		getline(cin, someKey);
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		fin << someKey << endl;
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
-
-#ifndef Clear
+		ofstream fin1("keys.txt");
+		fin1 << someKey << endl;
+		fin1.close();
 		system("CLS");
-#endif
-#ifdef Clear
-		cout << endl;
-#endif
 	}
 
 	string inputString = "";                                         //input string
 	string outputString = "";										//output string
-	string key = "";
 
-	ifstream fout1("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ifstream fout1("keys.txt"); //читает файл с ключом и нашим текстом
+	string key = "";
 	getline(fout1, key);
-	ofstream fin2("Str_aft_proc.txt");
-	fin2 << key << endl;
-#ifndef Clear
-	system("CLS");
-#endif
+	fout1.close();
+
+	ifstream fout("Some_text.txt"); //читает файл с ключом и нашим текстом
+	ofstream fin("Str_aft_proc.txt");
+
 	funkPrinciple(2);
 	funkTypeName(10);
 
@@ -805,11 +639,11 @@ void VigenerDecode(vector<vector<char>> vigenerTable, int codeCheck)
 	cout << "Decrypted string: " << endl;
 
 	int p = 0;
-	while (!fout1.eof())
+	while (!fout.eof())
 	{
 		inputString = "";
 		outputString = "";
-		getline(fout1, inputString);
+		getline(fout, inputString);
 
 		for (int i = 0; i < inputString.size(); i++)
 		{
@@ -845,20 +679,18 @@ void VigenerDecode(vector<vector<char>> vigenerTable, int codeCheck)
 			}
 			outputString += alfForCod[x];
 		}
-		fin2 << outputString;											//output of encrypted string
+		fin << outputString;											//output of encrypted string
 		cout << outputString << endl;
-		if (!fout1.eof())
+		if (!fout.eof())
 		{
-			fin2 << endl;
+			fin << endl;
 		}
 	}
-	fout1.close();
-	fin2.close();
+	fout.close();
+	fin.close();
 	cout << endl;
-#ifndef Clear
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Decryption with Binary cipher
@@ -988,42 +820,19 @@ void HillDecode(int codeCheck)
 				cout << error.what();
 			}
 		} while (isGood == false);
-		string bufer = "";
-		ifstream fout("Some_text.txt");//читает файл с нашим текстом
-		ofstream promeg("Bufer.txt");  //очищает файл bufer.txt и копирует туда наш текст
-		while (!fout.eof())
-		{
-			getline(fout, bufer);
-			promeg << bufer;
-			if (!fout.eof())
-			{
-				promeg << '\n';
-			}
-		}
-		fout.close();
-		promeg.close();
-
-		ofstream fin("Some_text.txt");	 //очищает файл Some_text.txt куда сначала записывается ключ, а затем исходный текст
-		ifstream promegCopy("bufer.txt");//читает файл с копией нашего текста
-		fin << someKey << endl;
-		while (!promegCopy.eof())
-		{
-			getline(promegCopy, bufer);
-			fin << bufer;
-			if (!promegCopy.eof())
-			{
-				fin << '\n';
-			}
-		}
-		fin.close();
-		promegCopy.close();
+		ofstream fin1("keys.txt");
+		fin1 << someKey << endl;
+		fin1.close();
 	}
 
-	ifstream fout1("Some_text.txt");//читает файл с нашим текстом
-	ofstream fin1("Str_aft_proc.txt"); //очищает файл Str_aft_proc.txt куда записывает зашифрованный текст
+	ifstream fout("Some_text.txt");//читает файл с нашим текстом
+	ofstream fin("Str_aft_proc.txt"); //очищает файл Str_aft_proc.txt куда записывает зашифрованный текст
+
+	ifstream fout1("keys.txt");//читает файл с нашим key
 	string key = "";
 	getline(fout1, key);
-	fin1 << key << endl;
+	fout1.close();
+
 	if (codeCheck == 1)
 	{
 		for (char i : key)
@@ -1051,19 +860,17 @@ void HillDecode(int codeCheck)
 			}
 		}
 	}
+
 	system("CLS");
 	funkPrinciple(2);   //есть codByAlfKey matrixKey
 	funkTypeName(12);
-	if (codeCheck == 1)
-	{
-		cout << "Your KEY: " << key << endl;
-	}
+	cout << "Your KEY: " << key << endl;
 	cout << "Decrypted string: " << endl;
 
-	while (!fout1.eof())
+	while (!fout.eof())
 	{
 		string inputString = "";
-		getline(fout1, inputString);
+		getline(fout, inputString);
 		vector<int> codByAlfStr;
 		for (char i : inputString)
 		{
@@ -1254,15 +1061,15 @@ void HillDecode(int codeCheck)
 				outputString += alf[i % alf.size()];
 			}
 		}
-		fin1 << outputString;
+		fin << outputString;
 		cout << outputString << endl;
-		if (!fout1.eof())
+		if (!fout.eof())
 		{
-			fin1 << endl;
+			fin << endl;
 		}
 	}
-	fout1.close();
-	fin1.close();
+	fout.close();
+	fin.close();
 	cout << endl;
 	system("PAUSE");
 	system("CLS");
