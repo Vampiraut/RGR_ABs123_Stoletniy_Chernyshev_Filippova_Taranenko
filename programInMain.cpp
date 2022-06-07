@@ -29,16 +29,16 @@ void inputStrToTxt()
 	{
 		try
 		{
-			cout << "Do you want to encrypt your file or create a new one?" << endl << "<1>Your file" << endl << "<2>A new file" << endl << ": ";
+			cout << "Do you want to encrypt your file, create a new one, or take a random prepared one?" << endl << "<1>Сreate a new one" << endl << "<2>A new file" << endl << "<3>Take a random prepared one" << endl << ": ";
 			getline(cin, fileCreate);
 			if (fileCreate == "")
 			{
 				throw runtime_error("An empty string has been entered.\nTry again.\n");
 			}
-			if (fileCreate != "1" && fileCreate != "2")
+			if (fileCreate != "1" && fileCreate != "2" && fileCreate != "3")
 			{
 				string err;
-				err = "Invalid input.\nYou have entered \"" + fileCreate + "\", when \"1\" or \"2\" was expected.\nTry again.\n";
+				err = "Invalid input.\nYou have entered \"" + fileCreate + "\", when \"1\" or \"2\" or \"3\" was expected.\nTry again.\n";
 				throw runtime_error(err);
 			}
 			isGood = true;
@@ -133,6 +133,22 @@ void inputStrToTxt()
 		fin << inputStr;
 		fin.close();
 		system("CLS");
+	}
+	else if (fileCreate == "3")
+	{
+		srand(time(NULL));
+		ifstream fout("RandStr.txt");
+		int randNum = rand() % 13;
+		string randStr = "";
+		for (int i = 0; i <= randNum; i++)
+		{
+			randStr = "";
+			getline(fout, randStr);
+		}
+		ofstream fin("Some_text.txt");
+		fin << randStr;
+		fout.close();
+		fin.close();
 	}
 	system("notepad Some_text.txt");
 }
