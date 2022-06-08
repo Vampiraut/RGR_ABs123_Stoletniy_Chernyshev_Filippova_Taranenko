@@ -252,28 +252,60 @@ void MorseDecode()
 }
 
 //Decryption with Vernam cipher
-void VernamDecode()
+void VernamDecode(int codeCheck)
 {
 	srand(0);
+	if (codeCheck != 1)
+	{
+		ifstream kolSt("Some_text.txt");
+		int kolStr = 0;
+		while (!kolSt.eof())
+		{
+			string promeg = "";
+			getline(kolSt, promeg);
+			kolStr++;
+		}
+		kolSt.close();
+		ofstream keyOut("keys.txt");
+		cout << "Enter the KEYS: " << endl;
+		for (int i = 0; i < kolStr; i++)
+		{
+			cout << "Key " << i + 1 << ": ";
+			string someKey = "";
+			getline(cin, someKey);
+			keyOut << someKey;
+			if (i != kolStr - 1)
+			{
+				keyOut << endl;
+			}
+		}
+	}
+
+	ifstream keyin("keys.txt");
+	vector<string> keys;
+	while (!keyin.eof()) {
+		string key = "";
+		getline(keyin, key);
+		keys.push_back(key);
+	}
+
+	keyin.close();
 
 	ifstream fout("Some_text.txt");
 	ofstream fin("Str_aft_proc.txt");
 
 	funkPrinciple(2);
 	funkTypeName(4);
-
+	int b = 0;
 	cout << "Decrypted string:" << endl;
 	while (!fout.eof())
 	{
 		string oStr = "";
 		getline(fout, oStr);
 
-		string key = "";
+
 		int i = 0;
-		for (i = 0; oStr[i] != '\0'; i++)
-		{
-			key += (char)(32 + rand() % (126 - 32 + 1));
-		}
+		string key = keys[b];
 
 		string shStr = "";
 		for (i = 0; oStr[i] != '\0'; i++)
@@ -287,6 +319,7 @@ void VernamDecode()
 		{
 			fin << endl;
 		}
+		b++;
 	}
 	fout.close();
 	fin.close();

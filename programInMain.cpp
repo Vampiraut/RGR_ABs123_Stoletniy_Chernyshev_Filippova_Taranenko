@@ -283,7 +283,7 @@ void encryptionStart(int cryptoType, int funkType)
 			VernamCode();
 			break;
 		case Principle::Decription:
-			VernamDecode();
+			VernamDecode(0);
 			break;
 		}
 		break;
@@ -469,7 +469,7 @@ void encryptionCheck(int cryptoType, int funkType)
 			switch (Principle(funkType))
 			{
 			case Principle::Encription:
-				VernamDecode();
+				VernamDecode(1);
 				break;
 			case Principle::Decription:
 				VernamCode();

@@ -11,7 +11,7 @@ void GronsfeldDecode(int);						//Decryption with the Gronsfeld cipher
 void RSADecode();								//Decryption with RSA cipher
 void MorseDecode();								//Decryption with Morse cipher
 
-void VernamDecode();							//Decryption with Vernam cipher
+void VernamDecode(int);							//Decryption with Vernam cipher
 void ElGamalDecode();							//Decryption with ElGamal cipher
 void GibberishDecode();							//Decryption with Gibberish letter
 

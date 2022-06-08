@@ -249,7 +249,7 @@ void VernamCode()
 
 	ifstream fout("Some_text.txt");
 	ofstream fin("Str_aft_proc.txt");
-
+	vector<string> keys;
 	funkPrinciple(1);
 	funkTypeName(4);
 
@@ -269,6 +269,17 @@ void VernamCode()
 		string shStr = "";
 		for (i = 0; oStr[i] != '\0'; i++)
 		{
+			char a = (oStr[i] ^ key[i]);
+			if (a < 32 || a > 126) {
+				while (a < 32) {
+					key[i] = (char)(32 + rand() % (126 - 32 + 1));
+					a = (oStr[i] ^ key[i]);
+				}
+				while (a > 126) {
+					key[i] = (char)(32 + rand() % (126 - 32 + 1));
+					a = (oStr[i] ^ key[i]);
+				}
+			}
 			shStr += (oStr[i] ^ key[i]);
 		}
 
@@ -278,14 +289,18 @@ void VernamCode()
 		{
 			fin << endl;
 		}
+		keys.push_back(key);
 	}
 	fout.close();
 	fin.close();
 	cout << endl;
-#ifndef Clear
+	ofstream keyout("keys.txt");
+	for (auto i : keys) {
+		keyout << i << endl;
+	}
+	keyout.close();
 	system("PAUSE");
 	system("CLS");
-#endif
 }
 
 //Encryption with ElGamal cipher
