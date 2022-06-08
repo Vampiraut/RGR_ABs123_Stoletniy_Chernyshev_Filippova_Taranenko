@@ -29,7 +29,7 @@ void inputStrToTxt()
 	{
 		try
 		{
-			cout << "Do you want to encrypt your file, create a new one, or take a random prepared one?" << endl << "<1>Create a new one" << endl << "<2>A new file" << endl << "<3>Take a random prepared one" << endl << ": ";
+			cout << "Do you want to encrypt your file, create a new one, or take a random prepared one?" << endl << "<1>Your file" << endl << "<2>Create a new one" << endl << "<3>Take a random prepared one" << endl << ": ";
 			getline(cin, fileCreate);
 			if (fileCreate == "")
 			{
